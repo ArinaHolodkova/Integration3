@@ -33,37 +33,75 @@ body {
   font-size: var(--step-0);
 }
 h1 {
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   font-family: "Times New Roman", Times, serif;
   color: var(--color);
+  text-align: center;
 }
+h2 {
+  font-size: var(--step-2);
+  font-family: "Times New Roman", Times, serif;
+  color: var(--color);
+ font-weight: 300;
+  text-align: center;
 
-.nav {
+}
+.header{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Times New Roman', Times, serif;
-  border-bottom: #5e3023 solid 2px;
+ justify-content: space-between;
 }
-.nav__logo{
-  max-width: 100%;
+.nav__button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* .nav__list{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  color: var(--color);
-  list-style-type: none;
+.nav__button svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--detail-color);
 }
-.nav__list__item{
-  padding: 1rem;
-} */
-.nav__button{
-  padding: 0.5rem var(--space-m);
-  border:solid #5e3023 2px;
-  background-color: var(--background-color);
-  font-size: var(--step-1);
-  color: var(--color);
+
+
+.nav__button[aria-expanded="true"] + .nav__list {
+  display: block;
 }
+
+.nav__item {
+  padding: var(--space-m);
+}
+
+.nav__link {
+  color: var(--color);
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.nav__museum {
+ font-family: 'Times New Roman', Times, serif;
+ font-size: var(--step-0);
+ border: #5e3023 solid 2px;
+ background-color:#e5d8c7;
+ padding: 0.5rem;
+color: var(--color);
+}
+
+.nav__list {
+  list-style: none;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  left: 0;
+    padding-left: var(--space-xs);
+    padding-top: var(--space-m);
+    padding-right: var(--space-m);
+    padding-bottom: var(--space-l);
+  background-color: #e5d8c7;
+  border-bottom-right-radius:50px;
+  border-bottom: double 12px var(--color);
+ border-right: double 12px var(--color);
+
+}
+
