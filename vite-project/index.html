@@ -81,18 +81,55 @@
  </div>
    
    <article class="bible">
+    <div class="bible__title">
     <h2>Polyglot Bible</h2>
+    <div class="line__top"></div>
+  </div>
       <section>
        <p> Plantin’s most ambitious project was the Antwerp Polyglot Bible, a monumental undertaking commissioned by King Philip II of Spain.</p>
       </section>
-      <section>
+      <section class="bible__languages">
+        <div class="bible__languages__title">
+        <h2>5 Languages</h2>
+        <div class="icon">&#10022;</div> 
+        <div class="line__top"></div>
+      </div>
         <p>This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
-      </section>
-      <section>
-        <p>Coordinating the efforts of over 80 workers, including linguists, typesetters, and proofreaders, Plantin played a central role in ensuring the project’s success.</p>
-        <p>The task was not without its challenges. Funding from King Philip was inconsistent, forcing Plantin to take significant financial risks by investing his own resources.</p>
-        <p> The multilingual typesetting process required extraordinary precision, as even minor errors could result in delays and compromise the integrity of the work.</p>
-        <p>Despite these obstacles, Plantin’s meticulous leadership and dedication ensured the completion of this groundbreaking publication, solidifying his reputation as a master printer and intellectual innovator.</p>
+       
+      <div class="bible__languages__carousel">
+    <button class="carousel__prev" onclick="changeImage(-1)">&#10094;</button>
+    
+    <div class="carousel">
+      <img src="../src/assets/Greek.png" alt="greek language" class="carousel__image">
+      <img src="../src/assets/Hebrew__2.png" alt="Hebrew language" class="carousel__image">
+      <img src="../src/assets/Latin.png" alt="Latin language" class="carousel__image">
+    </div>
+
+    <button class="carousel__next" onclick="changeImage(1)">&#10095;</button>
+  </div>
+</section>
+
+
+
+      <section class="bible__problems">
+        <div class="bible__problems__one">
+          <p>Coordinating the efforts of over 80 workers, including linguists, typesetters, and proofreaders, Plantin played a central role in ensuring the project’s success. The task was not without its challenges</p>
+       <div class="bible__problems__one__line">
+          <svg id="wavyLineOne" width="118" height="196" viewBox="0 0 118 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M51.1441 1C47.1471 42.7467 105.342 3.69831 113.597 34.1518C117.757 49.5004 118.497 62.1112 113.597 77.1265C97.6445 126.01 6.72884 47.5411 1.68172 99.8417C0.287752 114.287 0.685629 123.792 6.1783 136.677C19.8782 168.816 73.909 113.774 81.1214 148.956C84.8089 166.943 71.6286 195 71.6286 195" stroke="#5E3023" stroke-width="2"/>
+</svg>
+</div>
+     </div>
+     <div class="bible__problems__two">
+          <p>Funding from King Philip was inconsistent, forcing Plantin to take significant financial risks by investing his own resources. The multilingual typesetting process required extraordinary precision, as even minor errors could result in delays and compromise the integrity of the work. </p>
+    <div class="bible__problems__two__line" >
+          <svg id="wavyLineTwo" width="147" height="240" viewBox="0 0 147 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.5 1C3.5 1 -4.90842 42.4059 10.5 58C37.2974 85.1202 74.8739 50.5 113 50.5C138 50.5 144.24 74.9121 145 97.5C145.843 122.541 134.5 134 109.5 134C83.6243 134 63.9732 112.725 39 119.5C14.8364 126.055 0.693237 143.621 3.50003 168.5C6.34784 193.743 49.9524 185.5 65.5 206C73.6279 216.717 67.5 239.5 67.5 239.5" stroke="#5E3023" stroke-width="2"/>
+</svg>
+</div>
+
+        </div>
+          <p class="bible__problems__three" >Despite these obstacles, Plantin’s meticulous leadership and dedication ensured the completion of this groundbreaking publication, solidifying his reputation as a master printer and intellectual innovator.</p>
       </section>
      </article >
      <article class="botanic"> 
@@ -124,6 +161,11 @@
     </section>
    </article>
     <script type="module" src="/src/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/MotionPathPlugin.min.js"></script>
+  <script src=" https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+ 
+
   </body>
 
 </html>

@@ -158,4 +158,58 @@ padding-bottom: var(--space-s);
   flex-direction: row;
   align-items: center;
 }
+.bible__title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
 
+.bible__languages__title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bible__languages__carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel__image {
+  width: 100%;
+  height: auto;
+}
+
+
+.carousel__prev {
+  left: 10px;
+}
+
+.carousel__next {
+  right: 10px;
+}
+
+.bible__problems{
+ margin:var(--space-s);
+ width: 80%;
+}
+
+.bible__problems__one{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bible__problems__two{
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+}
