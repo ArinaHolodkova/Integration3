@@ -1,11 +1,9 @@
 
-gsap.registerPlugin(ScrollTrigger); 
-gsap.registerPlugin(MotionPathPlugin); 
-
-
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 let currentIndex = 0;
 
+// Navigation toggle logic
 document.addEventListener("DOMContentLoaded", function () {
   const navButton = document.querySelector(".nav__button");
   const navList = document.querySelector(".nav__list");
@@ -18,10 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iconLink.setAttribute("xlink:href", expanded ? "#navicon" : "#close");
     navList.style.display = expanded ? "none" : "flex";
   });
-
 });
-
-
 
 
 const changeImage = (direction) => {
@@ -35,38 +30,45 @@ const changeImage = (direction) => {
   carousel.style.transform = `translateX(${offset}%)`;
 };
 
-let wavyOne = document.querySelector("#wavyLineOne");
-let wavyTwo = document.querySelector("#wavyLineTwo");
-let pathOne = wavyOne.querySelector ("path");
-let pathTwo = wavyTwo.querySelector("path");
+const animatePath = (pathSelector, triggerSelector) => {
+  const pathElement = document.querySelector(pathSelector).querySelector("path");
+  const pathLength = pathElement.getTotalLength();
 
-const pathOneLength =pathOne.getTotalLength()
-const pathTwoLength = pathTwo.getTotalLength();
- console.log(pathOneLength);
+  gsap.set(pathElement, { strokeDasharray: pathLength });
 
-gsap.set(pathOne, { setDasharray: pathOneLength });
-gsap.set(pathTwo, {strokeDasharray: pathTwoLength,});
 
-gsap.fromTo(
-  pathOne,
-  {
-    strokeDashoffset: pathOneLength,
+  gsap.fromTo(
+    pathElement,
+    { strokeDashoffset: pathLength },
+    {
+      strokeDashoffset: 0,
+      duration: 4,
+      scrollTrigger: {
+        trigger: triggerSelector,
+        start: "5%",
+        scrub: true,
+      },
+    }
+  );
+
+gsap.from(".bible__problems__three", {
+  duration: 3,
+  color: "#f3e9dc",
+  scrollTrigger: {
+    trigger: ".bible__problems__two__line",
+    start: "top 10%",
+    scrub: true,
   },
-  {
-    strokeDashoffset: 0,
-    duratioon:10,
-    ScrollTrigger: {
-      trigger: ".bible__problems__one__line",
-      start:"top top",
-      end: "bottom bottom",
-    },
-  }
-);
-
-
- const init = () => {
-  changeImage(); 
-  gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+});
 };
 
+
+
+
+
+const init = () => {
+  changeImage();
+  animatePath("#wavyLineOne", ".bible__problems__one");
+  animatePath("#wavyLineTwo", ".bible__problems__two");
+};
 init();
