@@ -1,3 +1,7 @@
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
@@ -18,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 const changeImage = (direction) => {
   const images = document.querySelectorAll(".carousel__image");
   const totalImages = images.length;
@@ -31,11 +34,12 @@ const changeImage = (direction) => {
 };
 
 const animatePath = (pathSelector, triggerSelector) => {
-  const pathElement = document.querySelector(pathSelector).querySelector("path");
+  const pathElement = document
+    .querySelector(pathSelector)
+    .querySelector("path");
   const pathLength = pathElement.getTotalLength();
 
   gsap.set(pathElement, { strokeDasharray: pathLength });
-
 
   gsap.fromTo(
     pathElement,
@@ -51,21 +55,24 @@ const animatePath = (pathSelector, triggerSelector) => {
     }
   );
 
-gsap.from(".bible__problems__three", {
-  duration: 3,
-  color: "#f3e9dc",
-  scrollTrigger: {
-    trigger: ".bible__problems__two__line",
-    start: "top 5%",
-    ease: "power2.inOut",
-    scrub: true,
-  },
-});
+  gsap.fromTo(
+    ".bible__problems__three",
+    {
+      alpha: 0,
+    },
+    {
+      scrollTrigger: {
+        trigger: ".bible__problems__three",
+        start: "top middle",
+        // ease: "power2.inOut",
+        // end: "bottom bottom",
+        scrub: true,
+        markers: true,
+      },
+      alpha: 1,
+    }
+  );
 };
-
-
-
-
 
 const init = () => {
   changeImage();
