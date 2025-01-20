@@ -36,6 +36,8 @@
 body {
   background-color: var(--background-color);
   font-size: var(--step-0);
+  margin-left: var(--space-s);
+  margin-right: var(--space-s);
 }
 h1 {
   font-size: var(--step-3);
@@ -120,6 +122,15 @@ color: var(--color);
 .arc{
   padding: var(--space-s);
 }
+.intro__container__img{
+  position: absolute;
+  color: var(--background-color);
+}
+.intro__img{
+width: 100%;
+}
+
+
 .figure{
 display: flex;
 flex-direction: column;
@@ -212,4 +223,20 @@ padding-bottom: var(--space-s);
      display: flex;
   flex-direction: column;
   align-items: center;
+}
+.bible__problems__three{
+  border-bottom: solid 2px var(--color);
+  padding-bottom: var(--space-m);
+}
+
+.botanic__intro__herbal{
+  background-color: var(--color);
+  color: var(--background-color);
+  padding: var(--space-m);
+}
+
+.botanic__illustrations{
+  display:flex;
+  align-items: flex-start;
+  flex-direction: column;
 }

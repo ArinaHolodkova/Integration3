@@ -56,7 +56,8 @@ gsap.from(".bible__problems__three", {
   color: "#f3e9dc",
   scrollTrigger: {
     trigger: ".bible__problems__two__line",
-    start: "top 10%",
+    start: "top 5%",
+    ease: "power2.inOut",
     scrub: true,
   },
 });
