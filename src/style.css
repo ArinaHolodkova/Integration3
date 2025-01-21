@@ -27,10 +27,7 @@
   --space-2xl: clamp(4.5rem, 4.4rem + 0.5vw, 5rem);
   --space-3xl: clamp(6.75rem, 6.6rem + 0.75vw, 7.5rem);
 
-  /* lines */
-
-  --line-1: clamp(5rem, 20vw + 1rem, 20rem);
-  --line-2: clamp(11rem, 70vw + 2rem, 65rem);
+  
 }
 
 body {
@@ -56,7 +53,20 @@ h2 {
 h3{
   color: var(--background-color);
   font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  max-width:50%;
+  text-align:center ;
+  padding-bottom: var(--space-s);
 }
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color);
+  border: none;
+}
+
+
 .header {
   display: flex;
   flex-direction: row;
@@ -66,6 +76,9 @@ h3{
   background: none;
   border: none;
   cursor: pointer;
+}
+.nav{
+  position: relative;
 }
 
 .nav__button svg {
@@ -118,6 +131,7 @@ h3{
 }
 
 .intro {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,7 +139,7 @@ h3{
   padding: var(--space-xs);
 }
 .arc {
-  padding: var(--space-s);
+ margin-top: var(--space-s);
 }
 .intro__container__img {
   position: absolute;
@@ -138,19 +152,12 @@ h3{
 }
 
 .intro__img {
-width: 90%;
+width: 85%;
     display: flex;
     align-self: flex-end;
     justify-content: space-between;
     padding-top: var(--space-m);
 }
-
-.line {
-  height: 2px;
-  background-color: var(--color);
-  border: none;
-}
-
 
 .figure {
   display: flex;
@@ -225,7 +232,6 @@ grid-template-rows: 10% 80% 10%;
   }
 
    .carousel__wrapper {
-    /* overflow: hidden; */
     width: 100%;
     grid-column: 2;
     grid-row: 2;
@@ -284,4 +290,143 @@ color: #b10a3a;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+}
+
+
+  .illustration-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .illustration__container__leaf{
+     position:absolute;
+     display:grid;
+     grid-template-columns: auto auto;
+     grid-template-rows: auto auto;
+    justify-items: stretch;
+    align-items: center;
+   
+  }
+    .leaf {
+    width: 60%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+.leaf__one{
+  grid-row:1;
+  grid-column:1;
+}
+.leaf__two{
+  grid-row:2;
+  grid-column:2;
+}
+.leaf__three{
+  grid-row:2;
+  grid-column:1;
+}
+
+
+  @keyframes pop-effect {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+   .leaf.popped {
+    animation: pop-effect 0.5s forwards;
+  }
+
+  .flowerbook {
+    max-width: 100%;
+    height: auto;
+    margin-top: var(--space-m);
+  }
+
+.botanic__illustrations__generations{
+display: grid
+;
+   
+    grid-template-rows: auto auto;
+}
+.generations__first{
+     max-width: 100%;
+     grid-row: 1;
+}
+.generations__second{
+ max-width: 100%;
+     grid-row: 2;
+}
+
+
+.step-container {
+  position: relative;
+  overflow: hidden;
+  border: 2px double var(--color);
+ 
+  height:4rem;
+  width: 4rem;
+}
+
+.shoe {
+  position: absolute;
+  width: 30%; 
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.first-shoe {
+  bottom: 20px;
+  left: 50px;
+}
+
+.second-shoe {
+  bottom: 20px;
+  right: 50px;
+}
+.atlas__art__title{
+text-align: center;
+}
+.atlas__art__title::before{
+content: "\2726";
+background-color: var(--background-color);
+margin-right: var(--space-xs);
+}
+.atlas__art__title::after{
+content: "\2726";
+background-color: var(--background-color);
+margin-left: var(--space-xs);
+}
+.end__combine {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.end__combine__image {
+  width: 30%; 
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.big-image {
+  position: absolute;
+  width: 80%; 
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  display: none;
 }

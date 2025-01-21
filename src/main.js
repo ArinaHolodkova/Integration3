@@ -234,7 +234,7 @@ const animatePath = (pathSelector, triggerSelector) => {
         start: "middle 5%",
         ease: "power2.inOut",
         scrub: true,
-        markers: true,
+  
       },
       alpha: 1,
     }
@@ -242,8 +242,115 @@ const animatePath = (pathSelector, triggerSelector) => {
 };
 
 
+  document.querySelectorAll(".leaf").forEach((leaf) => {
+    leaf.addEventListener("click", () => {
+      leaf.classList.add("popped"); 
+      setTimeout(() => {
+        leaf.remove(); 
+      }, 500); 
+    });
+  });
+  
+
+  const firstShoe = document.querySelector(".first-shoe");
+  const secondShoe = document.querySelector(".second-shoe");
+let isStepping = false;
+  let startY = 0;
+
+  const step = () => {
+  
+  window.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  });
+
+  window.addEventListener("touchmove", (e) => {
+    const endY = e.touches[0].clientY;
+    if (startY - endY > 50 && !isStepping) {
+      isStepping = true;
+      stepEffect();
+    }
+  });
+};
+
+  const stepEffect=()=> {
+    firstShoe.style.opacity = "1";
+    firstShoe.style.transform = "translateY(-80px)";
+
+    setTimeout(() => {
+      firstShoe.style.opacity = "0";
+      firstShoe.style.transform = "translateY(0)";
+      secondShoe.style.opacity = "1";
+      secondShoe.style.transform = "translateY(-80px)";
+    }, 300);
+
+    setTimeout(() => {
+      secondShoe.style.opacity = "0";
+      secondShoe.style.transform = "translateY(0)";
+      isStepping = false;
+    }, 600);
+  }
+
+  const triggerChange=() =>{
+    console.log("Changing images"); 
+    const images = document.querySelectorAll(".end__combine__image");
+    const bigImage = document.querySelector(".big-image");
+
+    images.forEach((img) => {
+      img.style.opacity = "0";
+      img.style.transform = "scale(0.8)";
+    });
+
+    setTimeout(() => {
+      images.forEach((img) => img.classList.add("hidden"));
+      bigImage.style.opacity = "1";
+      bigImage.classList.remove("hidden");
+    }, 500);
+    
+  }
+
+  const shakeIt =() => {
+    console.log("Script loaded"); 
+
+     const simulateShakeButton = document.getElementById("simulate-shake");
+     if (simulateShakeButton) {
+       simulateShakeButton.addEventListener("click", triggerChange);
+     } else {
+       console.log("Simulate shake button not found");
+     }
+
+    let shakeThreshold = 15; 
+
+      console.log("DeviceMotionEvent supported"); 
+      let lastX = 0,
+        lastY = 0,
+        lastZ = 0;
+
+      const shakeEvent = (event) => {
+        const { x, y, z } = event.accelerationIncludingGravity || {};
+
+        if (!x || !y || !z) return;
+
+        const deltaX = Math.abs(lastX - x);
+        const deltaY = Math.abs(lastY - y);
+        const deltaZ = Math.abs(lastZ - z);
+
+        if (deltaX + deltaY + deltaZ > shakeThreshold) {
+          console.log("Triggering change"); 
+          triggerChange();
+        }
+
+        lastX = x;
+        lastY = y;
+        lastZ = z;
+      };
+
+      window.addEventListener("devicemotion", shakeEvent, false);
+  
+  };
 
 const init = () => {
+  shakeIt();
+  step();
   carouselEffect();
   swipeEffect();
   animatePath("#wavyLineOne", ".bible__problems__one");
