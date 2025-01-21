@@ -219,34 +219,39 @@ content: "";
 }
 
   .bible__languages__carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+display:grid;
+grid-template-columns: auto auto auto;
+grid-template-rows: 10% 80% 10%;
   }
 
    .carousel__wrapper {
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100%;
+    grid-column: 2;
+    grid-row: 2;
   }
 
- .carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
 
   .carousel__image {
     width: 100%;
-    flex-shrink: 0;
   }
 
-/* .carousel__prev {
-  left: 10px;
+.carousel__prev {
+grid-column: 1;
+grid-row: 1;
+border-radius: 50%;
+border: #b10a3a 2px solid;
+background-color: var(--background-color);
+color: #b10a3a;
 }
 
 .carousel__next {
-  right: 10px;
-} */
+grid-column: 3;
+grid-row: 3;
+border-radius: 50%;
+background-color: var(--background-color);
+color: #b10a3a;
+}
 
 .bible__problems {
   margin: var(--space-s);

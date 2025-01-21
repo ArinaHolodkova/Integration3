@@ -230,10 +230,9 @@ const animatePath = (pathSelector, triggerSelector) => {
     },
     {
       scrollTrigger: {
-        trigger: ".bible__problems__three",
-        start: "top middle",
-        // ease: "power2.inOut",
-        // end: "bottom bottom",
+        trigger: ".bible__problems__two__line",
+        start: "middle 5%",
+        ease: "power2.inOut",
         scrub: true,
         markers: true,
       },
