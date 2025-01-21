@@ -5,9 +5,58 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
+const imageElement = document.getElementById("dynamicImage");
+const textElement = document.getElementById("dynamicText");
+let startX = 0;
+let endX = 0;
+let currentSwipe = 0;
 let currentIndex = 0;
+  const prevButton = document.querySelector(".carousel__prev");
+  const nextButton = document.querySelector(".carousel__next");
+  const carousel = document.querySelector(".carousel");
+  const imagesCarousel = document.querySelectorAll(".carousel__image");
+  const totalImages = imagesCarousel.length;
 
-// Navigation toggle logic
+
+
+const images = [
+  {
+    srcset: `
+      ./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
+      ./src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
+      ./src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
+      ./src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
+      ./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w
+    `,
+    sizes: "(max-width: 1080px) 100vw, 796px",
+    src: "./src/assets/global_understanding/golobal_c_scale,w_796.avif",
+    text: "Global understanding",
+  },
+  {
+    srcset: `
+      ./src/assets/science/science,w_200.avif 200w,
+      ./src/assets/science/science,w_515.avif 515w,
+      ./src/assets/science/science,w_824.avif 824w,
+      ./src/assets/science/science,w_1080.avif 1080w
+    `,
+    sizes: "(max-width: 1080px) 100vw, 515px",
+    src: "./src/assets/science/science,w_515.avif",
+    text: "Science",
+  },
+  {
+    srcset: `
+      ./src/assets/art/art,w_200.avif 200w,
+      ./src/assets/art/art,w_514.avif 514w,
+      ./src/assets/art/art,w_739.avif 739w,
+      ./src/assets/art/art,w_1018.avif 1018w,
+      ./src/assets/art/art,w_1080.avif 1080w
+    `,
+    sizes: "(max-width: 1080px) 100vw, 739px",
+    src: "./src/assets/art/art,w_739.avif",
+    text: "Art",
+  },
+];
+
 document.addEventListener("DOMContentLoaded", function () {
   const navButton = document.querySelector(".nav__button");
   const navList = document.querySelector(".nav__list");
@@ -22,16 +71,135 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const changeImage = (direction) => {
-  const images = document.querySelectorAll(".carousel__image");
-  const totalImages = images.length;
+const carouselEffect = () => {
+  const carouselimages = [
+    {
+      srcset: `
+./src/assets/greece/greece,w_200.avif 200w,
+./src/assets/greece/greece,w_266.avif 266w,
+./src/assets/greece/greece,w_324.avif 324w,
+./src/assets/greece/greece,w_374.avif 374w,
+./src/assets/greece/greece,w_425.avif 425w,
+./src/assets/greece/greece,w_476.avif 476w,
+./src/assets/greece/greece,w_524.avif 524w,
+./src/assets/greece/greece,w_573.avif 573w,
+./src/assets/greece/greece,w_617.avif 617w,
+./src/assets/greece/greece,w_662.avif 662w,
+./src/assets/greece/greece,w_706.avif 706w,
+./src/assets/greece/greece,w_750.avif 750w,
+./src/assets/greece/greece,w_1080.avif 1080w
+    `,
+      sizes: "(max-width: 1080px) 100vw, 1080px",
+      src: "./src/assets/greece/greece,w_1080.avif",
+      alt: "Greek language",
+    },
+    {
+      srcset: `
+./src/assets/hebrew/hebrew,w_200.avif 200w,
+./src/assets/hebrew/hebrew,w_270.avif 270w,
+./src/assets/hebrew/hebrew,w_332.avif 332w,
+./src/assets/hebrew/hebrew,w_384.avif 384w,
+./src/assets/hebrew/hebrew,w_440.avif 440w,
+./src/assets/hebrew/hebrew,w_493.avif 493w,
+./src/assets/hebrew/hebrew,w_541.avif 541w,
+./src/assets/hebrew/hebrew,w_588.avif 588w,
+./src/assets/hebrew/hebrew,w_632.avif 632w,
+./src/assets/hebrew/hebrew,w_674.avif 674w,
+./src/assets/hebrew/hebrew,w_717.avif 717w,
+./src/assets/hebrew/hebrew,w_754.avif 754w,
+./src/assets/hebrew/hebrew,w_1080.avif 1080w
+    `,
+      sizes: "(max-width: 1080px) 100vw, 1080px",
+      src: "./src/assets/hebrew/hebrew,w_1080.avif",
+      alt: "Hebrew language",
+    },
+    {
+      srcset: `
+./src/assets/latin/latin,w_200.avif 200w,
+./src/assets/latin/latin,w_257.avif 257w,
+./src/assets/latin/latin,w_307.avif 307w,
+./src/assets/latin/latin,w_348.avif 348w,
+./src/assets/latin/latin,w_393.avif 393w,
+./src/assets/latin/latin,w_433.avif 433w,
+./src/assets/latin/latin,w_471.avif 471w,
+./src/assets/latin/latin,w_510.avif 510w,
+./src/assets/latin/latin,w_546.avif 546w,
+./src/assets/latin/latin,w_583.avif 583w,
+./src/assets/latin/latin,w_620.avif 620w,
+./src/assets/latin/latin,w_656.avif 656w,
+./src/assets/latin/latin,w_691.avif 691w,
+./src/assets/latin/latin,w_725.avif 725w,
+./src/assets/latin/latin,w_759.avif 759w,
+./src/assets/latin/latin,w_795.avif 795w,
+./src/assets/latin/latin,w_829.avif 829w,
+./src/assets/latin/latin,w_1080.avif 1080w
+    `,
+      sizes: "(max-width: 1080px) 100vw, 1080px",
+      src: "./src/assets/latin/latin,w_1080.avif",
+      alt: "Latin language",
+    },
+  ];
 
-  currentIndex = (currentIndex + direction + totalImages) % totalImages;
+  let currentIndex = 0;
 
-  const carousel = document.querySelector(".carousel");
-  const offset = -currentIndex * 100;
-  carousel.style.transform = `translateX(${offset}%)`;
+  const imageContainer = document.querySelector(".carousel__wrapper");
+  const prevButton = document.querySelector(".carousel__prev");
+  const nextButton = document.querySelector(".carousel__next");
+
+  const updateImage = () => {
+    const { sizes, srcset, src, alt } = carouselimages[currentIndex];
+    imageContainer.innerHTML = `
+      <img sizes="${sizes}" srcset="${srcset}" src="${src}" alt="${alt}" class="carousel__image">
+    `;
+  };
+
+  const changeImage = (direction) => {
+    currentIndex = (currentIndex + direction + images.length) % carouselimages.length;
+    updateImage();
+  };
+
+  prevButton.addEventListener("click", () => changeImage(-1));
+  nextButton.addEventListener("click", () => changeImage(+1));
+
+
+  updateImage();
 };
+
+
+
+
+
+const swipeEffect = () => {
+  document.addEventListener("touchstart", (event) => {
+    startX = event.touches[0].clientX;
+  });
+
+  document.addEventListener("touchmove", (event) => {
+    endX = event.touches[0].clientX;
+  });
+
+  document.addEventListener("touchend", () => {
+    if (startX > endX + 50) {
+      // Swipe Left
+      currentSwipe = (currentSwipe + 1) % images.length;
+      updateContent();
+    } else if (startX < endX - 50) {
+      // Swipe Right
+      currentSwipe = (currentSwipe - 1 + images.length) % images.length;
+      updateContent();
+    }
+  });
+};
+
+const updateContent = () => {
+  const currentImage = images[currentSwipe];
+  imageElement.srcset = currentImage.srcset;
+  imageElement.sizes = currentImage.sizes;
+  imageElement.src = currentImage.src;
+  textElement.textContent = currentImage.text;
+};
+
+
 
 const animatePath = (pathSelector, triggerSelector) => {
   const pathElement = document
@@ -74,8 +242,11 @@ const animatePath = (pathSelector, triggerSelector) => {
   );
 };
 
+
+
 const init = () => {
-  changeImage();
+  carouselEffect();
+  swipeEffect();
   animatePath("#wavyLineOne", ".bible__problems__one");
   animatePath("#wavyLineTwo", ".bible__problems__two");
 };

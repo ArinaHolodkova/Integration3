@@ -63,8 +63,10 @@
 <path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
 </svg>
 <div class="intro__container__img" >
-<picture>
+<picture class="intro__img">
 <img
+class="intro__img"
+id="dynamicImage"
 sizes="(max-width: 1080px) 100vw, 1080px"
 srcset="
 ./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
@@ -72,10 +74,10 @@ srcset="
 ./src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
 ./src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
 ./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w"
-src="./src/assets/global_understanding/golobal_c_scale,w_1080.avif"
+src="./src/assets/global_understanding/golobal_c_scale,w_796.avif"
 alt="global understanding">
 </picture>
-<h3>Global understanding</h3>
+<h3 id="dynamicText" >Global understanding</h3>
 </div>
     <p>His printing house, Officina Plantiniana, became a hub of intellectual and creative activity, producing works that revolutionized how knowledge was shared and preserved.</p>
    </div> 
@@ -99,31 +101,113 @@ alt="global understanding">
    <article class="bible">
     <h2 class="bible__title" >Polyglot Bible</h2>
    
-      <section>
+      <section class="bible__king">
        <p> Plantin’s most ambitious project was the Antwerp Polyglot Bible, a monumental undertaking commissioned by King Philip II of Spain.</p>
-      </section>
+  <picture>
+<img
+sizes="(max-width: 1400px) 100vw, 1400px"
+srcset="
+./src/assets/book/book,w_200.avif 200w,
+./src/assets/book/book,w_431.avif 431w,
+./src/assets/book/book,w_607.avif 607w,
+./src/assets/book/book,w_749.avif 749w,
+./src/assets/book/book,w_894.avif 894w,
+./src/assets/book/book,w_1047.avif 1047w,
+./src/assets/book/book,w_1305.avif 1305w,
+./src/assets/book/book,w_1387.avif 1387w,
+./src/assets/book/book,w_1400.avif 1400w"
+src="./src/assets/book/book,w_1400.avif"
+alt="bible">
+</picture>
+    </section>
       <section class="bible__languages">
         <div class="bible__languages__title">
         <h2>5 Languages</h2>
         <div class="icon">&#10022;</div> 
-        <div class="line__top"></div>
       </div>
         <p>This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
        
-      <div class="bible__languages__carousel">
-    <button class="carousel__prev" onclick="changeImage(-1)">&#10094;</button>
-    
-    <div class="carousel">
-      <img src="../src/assets/Greek.png" alt="greek language" class="carousel__image">
-      <img src="../src/assets/Hebrew__2.png" alt="Hebrew language" class="carousel__image">
-      <img src="../src/assets/Latin.png" alt="Latin language" class="carousel__image">
+    <div class="bible__languages__carousel">
+    <button class="carousel__prev">&#10094;</button>
+
+    <div class="carousel__wrapper">
+      <!-- <div class="carousel">
+<picture>
+<img
+class="carousel__image"
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/greece/greece,w_200.avif 200w,
+./src/assets/greece/greece,w_266.avif 266w,
+./src/assets/greece/greece,w_324.avif 324w,
+./src/assets/greece/greece,w_374.avif 374w,
+./src/assets/greece/greece,w_425.avif 425w,
+./src/assets/greece/greece,w_476.avif 476w,
+./src/assets/greece/greece,w_524.avif 524w,
+./src/assets/greece/greece,w_573.avif 573w,
+./src/assets/greece/greece,w_617.avif 617w,
+./src/assets/greece/greece,w_662.avif 662w,
+./src/assets/greece/greece,w_706.avif 706w,
+./src/assets/greece/greece,w_750.avif 750w,
+./src/assets/greece/greece,w_1080.avif 1080w"
+src="./src/assets/greece/greece,w_1080.avif"
+alt="Greek language">
+</picture>
+
+<picture>
+<img
+class="carousel__image"
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/hebrew/hebrew,w_200.avif 200w,
+./src/assets/hebrew/hebrew,w_270.avif 270w,
+./src/assets/hebrew/hebrew,w_332.avif 332w,
+./src/assets/hebrew/hebrew,w_384.avif 384w,
+./src/assets/hebrew/hebrew,w_440.avif 440w,
+./src/assets/hebrew/hebrew,w_493.avif 493w,
+./src/assets/hebrew/hebrew,w_541.avif 541w,
+./src/assets/hebrew/hebrew,w_588.avif 588w,
+./src/assets/hebrew/hebrew,w_632.avif 632w,
+./src/assets/hebrew/hebrew,w_674.avif 674w,
+./src/assets/hebrew/hebrew,w_717.avif 717w,
+./src/assets/hebrew/hebrew,w_754.avif 754w,
+./src/assets/hebrew/hebrew,w_1080.avif 1080w"
+src="./src/assets/hebrew/hebrew,w_1080.avif"
+alt="Hebrew language">
+</picture>
+
+<picture>
+<img
+class="carousel__image"
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/latin/latin,w_200.avif 200w,
+./src/assets/latin/latin,w_257.avif 257w,
+./src/assets/latin/latin,w_307.avif 307w,
+./src/assets/latin/latin,w_348.avif 348w,
+./src/assets/latin/latin,w_393.avif 393w,
+./src/assets/latin/latin,w_433.avif 433w,
+./src/assets/latin/latin,w_471.avif 471w,
+./src/assets/latin/latin,w_510.avif 510w,
+./src/assets/latin/latin,w_546.avif 546w,
+./src/assets/latin/latin,w_583.avif 583w,
+./src/assets/latin/latin,w_620.avif 620w,
+./src/assets/latin/latin,w_656.avif 656w,
+./src/assets/latin/latin,w_691.avif 691w,
+./src/assets/latin/latin,w_725.avif 725w,
+./src/assets/latin/latin,w_759.avif 759w,
+./src/assets/latin/latin,w_795.avif 795w,
+./src/assets/latin/latin,w_829.avif 829w,
+./src/assets/latin/latin,w_1080.avif 1080w"
+src="./src/assets/latin/latin,w_1080.avif"
+alt="">
+</picture>
+      </div> -->
     </div>
 
-    <button class="carousel__next" onclick="changeImage(1)">&#10095;</button>
+    <button class="carousel__next">&#10095;</button>
   </div>
 </section>
-
-
 
       <section class="bible__problems">
         <div class="bible__problems__one">
@@ -164,13 +248,13 @@ alt="global understanding">
 <img
 sizes="(max-width: 1400px) 100vw, 1400px"
 srcset="
-plant_book_xf5dzi_c_scale,w_200.avif 200w,
-plant_book_xf5dzi_c_scale,w_537.avif 537w,
-plant_book_xf5dzi_c_scale,w_766.avif 766w,
-plant_book_xf5dzi_c_scale,w_1006.avif 1006w,
-plant_book_xf5dzi_c_scale,w_1278.avif 1278w,
-plant_book_xf5dzi_c_scale,w_1372.avif 1372w,
-plant_book_xf5dzi_c_scale,w_1400.avif 1400w"
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_537.avif 537w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_766.avif 766w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1006.avif 1006w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1278.avif 1278w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1372.avif 1372w,
+./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif 1400w"
 src="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif"
 alt="Book with flowers">
 </picture>
