@@ -26,7 +26,7 @@ const images = [
       ./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w
     `,
     sizes: "(max-width: 1080px) 100vw, 796px",
-    src: "./src/assets/global_understanding/golobal_c_scale,w_796.avif",
+    src: "./src/assets/global_understanding/golobal.png",
     text: "Global understanding",
   },
   {
@@ -37,7 +37,7 @@ const images = [
       ./src/assets/science/science,w_1080.avif 1080w
     `,
     sizes: "(max-width: 1080px) 100vw, 515px",
-    src: "./src/assets/science/science,w_515.avif",
+    src: "./src/assets/science/science.png",
     text: "Science",
   },
   {
@@ -49,7 +49,7 @@ const images = [
       ./src/assets/art/art,w_1080.avif 1080w
     `,
     sizes: "(max-width: 1080px) 100vw, 739px",
-    src: "./src/assets/art/art,w_739.avif",
+    src: "./src/assets/art/art.png",
     text: "Art",
   },
 ];
@@ -87,7 +87,7 @@ const carouselEffect = () => {
 ./src/assets/greece/greece,w_1080.avif 1080w
     `,
       sizes: "(max-width: 1080px) 100vw, 1080px",
-      src: "./src/assets/greece/greece,w_1080.avif",
+      src: "./src/assets/greece/greece.png",
       alt: "Greek language",
     },
     {
@@ -107,7 +107,7 @@ const carouselEffect = () => {
 ./src/assets/hebrew/hebrew,w_1080.avif 1080w
     `,
       sizes: "(max-width: 1080px) 100vw, 1080px",
-      src: "./src/assets/hebrew/hebrew,w_1080.avif",
+      src: "./src/assets/hebrew/hebrew.png",
       alt: "Hebrew language",
     },
     {
@@ -132,7 +132,7 @@ const carouselEffect = () => {
 ./src/assets/latin/latin,w_1080.avif 1080w
     `,
       sizes: "(max-width: 1080px) 100vw, 1080px",
-      src: "./src/assets/latin/latin,w_1080.avif",
+      src: "./src/assets/latin/latin.png",
       alt: "Latin language",
     },
   ];
@@ -174,11 +174,11 @@ const swipeEffect = () => {
 
   document.addEventListener("touchend", () => {
     if (startX > endX + 50) {
-      // Swipe Left
+   
       currentSwipe = (currentSwipe + 1) % images.length;
       updateContent();
     } else if (startX < endX - 50) {
-      // Swipe Right
+    
       currentSwipe = (currentSwipe - 1 + images.length) % images.length;
       updateContent();
     }
@@ -204,13 +204,14 @@ const animatePath = (pathSelector, triggerSelector) => {
 
   gsap.fromTo(
     pathElement,
-    { strokeDashoffset: pathLength-5 },
+    { strokeDashoffset: pathLength - 5 },
     {
       strokeDashoffset: 0,
-      duration: 4,
+      duration: 1,
       scrollTrigger: {
         trigger: triggerSelector,
-        start: "top top",
+        start: "middle middle",
+        markers:true,
         scrub: true,
       },
     }
@@ -245,38 +246,6 @@ const leafPop =()=>{
   });
 };
 
-//   const step = () => {
-  
-//   window.addEventListener("touchstart", (e) => {
-//     startY = e.touches[0].clientY;
-//   });
-
-//   window.addEventListener("touchmove", (e) => {
-//     const endY = e.touches[0].clientY;
-//     if (startY - endY > 50 && !isStepping) {
-//       isStepping = true;
-//       stepEffect();
-//     }
-//   });
-// };
-
-  // const stepEffect=()=> {
-  //   firstShoe.style.opacity = "1";
-  //   firstShoe.style.transform = "translateY(-80px)";
-
-  //   setTimeout(() => {
-  //     firstShoe.style.opacity = "0";
-  //     firstShoe.style.transform = "translateY(0)";
-  //     secondShoe.style.opacity = "1";
-  //     secondShoe.style.transform = "translateY(-80px)";
-  //   }, 300);
-
-  //   setTimeout(() => {
-  //     secondShoe.style.opacity = "0";
-  //     secondShoe.style.transform = "translateY(0)";
-  //     isStepping = false;
-  //   }, 600);
-  // }
 
   const triggerChange=() =>{
     console.log("Changing images"); 
@@ -339,27 +308,35 @@ const leafPop =()=>{
 const canvas = document.querySelector("#puzzleCanvas");
 const ctx = canvas.getContext("2d");
 
-const getResponsiveImageSource=() =>{
-  const sources = [
+const getResponsiveImageSource = () => {
+  const srcset = [
     { src: "./src/assets/puzzle/puzzle,w_200.avif", maxWidth: 200 },
     { src: "./src/assets/puzzle/puzzle,w_480.avif", maxWidth: 480 },
     { src: "./src/assets/puzzle/puzzle,w_601.avif", maxWidth: 601 },
     { src: "./src/assets/puzzle/puzzle,w_660.avif", maxWidth: 660 },
   ];
-  const viewportWidth = window.innerWidth;
-  let selectedSource = sources[sources.length - 1].src; 
-  for (const source of sources) {
-    if (viewportWidth <= source.maxWidth) {
-      selectedSource = source.src;
-      break;
-    }
-  }
-  return selectedSource;
-}
+
+
+  const srcsetString = srcset
+    .map((item) => `${item.src} ${item.maxWidth}w`)
+    .join(", ");
+
+
+  
+  const sizes = "(max-width: 1080px) 100vw, 796px";
+
+
+  return {
+    srcset: srcsetString,
+    sizes: sizes,
+    alt: "nature",
+    src: "./src/assets/puzzle/puzzle.jpg",
+  };
+};
 
 const imgPuzzle = new Image();
-imgPuzzle.src = getResponsiveImageSource(); 
-
+const responsiveImageSource = getResponsiveImageSource();
+imgPuzzle.src = responsiveImageSource.src;
 
 canvas.width = 660;
 canvas.height = 440;
@@ -373,8 +350,8 @@ let pieces = [];
 let draggingPiece = null;
 let offsetX, offsetY;
 
-console.log(canvas); 
-const createPiece=() =>{
+
+const createPiece = () => {
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       pieces.push({
@@ -389,12 +366,10 @@ const createPiece=() =>{
       });
     }
   }
-    console.log(pieces);
-}
+  console.log("Shuffled pieces initialized:", pieces);
+};
 
-
-const drawPieces=()=> {
-  
+const drawPieces = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   pieces.forEach((piece) => {
     ctx.drawImage(
@@ -408,13 +383,13 @@ const drawPieces=()=> {
       piece.width,
       piece.height
     );
-
-    // ctx.strokeRect(piece.x, piece.y, piece.width, piece.height); 
   });
-}
-
+};
 
 const getClickedPiece = (x, y) => {
+  console.log(`Mouse coordinates: (${x}, ${y})`);
+  console.log("Pieces positions:", pieces);
+
   const clickedPiece = pieces.find(
     (piece) =>
       x > piece.x &&
@@ -422,28 +397,32 @@ const getClickedPiece = (x, y) => {
       y > piece.y &&
       y < piece.y + piece.height
   );
-  console.log("Clicked piece:", clickedPiece); // Log what is returned
+
+  console.log("Clicked piece:", clickedPiece);
   return clickedPiece;
 };
 
 const mouseEvents =()=>{
+
 canvas.addEventListener("mousedown", (e) => {
-  console.log("Mouse event detected");
+  console.log("mousedown");
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
   draggingPiece = getClickedPiece(x, y);
-   console.log("Dragging piece:", draggingPiece);
 
   if (draggingPiece) {
     offsetX = x - draggingPiece.x;
     offsetY = y - draggingPiece.y;
+    console.log("Started dragging piece:", draggingPiece);
   }
 });
 
+
 canvas.addEventListener("mousemove", (e) => {
   if (!draggingPiece) return;
+  console.log("mousemove");
 
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
@@ -455,34 +434,61 @@ canvas.addEventListener("mousemove", (e) => {
   drawPieces();
 });
 
-canvas.addEventListener("mouseup", () => {
-   const snapX = Math.round(draggingPiece.x / pieceWidth) * pieceWidth;
-    const snapY = Math.round(draggingPiece.y / pieceHeight) * pieceHeight;
 
-    if (
-      Math.abs(snapX - draggingPiece.x) < 10 &&
-      Math.abs(snapY - draggingPiece.y) < 10
-    ) {
-      draggingPiece.x = snapX;
-      draggingPiece.y = snapY;
-    }
-    console.log("Mouse up event triggered");
-    drawPieces();
-  });
+canvas.addEventListener("mouseup", () => {
+  if (!draggingPiece) return;
+  console.log("mouseup");
+
+  const snapX = Math.round(draggingPiece.x / pieceWidth) * pieceWidth;
+  const snapY = Math.round(draggingPiece.y / pieceHeight) * pieceHeight;
+
+  if (
+    Math.abs(snapX - draggingPiece.x) < 10 &&
+    Math.abs(snapY - draggingPiece.y) < 10
+  ) {
+    draggingPiece.x = snapX;
+    draggingPiece.y = snapY;
+  }
+
+  draggingPiece = null;
+  drawPieces();
+});
 
 imgPuzzle.onload = () => {
+  console.log("Image loaded");
   createPiece();
   drawPieces();
 };
+}
 
+const generation =()=> {
+const pictures = document.querySelectorAll(
+  ".botanic__illustrations__generations picture"
+);
+
+pictures.forEach((picture) => {
+  gsap.fromTo(
+    picture,
+    { scale: 0.7, opacity: 0.5 },
+
+    {
+      scale: 1.2,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: picture,
+        start: "center 75%",
+        end: "center 25%",
+        scrub: true,
+      },
+    }
+  );
+});
 }
 
 
 
-
 const init = () => {
-  console.log(draggingPiece);
-  console.log(mouseEvents);
+generation();
   mouseEvents();
   navigation();
   leafPop();

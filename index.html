@@ -92,8 +92,9 @@ alt="global understanding">
    
       <section class="bible__king">
        <p> Plantin’s most ambitious project was the Antwerp Polyglot Bible, a monumental undertaking commissioned by King Philip II of Spain.</p>
-  <picture>
-<img
+
+<picture>
+<source
 sizes="(max-width: 1400px) 100vw, 1400px"
 srcset="
 ./src/assets/book/book,w_200.avif 200w,
@@ -105,9 +106,14 @@ srcset="
 ./src/assets/book/book,w_1305.avif 1305w,
 ./src/assets/book/book,w_1387.avif 1387w,
 ./src/assets/book/book,w_1400.avif 1400w"
-src="./src/assets/book/book,w_1400.avif"
-alt="bible">
-</picture>
+ type="image/avif"
+ />
+     <img
+            sizes="200px"
+            src="./src/assets/book/book.png"
+            alt="Bible"
+          />
+</picture>       
     </section>
       <section class="bible__languages">
         <div class="bible__languages__title">
@@ -121,6 +127,10 @@ alt="bible">
 
     <div class="carousel__wrapper">
     </div>
+    <div class="carousel__dots">
+    <!-- Dots will be dynamically added here -->
+  </div>
+
 
     <button class="carousel__next">&#8594;</button>
   </div>
@@ -141,8 +151,6 @@ alt="bible">
           <svg id="wavyLineTwo" width="229" height="655" viewBox="0 0 229 655" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M100.962 1C100.962 1 192.647 34.6988 217.462 85C235.962 122.5 230.462 176.5 186.962 201.5C139.729 228.646 78.928 184.525 47.4623 201.5C9.46211 222 2.96227 276.5 35.4621 311C85.7535 364.387 216.569 282 208.962 414.5C206.605 455.559 181.478 483.263 145.962 504C97.0043 532.585 19.8656 533.113 2.96227 479C-12.5 429.5 71.1876 391.682 97.9998 424C154 491.5 13.9668 529.334 58.5 585C82.5085 615.011 145.962 596.5 145.962 654.5" stroke="#5E3023" stroke-width="2"/>
 </svg>
-
-
 </div>
 
         </div>
@@ -171,67 +179,129 @@ alt="bible">
   <p>Plantin oversaw every stage of production, ensuring both scientific accuracy and visual clarity.</p>
   <div class="illustration__container">
     <div class="illustration__container__leaf">
-    <img
-      class="leaf leaf__three"
-      sizes="(max-width: 187px) 100vw, 187px"
-      srcset="./src/assets/leaf1.avif 187w"
-      src="./src/assets/leaf1.avif"
-      alt="leaf to pop"
-    />
-    <img
-      class="leaf leaf__one"
-      sizes="(max-width: 187px) 100vw, 187px"
-      srcset="./src/assets/leaf2.avif 187w"
-      src="./src/assets/leaf2.avif"
-      alt="leaf to pop"
-    />
-    <img
-      class="leaf leaf__two"
-      sizes="(max-width: 187px) 100vw, 187px"
-      srcset="./src/assets/leaf3.avif 187w"
-      src="./src/assets/leaf3.avif"
-      alt="leaf to pop"
-    />
-    <picture>
-    </div>
-      <img
-        class="flowerbook"
-        sizes="(max-width: 1400px) 100vw, 1400px"
-        srcset="
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
+    <picture class="leaf__three">
+<source
+sizes="(max-width: 187px) 100vw, 187px"
+srcset="./src/assets/leaf1.avif 187w"
+ type="image/avif"
+ />
+     <img
+      class="leaf "
+            sizes="50px"
+            src="./src/assets/leaf1.png"
+            alt="Leaf to pop"
+          />
+</picture> 
+
+ <picture class="leaf__two">
+<source
+sizes="(max-width: 187px) 100vw, 187px"
+srcset="./src/assets/leaf2.avif 187w"
+ type="image/avif"
+ />
+     <img
+     class="leaf"
+            sizes="50px"
+            src="./src/assets/leaf2.png"
+            alt="Leaf to pop"
+          />
+</picture> 
+<picture class="leaf leaf__one" >
+<source
+sizes="(max-width: 187px) 100vw, 187px"
+srcset="./src/assets/leaf3.avif 187w"
+ type="image/avif"
+ />
+     <img
+     class="leaf"
+            sizes="50px"
+            src="./src/assets/leaf3.png"
+            alt="Leaf to pop"
+          />
+</picture> 
+  </div>
+
+          <picture  class="flowerbook">
+<source
+ sizes="(max-width: 1400px) 100vw, 1400px"
+srcset="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_537.avif 537w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_766.avif 766w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1006.avif 1006w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1278.avif 1278w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1372.avif 1372w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif 1400w"
-        src="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif"
-        alt="Book with flowers"
-      />
-    </picture>
-  </div>
-These books not only became valuable references for physicians but also sparked further interest in the natural world, advancing the study of botany and medicine in ways that would influence generations of scholars and scientists.
+ type="image/avif"
+ />
+     <img
+            sizes="70vw"
+            src="./src/assets/flowerbook/plant_book.png"
+            alt="Leaf to pop"
+          />
+</picture> 
+
  
 <div class="botanic__illustrations__generations">
-  <img class="generations__first"
-sizes="(max-width: 1080px) 100vw, 1080px"
-srcset="
-./src/assets/first_generation/first_generation,w_200.avif 200w,
+
+          <picture  class="generations__first">
+<source
+ sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="./src/assets/first_generation/first_generation,w_200.avif 200w,
 ./src/assets/first_generation/first_generation,w_500.avif 500w,
 ./src/assets/first_generation/first_generation,w_923.avif 923w,
 ./src/assets/first_generation/first_generation,w_1080.avif 1080w"
-src="./src/assets/first_generation/first_generation,w_1080.avif"
-alt="16 century">
+ type="image/avif"
+ />
+     <img
+            sizes="70vw"
+            src="./src/assets/first_generation/firs_generation.png"
+            alt="16 century"
+          />
+</picture> 
+<p class="generations__text">These books not only became valuable references for physicians</p>
 
-<img class="generations__second"
-sizes="(max-width: 1080px) 100vw, 1080px"
+          <picture  class="generations__second">
+<source
+ sizes="(max-width: 1080px) 100vw, 1080px"
 srcset="
 ./src/assets/second_generation/second_generation,w_200.avif 200w,
 ./src/assets/second_generation/second_generation,w_498.avif 498w,
 ./src/assets/second_generation/second_generation,w_871.avif 871w,
 ./src/assets/second_generation/second_generation,w_1080.avif 1080w"
-src="./src/assets/second_generation/second_generation,w_1080.avif"
-alt="19 century">
+ type="image/avif"
+ />
+     <img
+            sizes="70vw"
+            src="./src/assets/second_generation/second_generation.png"
+            alt="19 century"
+          />
+</picture> 
+<p class="generations__text"> but also sparked further interest in the natural world</p>
+
+<picture class="generations__third">
+<source
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/third_generation/third_generation,w_200.avif 200w,
+./src/assets/third_generation/third_generation,w_742.avif 742w,
+./src/assets/third_generation/third_generation,w_1080.avif 1080w"/>
+<img sizes="70vw"
+ src="./src/assets/third_generation/third_generation.png" 
+alt="20 century"/>
+</picture>
+<p class="generations__text"> advancing the study of botany and medicine </p>
+<picture class="generations__fourth">
+<source
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/fourth_generation/fourth_generation,w_200.avif 200w,
+./src/assets/fourth_generation/fourth_generation,w_600.avif 600w,
+./src/assets/fourth_generation/fourth_generation,w_1080.avif 1080w"/>
+<img sizes="70vw"
+ src="./src/assets/fourth_generation/fourth_generation.png" 
+alt="21 century">
+</picture>
+<p class="generations__text"> advancing the study of botany and medicine in ways that would influence generations of scholars and scientists.</p>
 
 </div>
 <hr class="line">
@@ -242,42 +312,30 @@ alt="19 century">
    <article class="atlas">
     <section>
  <h2>Theatrum Orbis Terrarum </h2>
-        <!-- <h2>Geography</h2> -->
+
   <p>
     After making significant contributions to botany and religion, he transitioned into geography, where he played a pivotal role.
   </p>
 
-  <!-- <div class="step-container">
-    <img
-      class="shoe first-shoe"
-      sizes="(max-width: 273px) 100vw, 273px"
-      srcset="
-        ./src/assets/first_shoe/first_shoe,w_200.avif 200w,
-        ./src/assets/first_shoe/first_shoe,w_273.avif 273w"
-      src="./src/assets/first_shoe/first_shoe,w_273.avif"
-      alt="shoe"
-    />
-    <img
-      class="shoe second-shoe"
-      sizes="(max-width: 277px) 100vw, 277px"
-      srcset="
-        ./src/assets/second_shoe/second_shoe,w_200.avif 200w,
-        ./src/assets/second_shoe/second_shoe,w_277.avif 277w"
-      src="./src/assets/second_shoe/second_shoe,w_277.avif"
-      alt="shoe"
-    />
-  </div> -->
-
       <p>Plantin’s collaboration with Abraham Ortelius, the father of modern cartography. Together, they produced the Theatrum Orbis Terrarum (Theatre of the World), the first modern atlas.</p>
-    <img
+
+
+       <picture>
+<source
 sizes="(max-width: 624px) 100vw, 624px"
 srcset="
 ./src/assets/atlas/atlas,w_200.avif 200w,
 ./src/assets/atlas/atlas,w_429.avif 429w,
 ./src/assets/atlas/atlas,w_591.avif 591w,
 ./src/assets/atlas/atlas,w_624.avif 624w"
-src="./src/assets/atlas/atlas,w_624.avif"
-alt="globe">
+ type="image/avif"
+ />
+     <img
+            sizes="70vw"
+            src="./src/assets/atlas/atlas.png"
+            alt="globe"
+          />
+</picture> 
       <p>Published in 1570, the atlas compiled maps from all over the known world into one cohesive collection. It was a groundbreaking achievement, offering a clear and organized way to view continents, countries, and oceans. </p>
     </section>
 <hr class="line">
@@ -292,40 +350,61 @@ alt="globe">
     <section>
       <p>Throughout his career, Christophe Plantin demonstrated an extraordinary ability to combine artistic vision, technical expertise, and scholarly ambition. His work preserved and expanded the boundaries of human knowledge, making it accessible to a broader audience.</p>
 <div class="end__combine">
-  <img
-    class="end__combine__image tool"
-    sizes="(max-width: 1400px) 100vw, 1400px"
-    srcset="
-      ./src/assets/tool/tool,w_200.avif 200w,
-      ./src/assets/tool/tool,w_1264.avif 1264w,
-      ./src/assets/tool/tool,w_1400.avif 1400w"
-    src="./src/assets/tool/tool,w_1400.avif"
-    alt="tool"
-  />
-  <img
-    class="end__combine__image art-tool"
-    sizes="(max-width: 1400px) 100vw, 1400px"
-    srcset="
-      ./src/assets/art_tool/art_tool,w_200.avif 200w,
+ <picture>
+<source
+sizes="(max-width: 1400px) 100vw, 1400px"
+srcset="
+ ./src/assets/tool/tool,w_200.avif 200w,
+ ./src/assets/tool/tool,w_1264.avif 1264w,
+./src/assets/tool/tool,w_1400.avif 1400w"
+ type="image/avif"
+ />
+     <img
+     class="end__combine__image tool"
+            sizes="20vw"
+            src="./src/assets/tool/tool.png"
+            alt="tool"
+          />
+</picture> 
+  
+   <picture >
+<source
+sizes="(max-width: 1400px) 100vw, 1400px"
+srcset="    
+./src/assets/art_tool/art_tool,w_200.avif 200w,
       ./src/assets/art_tool/art_tool,w_978.avif 978w,
       ./src/assets/art_tool/art_tool,w_1372.avif 1372w,
       ./src/assets/art_tool/art_tool,w_1400.avif 1400w"
-    src="./src/assets/art_tool/art_tool,w_1400.avif"
-    alt="art tool"
-  />
-  <img
-    class="end__combine__image trophy"
-    sizes="(max-width: 1400px) 100vw, 1400px"
-    srcset="
-      ./src/assets/trophy/trophy,w_200.avif 200w,
+
+ type="image/avif"
+ />
+     <img
+     class="end__combine__image art__tool"
+            sizes="20vw"
+            src="./src/assets/art_tool/art_tool.png"
+            alt="art tool"
+          />
+</picture> 
+
+   <picture >
+<source
+sizes="(max-width: 1400px) 100vw, 1400px"
+srcset="
+ ./src/assets/trophy/trophy,w_200.avif 200w,
       ./src/assets/trophy/trophy,w_1033.avif 1033w,
       ./src/assets/trophy/trophy,w_1400.avif 1400w"
-    src="./src/assets/trophy/trophy,w_1400.avif"
-    alt="trophy"
-  />
-    
- <img
- class="big-image hidden"
+ type="image/avif"
+ />
+     <img
+      class="end__combine__image trophy"
+            sizes="70vw"
+            src="./src/assets/trophy/trophy.png"
+            alt="trophy"
+          />
+</picture> 
+
+ <picture  class="big-image hidden">
+<source
 sizes="(max-width: 936px) 100vw, 936px"
 srcset="
 ./src/assets/plantin/plantin,w_200.avif 200w,
@@ -333,8 +412,14 @@ srcset="
 ./src/assets/plantin/plantin,w_859.avif 859w,
 ./src/assets/plantin/plantin,w_935.avif 935w,
 ./src/assets/plantin/plantin,w_936.avif 936w"
-src="./src/assets/plantin/plantin,w_936.avif"
-alt="plantin portret">
+ type="image/avif"
+ />
+     <img
+            sizes="70vw"
+            src="./src/assets/plantin/plantin.jpg"
+            alt="Plantin"
+          />
+</picture> 
  <button id="simulate-shake">Simulate Shake</button>
 </div>
       <p>By uniting precision, innovation, and dedication, Plantin left a lasting legacy as a pioneer in the history of printing and an enduring symbol of the Renaissance spirit.</p>

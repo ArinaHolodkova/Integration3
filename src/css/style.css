@@ -316,16 +316,16 @@ grid-template-rows: 10% 80% 10%;
   }
 
   .illustration__container__leaf{
-     position:absolute;
-     display:grid;
-     grid-template-columns: auto auto;
-     grid-template-rows: auto auto;
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 50% 50%;
     justify-items: stretch;
-    align-items: center;
+    align-items: stretch;
    
   }
-    .leaf {
-    width: 60%;
+  .leaf {
+    width: 70%;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
@@ -369,26 +369,18 @@ grid-template-rows: 10% 80% 10%;
   }
 
 .botanic__illustrations__generations{
-display: grid
-;
-   
-    grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
+align-items: center;
+text-align: center;
 }
-.generations__first{
-     max-width: 80%;
-     grid-row: 1;
+ .botanic__illustrations__generations picture img {
+ max-width: 70%;
+ align-self: center;
 }
-.generations__first::before{
-  width: 100%;
-  height:2px;
-  background-color: var(--detail-color);
+.generations__text{
+  max-width: 80%;
 }
-
-.generations__second{
- max-width: 100%;
-     grid-row: 2;
-}
-
 
 .step-container {
   position: relative;
@@ -455,6 +447,7 @@ margin-left: var(--space-xs);
   max-width: 660px;
   aspect-ratio: 3 / 2; 
   border: 1px solid #ccc;
+  pointer-events: none;
 }
 
 canvas {
