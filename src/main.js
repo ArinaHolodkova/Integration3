@@ -10,13 +10,13 @@ const textElement = document.getElementById("dynamicText");
 let startX = 0;
 let endX = 0;
 let currentSwipe = 0;
-let currentIndex = 0;
-  const prevButton = document.querySelector(".carousel__prev");
-  const nextButton = document.querySelector(".carousel__next");
-  const carousel = document.querySelector(".carousel");
-  const imagesCarousel = document.querySelectorAll(".carousel__image");
-  const totalImages = imagesCarousel.length;
-
+  // const carousel = document.querySelector(".carousel");
+  // const imagesCarousel = document.querySelectorAll(".carousel__image");
+  // const totalImages = imagesCarousel.length;
+  const firstShoe = document.querySelector(".first-shoe");
+  const secondShoe = document.querySelector(".second-shoe");
+  let isStepping = false;
+  let startY = 0;
 
 
 const images = [
@@ -166,9 +166,6 @@ const carouselEffect = () => {
 };
 
 
-
-
-
 const swipeEffect = () => {
   document.addEventListener("touchstart", (event) => {
     startX = event.touches[0].clientX;
@@ -202,8 +199,7 @@ const updateContent = () => {
 
 
 const animatePath = (pathSelector, triggerSelector) => {
-  const pathElement = document
-    .querySelector(pathSelector)
+  const pathElement = document.querySelector(pathSelector)
     .querySelector("path");
   const pathLength = pathElement.getTotalLength();
 
@@ -217,7 +213,7 @@ const animatePath = (pathSelector, triggerSelector) => {
       duration: 4,
       scrollTrigger: {
         trigger: triggerSelector,
-        start: "5%",
+        start: "top top",
         scrub: true,
       },
     }
@@ -251,11 +247,6 @@ const animatePath = (pathSelector, triggerSelector) => {
     });
   });
   
-
-  const firstShoe = document.querySelector(".first-shoe");
-  const secondShoe = document.querySelector(".second-shoe");
-let isStepping = false;
-  let startY = 0;
 
   const step = () => {
   
