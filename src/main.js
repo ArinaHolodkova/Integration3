@@ -10,13 +10,10 @@ const textElement = document.getElementById("dynamicText");
 let startX = 0;
 let endX = 0;
 let currentSwipe = 0;
-  // const carousel = document.querySelector(".carousel");
-  // const imagesCarousel = document.querySelectorAll(".carousel__image");
-  // const totalImages = imagesCarousel.length;
-  const firstShoe = document.querySelector(".first-shoe");
-  const secondShoe = document.querySelector(".second-shoe");
-  let isStepping = false;
-  let startY = 0;
+  // const firstShoe = document.querySelector(".first-shoe");
+  // const secondShoe = document.querySelector(".second-shoe");
+  // let isStepping = false;
+  // let startY = 0;
 
 
 const images = [
@@ -57,7 +54,7 @@ const images = [
   },
 ];
 
-document.addEventListener("DOMContentLoaded", function () {
+const navigation= ()=> {
   const navButton = document.querySelector(".nav__button");
   const navList = document.querySelector(".nav__list");
   const iconLink = document.getElementById("iconlink");
@@ -69,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iconLink.setAttribute("xlink:href", expanded ? "#navicon" : "#close");
     navList.style.display = expanded ? "none" : "flex";
   });
-});
+};
 
 const carouselEffect = () => {
   const carouselimages = [
@@ -207,7 +204,7 @@ const animatePath = (pathSelector, triggerSelector) => {
 
   gsap.fromTo(
     pathElement,
-    { strokeDashoffset: pathLength },
+    { strokeDashoffset: pathLength-5 },
     {
       strokeDashoffset: 0,
       duration: 4,
@@ -237,49 +234,49 @@ const animatePath = (pathSelector, triggerSelector) => {
   );
 };
 
-
+const leafPop =()=>{
   document.querySelectorAll(".leaf").forEach((leaf) => {
     leaf.addEventListener("click", () => {
-      leaf.classList.add("popped"); 
+      leaf.classList.add("popped");
       setTimeout(() => {
-        leaf.remove(); 
-      }, 500); 
+        leaf.remove();
+      }, 500);
     });
-  });
-  
-
-  const step = () => {
-  
-  window.addEventListener("touchstart", (e) => {
-    startY = e.touches[0].clientY;
-  });
-
-  window.addEventListener("touchmove", (e) => {
-    const endY = e.touches[0].clientY;
-    if (startY - endY > 50 && !isStepping) {
-      isStepping = true;
-      stepEffect();
-    }
   });
 };
 
-  const stepEffect=()=> {
-    firstShoe.style.opacity = "1";
-    firstShoe.style.transform = "translateY(-80px)";
+//   const step = () => {
+  
+//   window.addEventListener("touchstart", (e) => {
+//     startY = e.touches[0].clientY;
+//   });
 
-    setTimeout(() => {
-      firstShoe.style.opacity = "0";
-      firstShoe.style.transform = "translateY(0)";
-      secondShoe.style.opacity = "1";
-      secondShoe.style.transform = "translateY(-80px)";
-    }, 300);
+//   window.addEventListener("touchmove", (e) => {
+//     const endY = e.touches[0].clientY;
+//     if (startY - endY > 50 && !isStepping) {
+//       isStepping = true;
+//       stepEffect();
+//     }
+//   });
+// };
 
-    setTimeout(() => {
-      secondShoe.style.opacity = "0";
-      secondShoe.style.transform = "translateY(0)";
-      isStepping = false;
-    }, 600);
-  }
+  // const stepEffect=()=> {
+  //   firstShoe.style.opacity = "1";
+  //   firstShoe.style.transform = "translateY(-80px)";
+
+  //   setTimeout(() => {
+  //     firstShoe.style.opacity = "0";
+  //     firstShoe.style.transform = "translateY(0)";
+  //     secondShoe.style.opacity = "1";
+  //     secondShoe.style.transform = "translateY(-80px)";
+  //   }, 300);
+
+  //   setTimeout(() => {
+  //     secondShoe.style.opacity = "0";
+  //     secondShoe.style.transform = "translateY(0)";
+  //     isStepping = false;
+  //   }, 600);
+  // }
 
   const triggerChange=() =>{
     console.log("Changing images"); 
@@ -339,12 +336,161 @@ const animatePath = (pathSelector, triggerSelector) => {
   
   };
 
+const canvas = document.querySelector("#puzzleCanvas");
+const ctx = canvas.getContext("2d");
+
+const getResponsiveImageSource=() =>{
+  const sources = [
+    { src: "./src/assets/puzzle/puzzle,w_200.avif", maxWidth: 200 },
+    { src: "./src/assets/puzzle/puzzle,w_480.avif", maxWidth: 480 },
+    { src: "./src/assets/puzzle/puzzle,w_601.avif", maxWidth: 601 },
+    { src: "./src/assets/puzzle/puzzle,w_660.avif", maxWidth: 660 },
+  ];
+  const viewportWidth = window.innerWidth;
+  let selectedSource = sources[sources.length - 1].src; 
+  for (const source of sources) {
+    if (viewportWidth <= source.maxWidth) {
+      selectedSource = source.src;
+      break;
+    }
+  }
+  return selectedSource;
+}
+
+const imgPuzzle = new Image();
+imgPuzzle.src = getResponsiveImageSource(); 
+
+
+canvas.width = 660;
+canvas.height = 440;
+
+const cols = 3;
+const rows = 2;
+const pieceWidth = canvas.width / cols;
+const pieceHeight = canvas.height / rows;
+
+let pieces = [];
+let draggingPiece = null;
+let offsetX, offsetY;
+
+console.log(canvas); 
+const createPiece=() =>{
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      pieces.push({
+        sx: col * pieceWidth,
+        sy: row * pieceHeight,
+        x: Math.random() * (canvas.width - pieceWidth),
+        y: Math.random() * (canvas.height - pieceHeight),
+        width: pieceWidth,
+        height: pieceHeight,
+        row,
+        col,
+      });
+    }
+  }
+    console.log(pieces);
+}
+
+
+const drawPieces=()=> {
+  
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pieces.forEach((piece) => {
+    ctx.drawImage(
+      imgPuzzle,
+      piece.sx,
+      piece.sy,
+      piece.width,
+      piece.height,
+      piece.x,
+      piece.y,
+      piece.width,
+      piece.height
+    );
+
+    // ctx.strokeRect(piece.x, piece.y, piece.width, piece.height); 
+  });
+}
+
+
+const getClickedPiece = (x, y) => {
+  const clickedPiece = pieces.find(
+    (piece) =>
+      x > piece.x &&
+      x < piece.x + piece.width &&
+      y > piece.y &&
+      y < piece.y + piece.height
+  );
+  console.log("Clicked piece:", clickedPiece); // Log what is returned
+  return clickedPiece;
+};
+
+const mouseEvents =()=>{
+canvas.addEventListener("mousedown", (e) => {
+  console.log("Mouse event detected");
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  draggingPiece = getClickedPiece(x, y);
+   console.log("Dragging piece:", draggingPiece);
+
+  if (draggingPiece) {
+    offsetX = x - draggingPiece.x;
+    offsetY = y - draggingPiece.y;
+  }
+});
+
+canvas.addEventListener("mousemove", (e) => {
+  if (!draggingPiece) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  draggingPiece.x = x - offsetX;
+  draggingPiece.y = y - offsetY;
+
+  drawPieces();
+});
+
+canvas.addEventListener("mouseup", () => {
+   const snapX = Math.round(draggingPiece.x / pieceWidth) * pieceWidth;
+    const snapY = Math.round(draggingPiece.y / pieceHeight) * pieceHeight;
+
+    if (
+      Math.abs(snapX - draggingPiece.x) < 10 &&
+      Math.abs(snapY - draggingPiece.y) < 10
+    ) {
+      draggingPiece.x = snapX;
+      draggingPiece.y = snapY;
+    }
+    console.log("Mouse up event triggered");
+    drawPieces();
+  });
+
+imgPuzzle.onload = () => {
+  createPiece();
+  drawPieces();
+};
+
+}
+
+
+
+
 const init = () => {
+  console.log(draggingPiece);
+  console.log(mouseEvents);
+  mouseEvents();
+  navigation();
+  leafPop();
   shakeIt();
-  step();
   carouselEffect();
   swipeEffect();
   animatePath("#wavyLineOne", ".bible__problems__one");
   animatePath("#wavyLineTwo", ".bible__problems__two");
+
 };
 init();
