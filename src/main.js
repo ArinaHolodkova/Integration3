@@ -215,6 +215,8 @@ const animatePath = (pathSelector, triggerSelector) => {
   );
 };
 
+
+
 const leafPop = () => {
   document.querySelectorAll(".leaf").forEach((leaf) => {
     leaf.addEventListener("click", () => {
@@ -375,5 +377,8 @@ const init = () => {
   swipeEffect();
   animatePath("#wavyLineOne", ".bible__problems__one");
   animatePath("#wavyLineTwo", ".bible__problems__two");
+  // animatePath("#wavyLineOne", "#years", ".bible__problems__one");
+  // animatePath("#wavyLineOne", "#workers", ".bible__problems__one");
+  // animatePath("#wavyLineTwo", "#financial", ".bible__problems__two");
 };
 init();
