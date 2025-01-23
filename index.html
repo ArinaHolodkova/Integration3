@@ -58,28 +58,74 @@
     <div> image </div>
 
     <div class="intro">
-    <h2>Plantin</h2>
-    <p>Christophe Plantin was more than just a printer—he was a visionary whose work helped shape the Renaissance and laid the foundation for modern science, art, and global understanding.</p>
- <svg class="arc" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
-</svg>
-<div class="intro__container__img" >
-<picture class="intro__img">
-<img
-class="intro__img"
-id="dynamicImage"
-sizes="(max-width: 1080px) 100vw, 1080px"
-srcset="
-./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
-./src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
-./src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
-./src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
-./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w"
-src="./src/assets/global_understanding/golobal_c_scale,w_796.avif"
-alt="global understanding">
-</picture>
-<h3 class="intro__text" id="dynamicText" >Global understanding</h3>
-</div>
+      <h2>Plantin</h2>
+      <p>Christophe Plantin was more than just a printer—he was a visionary whose work helped shape the Renaissance and laid the foundation for modern science, art, and global understanding.</p>
+      <div class="intro__grid">
+        <svg class="arc" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
+        </svg>
+        <div class="intro__container__img">
+
+    <picture class="intro__img active">
+    <source
+    sizes="(max-width: 1080px) 100vw, 1080px"
+    srcset="
+    ./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
+    ./src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
+    ./src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
+    ./src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
+    ./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w"
+    type="image/avif"
+    />
+        <img
+        id="image1"
+                sizes="20vw"
+                src="./src/assets/global_understanding/golobal.png"
+                alt="Global understanding"
+              />
+    </picture>
+
+    <picture class="intro__img">
+    <source
+    sizes="(max-width: 1080px) 100vw, 739px"
+    srcset="
+    ./src/assets/art/art,w_200.avif 200w,
+          ./src/assets/art/art,w_514.avif 514w,
+          ./src/assets/art/art,w_739.avif 739w,
+          ./src/assets/art/art,w_1018.avif 1018w,
+          ./src/assets/art/art,w_1080.avif 1080w"
+    type="image/avif"
+    />
+        <img
+        id="image2"
+                sizes="20vw"
+                src="./src/assets/art/art.png"
+                alt="Science"
+              />
+    </picture>     
+
+    <picture class="intro__img">
+    <source
+    sizes= "(max-width: 1080px) 100vw, 515px"
+    srcset="
+        ./src/assets/science/science,w_200.avif 200w,
+          ./src/assets/science/science,w_515.avif 515w,
+          ./src/assets/science/science,w_824.avif 824w,
+          ./src/assets/science/science,w_1080.avif 1080w"
+    type="image/avif"
+    />
+        <img
+        id="image3"
+                sizes="20vw"
+                src="./src/assets/science/science.png"
+                alt="Science"
+              />
+    </picture>     
+
+
+    <h3 class="intro__text" id="dynamicText" >Global understanding</h3>
+        </div>
+      </div>
   <div class="intro__dots">
   </div>
     <p>His printing house, Officina Plantiniana, became a hub of intellectual and creative activity, producing works that revolutionized how knowledge was shared and preserved.</p>
@@ -111,45 +157,124 @@ srcset="
  type="image/avif"
  />
      <img
-            sizes="200px"
+            sizes="50vw"
             src="./src/assets/book/book.png"
             alt="Bible"
           />
 </picture>       
-    <!-- </section>
-      <section class="bible__languages">
-        <div class="bible__languages__title">
-        <h2>5 Languages</h2>
-        <div class="icon">&#10022;</div> 
-      </div>
-        <p>This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
-       
-    <div class="bible__languages__carousel">
-    <button class="carousel__prev">&#8592;</button>
 
-    <div class="carousel__wrapper">
+  <section class="bible__languages">
+    <div class="question__section">
+        <p class="question__text">In how many languages has the Bible been printed?</p>
+  <div class="question__section__answer">
+        <p id="answer__1" class="answer__option">1</p>
+        <p id="answer__2" class="answer__option">2</p>
+    <p id="answer__3" class="answer__option">3</p>
+    <p id="answer__4" class="answer__option">4</p>
+  <p id="answer__5" class="answer__option">5</p>
+  </div>
     </div>
-
-    <button class="carousel__next">&#8594;</button>
-  </div>
-</section> -->
-<section class="bible__languages">
-  <div class="question__section">
- <div id="answer__3" class="question__section__three answer__option">Answer 3</div>
-      <p class="question__text">In how many languages has the Bible been printed?</p>
- <div id="answer__5" class="question__section__five answer__option">Answer 5</div>
-  </div>
 
   <div class="bible__languages__carousel" id="carousel__section">
-    <div class="bible__languages__title">
-      <h2>5 Languages</h2>
-      <div class="icon">&#10022;</div> 
-    </div>
-    <p>This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
-   
+     <p class="bible__languages__comment"></p>
+    <h2 class="bible__languages__title"></h2>
+
+    <p class="bible__languages__text">This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
+   <div class="carousel__grid">
     <button class="carousel__prev">&#8592;</button>
-    <div class="carousel__wrapper"></div>
+    <div class="carousel__wrapper">
+
+<picture class="carousel__wrapper__item active">
+<source
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/latin/latin,w_200.avif 200w,
+./src/assets/latin/latin,w_257.avif 257w,
+./src/assets/latin/latin,w_307.avif 307w,
+./src/assets/latin/latin,w_348.avif 348w,
+./src/assets/latin/latin,w_393.avif 393w,
+./src/assets/latin/latin,w_433.avif 433w,
+./src/assets/latin/latin,w_471.avif 471w,
+./src/assets/latin/latin,w_510.avif 510w,
+./src/assets/latin/latin,w_546.avif 546w,
+./src/assets/latin/latin,w_583.avif 583w,
+./src/assets/latin/latin,w_620.avif 620w,
+./src/assets/latin/latin,w_656.avif 656w,
+./src/assets/latin/latin,w_691.avif 691w,
+./src/assets/latin/latin,w_725.avif 725w,
+./src/assets/latin/latin,w_759.avif 759w,
+./src/assets/latin/latin,w_795.avif 795w,
+./src/assets/latin/latin,w_829.avif 829w,
+./src/assets/latin/latin,w_1080.avif 1080w
+"
+ type="image/avif"
+ />
+     <img
+     class="latin"
+            sizes="70vw"
+            src="./src/assets/latin/latin.png"
+            alt="Latin language"
+          />
+</picture> 
+
+ <picture class="carousel__wrapper__item">
+<source
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="./src/assets/greece/greece,w_200.avif 200w,
+./src/assets/greece/greece,w_266.avif 266w,
+./src/assets/greece/greece,w_324.avif 324w,
+./src/assets/greece/greece,w_374.avif 374w,
+./src/assets/greece/greece,w_425.avif 425w,
+./src/assets/greece/greece,w_476.avif 476w,
+./src/assets/greece/greece,w_524.avif 524w,
+./src/assets/greece/greece,w_573.avif 573w,
+./src/assets/greece/greece,w_617.avif 617w,
+./src/assets/greece/greece,w_662.avif 662w,
+./src/assets/greece/greece,w_706.avif 706w,
+./src/assets/greece/greece,w_750.avif 750w,
+./src/assets/greece/greece,w_1080.avif 1080w
+"
+ type="image/avif"
+ />
+     <img
+     class="greece"
+            sizes="70vw"
+            src="./src/assets/greece/greece.png"
+            alt="Greek language"
+          />
+</picture> 
+
+<picture class="carousel__wrapper__item">
+<source
+sizes="(max-width: 1080px) 100vw, 1080px"
+srcset="
+./src/assets/hebrew/hebrew,w_200.avif 200w,
+./src/assets/hebrew/hebrew,w_270.avif 270w,
+./src/assets/hebrew/hebrew,w_332.avif 332w,
+./src/assets/hebrew/hebrew,w_384.avif 384w,
+./src/assets/hebrew/hebrew,w_440.avif 440w,
+./src/assets/hebrew/hebrew,w_493.avif 493w,
+./src/assets/hebrew/hebrew,w_541.avif 541w,
+./src/assets/hebrew/hebrew,w_588.avif 588w,
+./src/assets/hebrew/hebrew,w_632.avif 632w,
+./src/assets/hebrew/hebrew,w_674.avif 674w,
+./src/assets/hebrew/hebrew,w_717.avif 717w,
+./src/assets/hebrew/hebrew,w_754.avif 754w,
+./src/assets/hebrew/hebrew,w_1080.avif 1080w
+"
+ type="image/avif"
+ />
+     <img
+     class="hebrew"
+            sizes="70vw"
+            src="./src/assets/hebrew/hebrew.png"
+            alt="Hebrew language"
+          />
+</picture> 
+
+    </div>
     <button class="carousel__next">&#8594;</button>
+  </div>
   </div>
 </section>
 
@@ -446,4 +571,4 @@ srcset="
   </body>
 
 </html>
-  
+   
