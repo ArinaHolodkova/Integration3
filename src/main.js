@@ -163,6 +163,40 @@ const carouselEffect = () => {
 };
 
 
+const questionSection = () => {
+  const questionContainer = document.querySelector(".question__section");
+  const carouselSection = document.querySelector(".bible__languages__carousel");
+  const answer3 = document.querySelector("#answer__3");
+  const answer5 = document.querySelector("#answer__5");
+const questionText = document.querySelector(".question__text");
+
+ const revealCarousel = () => {
+    questionText.style.transition = "transform 0.5s ease-in-out"; 
+   
+    setTimeout(() => {
+      questionContainer.style.opacity = "0";
+      setTimeout(() => {
+        questionContainer.style.display = "none";
+        carouselSection.classList.add("visible"); 
+      }, 500);
+    }, 500); 
+  };
+
+  
+  answer3.addEventListener("click", () => {
+    revealCarousel();
+     questionText.style.transform = "translateY(-70%)";
+  });
+
+  answer5.addEventListener("click", () => {
+    revealCarousel();
+     questionText.style.transform = "translateY(70%)";
+  });
+};
+
+
+
+
 const swipeEffect = () => {
   document.addEventListener("touchstart", (event) => {
     startX = event.touches[0].clientX;
@@ -173,7 +207,7 @@ const swipeEffect = () => {
   });
 
   document.addEventListener("touchend", () => {
-    if (startX > endX + 50) {
+    if (startX > endX + 90) {
    
       currentSwipe = (currentSwipe + 1) % images.length;
       updateContent();
@@ -191,6 +225,32 @@ const updateContent = () => {
   imageElement.sizes = currentImage.sizes;
   imageElement.src = currentImage.src;
   textElement.textContent = currentImage.text;
+    updateDots();
+};
+
+const updateDots = () => {
+  const dots = document.querySelectorAll(".intro__dot");
+  dots.forEach((dot, index) => {
+    if (index === currentSwipe) {
+      dot.classList.add("active");
+    } else {
+      dot.classList.remove("active");
+    }
+  });
+};
+
+
+const createDots = () => {
+  const dotsContainer = document.querySelector(".intro__dots");
+  images.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("intro__dot");
+    dot.addEventListener("click", () => {
+      currentSwipe = index;
+      updateContent();
+    });
+    dotsContainer.appendChild(dot);
+  });
 };
 
 
@@ -210,7 +270,7 @@ const animatePath = (pathSelector, triggerSelector) => {
       duration: 1,
       scrollTrigger: {
         trigger: triggerSelector,
-        start: "middle middle",
+        start: "top top",
         markers:true,
         scrub: true,
       },
@@ -488,6 +548,9 @@ pictures.forEach((picture) => {
 
 
 const init = () => {
+  questionSection();
+  createDots();
+  updateContent();
 generation();
   mouseEvents();
   navigation();
