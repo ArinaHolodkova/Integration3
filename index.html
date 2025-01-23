@@ -281,8 +281,10 @@ srcset="
 <section class="bible__problems"> 
   <div class="bible__problems__one">
           <p>Coordinating the efforts of over 80 workers, including linguists, typesetters, and proofreaders, Plantin played a central role in ensuring the project’s success. The task was not without its challenges</p>
-       <div class="bible__problems__one__line">
-<svg id="wavyLineOne" width="236" height="890" viewBox="0 0 236 890" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="bible__problems__one__line">
+<p>4 years</p>
+<p>80 workers</p>
+            <svg id="wavyLineOne" width="236" height="890" viewBox="0 0 236 890" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M108.5 1.5C108.5 1.5 200.185 35.1988 225 85.5C243.5 123 238 177 194.5 202C147.267 229.146 86.466 185.025 55.0002 202C17 222.5 10.5002 277 43 311.5C93.2914 364.887 224.107 282.5 216.5 415C214.143 456.059 189.016 483.763 153.5 504.5C104.542 533.085 45.6722 523.962 10.5002 479.5C-16 446 21.5 389.68 55.0002 415C98 447.5 76.9671 529.334 121.5 585C145.509 615.011 185.027 613.753 194.5 651C210.639 714.454 57.0209 678.557 55.0002 744C53.2562 800.482 160.954 793.985 153.5 850C151.357 866.107 139 889 139 889" stroke="#5E3023" stroke-width="2"/>
 </svg>
 </div>
@@ -309,8 +311,16 @@ srcset="
       <p>Beyond theology, Plantin made remarkable contributions to science and medicine. He collaborated with renowned botanist Rembert Dodoens to publish pioneering botanical works, including Dodoens’ herbal, which detailed the medicinal properties of plants. </p>
    
   <div class="botanic__intro__puzzle">
- <canvas id="puzzleCanvas"></canvas>
-  </div>
+   
+    <div class="puzzle__container">
+  <div class="puzzle__piece" id="piece1"></div>
+  <div class="puzzle__piece" id="piece2"></div>
+  <div class="puzzle__piece" id="piece3"></div>
+  <div class="puzzle__piece" id="piece4"></div>
+  <div class="puzzle__piece" id="piece5"></div>
+  <div class="puzzle__piece" id="piece6"></div>
+</div>
+</div>
 
      <p class="botanic__intro__herbal"> The Herbal was a comprehensive guide to plants, describing their medicinal properties, growth habits, and uses.</p>
      </section>
@@ -321,7 +331,7 @@ srcset="
   <p class="botanic__illustration__text">Plantin oversaw every stage of production, ensuring both scientific accuracy and visual clarity.</p>
   <div class="illustration__container">
     <div class="illustration__container__leaf">
-    <picture class="leaf__three">
+    <picture class="leaf leaf__three">
 <source
 sizes="(max-width: 187px) 100vw, 187px"
 srcset="./src/assets/leaf1.avif 187w"
@@ -335,7 +345,7 @@ srcset="./src/assets/leaf1.avif 187w"
           />
 </picture> 
 
- <picture class="leaf__two">
+ <picture class="leaf leaf__two">
 <source
 sizes="(max-width: 187px) 100vw, 187px"
 srcset="./src/assets/leaf2.avif 187w"
@@ -381,7 +391,7 @@ srcset="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
             alt="Leaf to pop"
           />
 </picture> 
-
+</div>
  
 <div class="botanic__illustrations__generations">
 
@@ -488,11 +498,13 @@ srcset="
    <hr class="line">
    </article>
 
+
    <article class="end">
     <section>
-      <p>Throughout his career, Christophe Plantin demonstrated an extraordinary ability to combine artistic vision, technical expertise, and scholarly ambition. His work preserved and expanded the boundaries of human knowledge, making it accessible to a broader audience.</p>
-<div class="end__combine">
- <picture>
+      <h2>Legacy</h2>
+      <p class="end__text">Throughout his career, Christophe Plantin demonstrated an extraordinary ability to combine artistic vision, technical expertise, and scholarly ambition. His work preserved and expanded the boundaries of human knowledge, making it accessible to a broader audience.</p>
+<!-- <div class="end__combine">
+ <picture class="end__combine__image tool">
 <source
 sizes="(max-width: 1400px) 100vw, 1400px"
 srcset="
@@ -502,14 +514,14 @@ srcset="
  type="image/avif"
  />
      <img
-     class="end__combine__image tool"
+     
             sizes="20vw"
             src="./src/assets/tool/tool.png"
             alt="tool"
           />
 </picture> 
   
-   <picture >
+   <picture  class="end__combine__image art__tool" >
 <source
 sizes="(max-width: 1400px) 100vw, 1400px"
 srcset="    
@@ -521,14 +533,14 @@ srcset="
  type="image/avif"
  />
      <img
-     class="end__combine__image art__tool"
+    
             sizes="20vw"
             src="./src/assets/art_tool/art_tool.png"
             alt="art tool"
           />
 </picture> 
 
-   <picture >
+   <picture  class="end__combine__image trophy" >
 <source
 sizes="(max-width: 1400px) 100vw, 1400px"
 srcset="
@@ -538,7 +550,7 @@ srcset="
  type="image/avif"
  />
      <img
-      class="end__combine__image trophy"
+     
             sizes="70vw"
             src="./src/assets/trophy/trophy.png"
             alt="trophy"
@@ -562,8 +574,7 @@ srcset="
             alt="Plantin"
           />
 </picture> 
- <button id="simulate-shake">Simulate Shake</button>
-</div>
+</div> -->
       <p>By uniting precision, innovation, and dedication, Plantin left a lasting legacy as a pioneer in the history of printing and an enduring symbol of the Renaissance spirit.</p>
     </section>
    </article>

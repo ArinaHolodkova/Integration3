@@ -2,11 +2,9 @@ import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { Draggable } from "gsap/Draggable";
 
-// import golobal_c_scale from "./assets/global_understanding/golobal_c_scale,w_200.avif";
-// import greece_w_200 from "./assets/greece/greece,w_200.avif";
-
-gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, Draggable);
 
 const textElement = document.querySelector("#dynamicText");
 const images = document.querySelectorAll(".intro__img");
@@ -191,12 +189,11 @@ const animatePath = (pathSelector, triggerSelector) => {
     { strokeDashoffset: pathLength - 5 },
     {
       strokeDashoffset: 0,
-      duration: 3,
       scrollTrigger: {
         trigger: triggerSelector,
         start: "top top",
         markers: true,
-        // scrub: true,
+        scrub: true,
       },
     }
   );
@@ -229,208 +226,116 @@ const leafPop = () => {
   });
 };
 
-const triggerChange = () => {
-  console.log("Changing images");
-  const images = document.querySelectorAll(".end__combine__image");
-  const bigImage = document.querySelector(".big-image");
+//   const shakeIt = () => {
+//   const images = document.querySelectorAll(".end__combine__image");
+//   const bigImage = document.querySelector(".big-image");
 
-  images.forEach((img) => {
-    img.style.opacity = "0";
-    img.style.transform = "scale(0.8)";
+//   // Timeline for the entire sequence
+//   const timeline = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".end__combine",
+//       start: "top top", // Start pinning as soon as this section reaches the top of the viewport
+//       end: "+=100%", // Pinning duration
+//       scrub: true,
+//       pin: true, // Pins the element during the animation
+//     },
+//   });
+
+//   // Shake animation
+//   timeline.to(
+//     images,
+//     {
+//       x: "random(-10, 10, 2)",
+//       y: "random(-10, 10, 2)",
+//       duration: 0.2,
+//       repeat: 5, // Shake 5 times
+//       ease: "power1.inOut",
+//       stagger: 0.1,
+//     },
+//     "shake"
+//   );
+
+//   // Move and collapse images
+//   timeline.to(
+//     images,
+//     {
+//       x: 0,
+//       y: 0,
+//       scale: 0.2,
+//       opacity: 0,
+//       duration: 1,
+//       ease: "power2.out",
+//     },
+//     "combine"
+//   );
+
+//   // Reveal big image
+//   timeline.to(
+//     bigImage,
+//     {
+//       opacity: 1,
+//       clipPath: "circle(100% at 50% 50%)",
+//       duration: 1,
+//       ease: "power2.inOut",
+//     },
+//     "combine+=0.5" // Starts slightly after the collapse animation
+//   );
+// };
+
+
+const puzzleMake = () => {
+  const container = document.querySelector(".puzzle__container");
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
+
+
+  const pieceWidth = containerWidth / 3; 
+  const pieceHeight = containerHeight / 2; 
+
+ 
+  document.querySelectorAll(".puzzle__piece").forEach((piece, index) => {
+    piece.style.width = `${pieceWidth}px`;
+    piece.style.height = `${pieceHeight}px`;
+
+    
+    const xPos = -(index % 3) * pieceWidth; 
+    const yPos = -Math.floor(index / 3) * pieceHeight;
+    piece.style.backgroundPosition = `${xPos}px ${yPos}px`;
   });
 
-  setTimeout(() => {
-    images.forEach((img) => img.classList.add("hidden"));
-    bigImage.style.opacity = "1";
-    bigImage.classList.remove("hidden");
-  }, 500);
-};
-
-const shakeIt = () => {
-  console.log("Script loaded");
-
-  const simulateShakeButton = document.getElementById("simulate-shake");
-  if (simulateShakeButton) {
-    simulateShakeButton.addEventListener("click", triggerChange);
-  } else {
-    console.log("Simulate shake button not found");
-  }
-
-  let shakeThreshold = 15;
-
-  console.log("DeviceMotionEvent supported");
-  let lastX = 0,
-    lastY = 0,
-    lastZ = 0;
-
-  const shakeEvent = (event) => {
-    const { x, y, z } = event.accelerationIncludingGravity || {};
-
-    if (!x || !y || !z) return;
-
-    const deltaX = Math.abs(lastX - x);
-    const deltaY = Math.abs(lastY - y);
-    const deltaZ = Math.abs(lastZ - z);
-
-    if (deltaX + deltaY + deltaZ > shakeThreshold) {
-      console.log("Triggering change");
-      triggerChange();
-    }
-
-    lastX = x;
-    lastY = y;
-    lastZ = z;
-  };
-
-  window.addEventListener("devicemotion", shakeEvent, false);
-};
-
-const canvas = document.querySelector("#puzzleCanvas");
-const ctx = canvas.getContext("2d");
-
-const getResponsiveImageSource = () => {
-  const srcset = [
-    { src: "./src/assets/puzzle/puzzle,w_200.avif", maxWidth: 200 },
-    { src: "./src/assets/puzzle/puzzle,w_480.avif", maxWidth: 480 },
-    { src: "./src/assets/puzzle/puzzle,w_601.avif", maxWidth: 601 },
-    { src: "./src/assets/puzzle/puzzle,w_660.avif", maxWidth: 660 },
+  
+  const correctPositions = [
+    { x: 0, y: 0 },
+    { x: pieceWidth, y: 0 },
+    { x: pieceWidth * 2, y: 0 },
+    { x: 0, y: pieceHeight },
+    { x: pieceWidth, y: pieceHeight },
+    { x: pieceWidth * 2, y: pieceHeight },
   ];
 
-  const srcsetString = srcset
-    .map((item) => `${item.src} ${item.maxWidth}w`)
-    .join(", ");
+ 
+  gsap.utils.toArray(".puzzle__piece").forEach((piece, index) => {
+    gsap.set(piece, {
+      x: Math.random() * (containerWidth - pieceWidth),
+      y: Math.random() * (containerHeight - pieceHeight),
+    }); 
 
-  const sizes = "(max-width: 1080px) 100vw, 796px";
+    Draggable.create(piece, {
+      bounds: ".puzzle__container",
+      onDragEnd: function () {
+        const target = correctPositions[index];
+        const tolerance = pieceWidth * 0.1;
 
-  return {
-    srcset: srcsetString,
-    sizes: sizes,
-    alt: "nature",
-    src: "./src/assets/puzzle/puzzle.jpg",
-  };
-};
-
-const imgPuzzle = new Image();
-const responsiveImageSource = getResponsiveImageSource();
-imgPuzzle.src = responsiveImageSource.src;
-
-canvas.width = 660;
-canvas.height = 440;
-
-const cols = 3;
-const rows = 2;
-const pieceWidth = canvas.width / cols;
-const pieceHeight = canvas.height / rows;
-
-let pieces = [];
-let draggingPiece = null;
-let offsetX, offsetY;
-
-const createPiece = () => {
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      pieces.push({
-        sx: col * pieceWidth,
-        sy: row * pieceHeight,
-        x: Math.random() * (canvas.width - pieceWidth),
-        y: Math.random() * (canvas.height - pieceHeight),
-        width: pieceWidth,
-        height: pieceHeight,
-        row,
-        col,
-      });
-    }
-  }
-  console.log("Shuffled pieces initialized:", pieces);
-};
-
-const drawPieces = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  pieces.forEach((piece) => {
-    ctx.drawImage(
-      imgPuzzle,
-      piece.sx,
-      piece.sy,
-      piece.width,
-      piece.height,
-      piece.x,
-      piece.y,
-      piece.width,
-      piece.height
-    );
+        if (
+          Math.abs(this.x - target.x) < tolerance &&
+          Math.abs(this.y - target.y) < tolerance
+        ) {
+          gsap.to(this.target, { x: target.x, y: target.y, duration: 0.5 });
+          this.disable(); 
+        }
+      },
+    });
   });
-};
-
-const getClickedPiece = (x, y) => {
-  console.log(`Mouse coordinates: (${x}, ${y})`);
-  console.log("Pieces positions:", pieces);
-
-  const clickedPiece = pieces.find(
-    (piece) =>
-      x > piece.x &&
-      x < piece.x + piece.width &&
-      y > piece.y &&
-      y < piece.y + piece.height
-  );
-
-  console.log("Clicked piece:", clickedPiece);
-  return clickedPiece;
-};
-
-const mouseEvents = () => {
-  canvas.addEventListener("mousedown", (e) => {
-    console.log("mousedown");
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    draggingPiece = getClickedPiece(x, y);
-
-    if (draggingPiece) {
-      offsetX = x - draggingPiece.x;
-      offsetY = y - draggingPiece.y;
-      console.log("Started dragging piece:", draggingPiece);
-    }
-  });
-
-  canvas.addEventListener("mousemove", (e) => {
-    if (!draggingPiece) return;
-    console.log("mousemove");
-
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    draggingPiece.x = x - offsetX;
-    draggingPiece.y = y - offsetY;
-
-    drawPieces();
-  });
-
-  canvas.addEventListener("mouseup", () => {
-    if (!draggingPiece) return;
-    console.log("mouseup");
-
-    const snapX = Math.round(draggingPiece.x / pieceWidth) * pieceWidth;
-    const snapY = Math.round(draggingPiece.y / pieceHeight) * pieceHeight;
-
-    if (
-      Math.abs(snapX - draggingPiece.x) < 10 &&
-      Math.abs(snapY - draggingPiece.y) < 10
-    ) {
-      draggingPiece.x = snapX;
-      draggingPiece.y = snapY;
-    }
-
-    draggingPiece = null;
-    drawPieces();
-  });
-
-  imgPuzzle.onload = () => {
-    console.log("Image loaded");
-    createPiece();
-    drawPieces();
-  };
 };
 
 const generation = () => {
@@ -462,10 +367,10 @@ const init = () => {
   createDots();
   updateContent();
   generation();
-  mouseEvents();
+  puzzleMake();
   navigation();
   leafPop();
-  shakeIt();
+  // shakeIt();
   carouselEffect();
   swipeEffect();
   animatePath("#wavyLineOne", ".bible__problems__one");

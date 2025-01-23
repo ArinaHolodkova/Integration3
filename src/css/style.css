@@ -136,7 +136,7 @@ h3 {
 }
 
 .intro {
-  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -279,7 +279,6 @@ h3 {
   padding: var(--space-m);
 }
 .answer__option {
-  position: relative;
   color: var(--detail-color);
   text-transform: uppercase;
   margin: 0.2rem;
@@ -307,6 +306,14 @@ h3 {
   align-self: center;
   order: 5;
 }
+
+.bible__problems__one__line{
+  position: relative;
+}
+.bible__problems__one__line p{
+  position:absolute;
+}
+
 .bible__problems__two__line {
   margin-left: var(--space-l);
 }
@@ -406,19 +413,21 @@ grid-row:2;
 }
 
 .illustration__container {
-  position: relative;
+ display: grid;
+ grid-template-columns: 1fr;
+ grid-template-rows: 1fr;
+ align-items: center;
 }
 
 .illustration__container__leaf {
-  position: absolute;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 50% 50%;
-  justify-items: stretch;
-  align-items: stretch;
+    grid-row: 1;
+    grid-column: 1;
+    display: grid;
+    justify-items: center;
+    z-index: 2;
 }
 .leaf {
-  width: 70%;
+  width: 80%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -453,12 +462,11 @@ grid-row:2;
 .leaf.popped {
   animation: pop-effect 0.5s forwards;
 }
-/* 
+
 .flowerbook {
-  max-width: 100%;
-  height: auto;
-  margin-top: var(--space-m);
-} */
+ grid-row: 1;
+grid-column: 1;
+}
 
 .botanic__illustrations__generations {
   margin-top: var(--space-xl);
@@ -475,14 +483,6 @@ grid-row:2;
   max-width: 80%;
 }
 
-.step-container {
-  position: relative;
-  overflow: hidden;
-  border: 2px double var(--color);
-  height: 8rem;
-  width: 8rem;
-}
-
 .atlas__art__title {
   text-align: center;
 }
@@ -496,40 +496,58 @@ grid-row:2;
   background-color: var(--background-color);
   margin-left: var(--space-xs);
 }
-.end__combine {
+
+.puzzle__container {
   position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 660 / 477; 
+  margin: auto;
+  border: 2px dashed #ccc; 
+}
+
+.puzzle__piece {
+  position: absolute;
+  background-image: url('../assets/puzzle/puzzle.jpg');
+  background-size: 300%; 
+  cursor: grab;
+  box-sizing: border-box;
+}
+
+#piece1 { background-position: 0 0; top: 0; left: 0; }
+#piece2 { background-position: -200px 0; top: 0; left: 200px; }
+#piece3 { background-position: -400px 0; top: 0; left: 400px; }
+#piece4 { background-position: 0 -200px; top: 200px; left: 0; }
+#piece5 { background-position: -200px -200px; top: 200px; left: 200px; }
+#piece6 { background-position: -400px -200px; top: 200px; left: 400px; }
+
+
+
+.end{
+margin-top: var(--space-xl);
+}
+.end__text{
+  max-width: 95%;
+}
+
+.end__combine {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  
+  overflow: hidden;
+  position: relative;
 }
 
 .end__combine__image {
   width: 30%;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .big-image {
-  position: absolute;
-  width: 80%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.hidden {
-  display: none;
-}
-
-.botanic__intro__puzzle {
-  position: relative;
-  max-width: 660px;
-  aspect-ratio: 3 / 2;
-  border: 1px solid #ccc;
-  pointer-events: none;
-}
-
-canvas {
   width: 100%;
   height: 100%;
-  display: block;
+  opacity: 0;
+  clip-path: circle(0% at 50% 50%);
+  transition: opacity 0.5s ease, clip-path 1s ease;
 }
-
