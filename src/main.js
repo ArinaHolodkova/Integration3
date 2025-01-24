@@ -15,20 +15,63 @@ const prevButton = document.querySelector(".carousel__prev");
 const nextButton = document.querySelector(".carousel__next");
 let currentIndex = 0;
 
+// let startX = 0;
+// let endX = 0;
 
 const navigation = () => {
-  const navButton = document.querySelector(".nav__button");
-  const navList = document.querySelector(".nav__list");
-  const iconLink = document.getElementById("iconlink");
+  const $nav = document.querySelector(".nav");
+  const $navButton = document.querySelector(".nav__button");
+  const $navList = document.querySelector(".nav__list");
+  const $iconLink = document.getElementById("iconlink");
+  const listItems = $navList.querySelectorAll("li a");
 
-  navButton.addEventListener("click", function () {
-    const expanded = navButton.getAttribute("aria-expanded") === "true";
-    navButton.setAttribute("aria-expanded", !expanded);
 
-    iconLink.setAttribute("xlink:href", expanded ? "#navicon" : "#close");
-    navList.style.display = expanded ? "none" : "flex";
+  $navButton.classList.remove("hidden");
+  $navList.classList.add("hidden");
+
+  const openNavigation = () => {
+    $navButton.setAttribute("aria-expanded", "true");
+    $iconLink.setAttribute("xlink:href", "#close");
+    $navList.classList.remove("hidden");
+    $nav.classList.add("nav--open"); 
+    document.body.classList.add("nav-open"); 
+  };
+
+  const closeNavigation = () => {
+    $navButton.setAttribute("aria-expanded", "false");
+    $iconLink.setAttribute("xlink:href", "#navicon");
+    $navList.classList.add("hidden");
+    $nav.classList.remove("nav--open");
+    document.body.classList.remove("nav-open");
+  };
+
+
+  const toggleNavigation = () => {
+    const isOpen = $navButton.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      closeNavigation();
+    } else {
+      openNavigation();
+    }
+  };
+
+
+  listItems[listItems.length - 1].addEventListener("blur", () => {
+    closeNavigation();
   });
+
+
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "Escape") {
+      closeNavigation();
+      $navButton.focus();
+    }
+  });
+
+ 
+  $navButton.addEventListener("click", toggleNavigation);
 };
+
 
 
 const updateCarousel = () => {
@@ -40,6 +83,7 @@ const updateCarousel = () => {
     }
   });
 };
+
 const carouselEffect =()=>{
 prevButton.addEventListener("click", () => {
   currentIndex =
@@ -106,32 +150,103 @@ const revealCarousel = () => {
   });
 };
 
+const swipeEffect = (mm) => {
+  mm.add(
+    {
+      isDesktop: "(min-width: 1024px)",
+      isMobile: "(max-width: 1023px)",
+    },
+    (context) => {
+      const { isMobile, isDesktop } = context.conditions;
+      
+      if (isMobile) {
+        let startX, endX, currentSwipe = 0;
+        const images = document.querySelectorAll(".intro__img");
 
-const swipeEffect = () => {
-  let startX = 0;
-  let endX = 0;
+        document.addEventListener("touchstart", (event) => {
+          startX = event.touches[0].clientX;
+        });
+        document.addEventListener("touchmove", (event) => {
+          endX = event.touches[0].clientX;
+        });
 
-  
-  document.addEventListener("touchstart", (event) => {
-    startX = event.touches[0].clientX;
-  });
+        document.addEventListener("touchend", () => {
+          if (startX > endX + 90) {
+            currentSwipe = (currentSwipe + 1) % images.length;
+            console.log("swipe1", currentSwipe);
+          } else if (startX < endX - 50) {
+            currentSwipe = (currentSwipe - 1 + images.length) % images.length;
+            console.log("swipe2");
+          }
+          updateContent();
+        });
+        updateContent();
+      }
 
-  
-  document.addEventListener("touchmove", (event) => {
-    endX = event.touches[0].clientX;
-  });
+      if (isDesktop) {
+        console.log("Desktop draggable effect initialized");
+        const images = document.querySelectorAll(".intro__img");
 
+        images.forEach((image) => {
+          const canvas = document.createElement("canvas");
+          canvas.classList.add("canvas__overlay");
 
-  document.addEventListener("touchend", () => {
-    if (startX > endX + 90) {
-      currentSwipe = (currentSwipe + 1) % images.length; 
-      updateContent();
-    } else if (startX < endX - 50) {
-      currentSwipe = (currentSwipe - 1 + images.length) % images.length; 
-      updateContent();
-    }
-  });
-};
+          image.appendChild(canvas);
+
+          const ctx = canvas.getContext("2d");
+
+          const img = image.querySelector('img');
+          canvas.width = img.offsetWidth;
+          canvas.height = img.offsetHeight;
+
+          ctx.fillStyle = "#5e3023";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          let isScratching = false;
+
+          const scratch = (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const radius = 50;
+
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fill();
+          };
+
+          canvas.addEventListener("mousedown", () => isScratching = true);
+          canvas.addEventListener("mousemove", (event) => {
+            if (isScratching) scratch(event);
+          });
+          canvas.addEventListener("mouseup", () => isScratching = false);
+          canvas.addEventListener("mouseleave", () => isScratching = false);
+        });
+
+        // Draggable.create(".intro__img", {
+        //   type: "x",
+        //   bounds: document.querySelector(".intro__container__img"),
+        //   onDrag: function () {
+        //     const draggedIndex = Math.round(-this.x / window.innerWidth);
+        //     if (draggedIndex !== currentSwipe) {
+        //       currentSwipe = (draggedIndex + images.length) % images.length;
+        //       updateContent();
+        //     }
+        //   },
+        //   onDragEnd: function () {
+        //     gsap.to(this.target, {
+        //       x: -currentSwipe * window.innerWidth,
+        //       duration: 0.5,
+        //       ease: "power2.out",
+        //     });
+        //   },
+        // });
+      }
+    } // End of context function
+  ); // End of mm.add
+}; // End of swipeEffect
+
 
 const updateContent = () => {
   images.forEach((image, index) => {
@@ -141,12 +256,13 @@ const updateContent = () => {
       image.classList.remove("active");
     }
   });
-
+console.log("update");
   const texts = ["Global understanding", "Art", "Science"];
   textElement.textContent = texts[currentSwipe];
 
   updateDots();
 };
+
 
 const updateDots = () => {
   const dots = document.querySelectorAll(".intro__dot");
@@ -216,7 +332,6 @@ const animatePath = (pathSelector, triggerSelector) => {
 };
 
 
-
 const leafPop = () => {
   document.querySelectorAll(".leaf").forEach((leaf) => {
     leaf.addEventListener("click", () => {
@@ -227,62 +342,6 @@ const leafPop = () => {
     });
   });
 };
-
-//   const shakeIt = () => {
-//   const images = document.querySelectorAll(".end__combine__image");
-//   const bigImage = document.querySelector(".big-image");
-
-//   // Timeline for the entire sequence
-//   const timeline = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: ".end__combine",
-//       start: "top top", // Start pinning as soon as this section reaches the top of the viewport
-//       end: "+=100%", // Pinning duration
-//       scrub: true,
-//       pin: true, // Pins the element during the animation
-//     },
-//   });
-
-//   // Shake animation
-//   timeline.to(
-//     images,
-//     {
-//       x: "random(-10, 10, 2)",
-//       y: "random(-10, 10, 2)",
-//       duration: 0.2,
-//       repeat: 5, // Shake 5 times
-//       ease: "power1.inOut",
-//       stagger: 0.1,
-//     },
-//     "shake"
-//   );
-
-//   // Move and collapse images
-//   timeline.to(
-//     images,
-//     {
-//       x: 0,
-//       y: 0,
-//       scale: 0.2,
-//       opacity: 0,
-//       duration: 1,
-//       ease: "power2.out",
-//     },
-//     "combine"
-//   );
-
-//   // Reveal big image
-//   timeline.to(
-//     bigImage,
-//     {
-//       opacity: 1,
-//       clipPath: "circle(100% at 50% 50%)",
-//       duration: 1,
-//       ease: "power2.inOut",
-//     },
-//     "combine+=0.5" // Starts slightly after the collapse animation
-//   );
-// };
 
 
 const puzzleMake = () => {
@@ -365,6 +424,7 @@ const generation = () => {
 };
 
 const init = () => {
+const mm = gsap.matchMedia();
   questionSection();
   createDots();
   updateContent();
@@ -372,13 +432,9 @@ const init = () => {
   puzzleMake();
   navigation();
   leafPop();
-  // shakeIt();
   carouselEffect();
-  swipeEffect();
+  swipeEffect(mm);
   animatePath("#wavyLineOne", ".bible__problems__one");
   animatePath("#wavyLineTwo", ".bible__problems__two");
-  // animatePath("#wavyLineOne", "#years", ".bible__problems__one");
-  // animatePath("#wavyLineOne", "#workers", ".bible__problems__one");
-  // animatePath("#wavyLineTwo", "#financial", ".bible__problems__two");
 };
 init();

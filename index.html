@@ -55,20 +55,59 @@
    
 
     <h1>Printing the Future</h1>
-    <div> image </div>
+ 
+    <picture class="hero__printing">
+    <source
+    sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
+    srcset="
+./src/assets/printing/printing,w_200.avif 200w,
+./src/assets/printing/printing,w_585.avif 585w,
+./src/assets/printing/printing,w_684.avif 684w"
+    type="image/avif"
+    />
+        <img
+                 sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
+                src="./src/assets/printing/printing.png"
+                alt="Printing press"
+              />
+    </picture>
+    
+        <picture class="hero__draggable">
+    <source
+  sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
+    srcset="
+/src/assets/draggable/draggable,w_200.avif 200w,
+./src/assets/draggable/draggable,w_684.avif 684w"
+    type="image/avif"
+    />
+        <img
+               sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
+                src="./src/assets/draggable/draggable.png"
+                alt="Printing press"
+              />
+    </picture>
+
 
     <div class="intro">
       <h2>Plantin</h2>
       <p>Christophe Plantin was more than just a printer—he was a visionary whose work helped shape the Renaissance and laid the foundation for modern science, art, and global understanding.</p>
       <div class="intro__grid">
-        <svg class="arc" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <div class="intro__arc">
+        <svg class="arc arc__1" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
         </svg>
+           <svg class="arc arc__hidden" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
+        </svg>
+           <svg class="arc arc__hidden" width="216" height="323" viewBox="0 0 216 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.152264 82.0831C0.152264 82.0831 -8.65267 0 107.65 0C223.952 0 215.88 82.0831 215.88 82.0831V323H0.152264V82.0831Z" fill="#5E3023"/>
+        </svg>
+        </div>
         <div class="intro__container__img">
 
     <picture class="intro__img active">
     <source
-    sizes="(max-width: 1080px) 100vw, 1080px"
+    sizes="(min-width:1024px) 35vw, (min-width: 300px)  50vw"
     srcset="
     ./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
     ./src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
@@ -79,7 +118,7 @@
     />
         <img
         id="image1"
-                sizes="20vw"
+                sizes="(min-width:1024px) 35vw, (min-width: 300px)  50vw"
                 src="./src/assets/global_understanding/golobal.png"
                 alt="Global understanding"
               />
@@ -87,7 +126,7 @@
 
     <picture class="intro__img">
     <source
-    sizes="(max-width: 1080px) 100vw, 739px"
+    sizes="(min-width:1024px) 35vw, (min-width: 300px)  50vw"
     srcset="
     ./src/assets/art/art,w_200.avif 200w,
           ./src/assets/art/art,w_514.avif 514w,
@@ -106,7 +145,7 @@
 
     <picture class="intro__img">
     <source
-    sizes= "(max-width: 1080px) 100vw, 515px"
+     sizes="(min-width:1024px) 35vw, (min-width: 300px)  50vw"
     srcset="
         ./src/assets/science/science,w_200.avif 200w,
           ./src/assets/science/science,w_515.avif 515w,
@@ -130,7 +169,7 @@
   </div>
     <p>His printing house, Officina Plantiniana, became a hub of intellectual and creative activity, producing works that revolutionized how knowledge was shared and preserved.</p>
    </div> 
-   <hr class="line">
+
   <h3 class="intro__title">Influential Figure</h3>
    <p>His unwavering dedication to precision and excellence established him as one of the most influential figures in the history of printing.</p>
 <hr class="line">
@@ -590,19 +629,24 @@ srcset="
  <p>by visiting the Plantin-Moretus Museum, where the past is yours to explore.</p>
 
   <h3>Or new story is coming soon</h3>
-  
+
 <p>leave your email so you don’t miss it! </p>
-<form action="your-server-endpoint" method="post">
-  <label for="email">Your Email:</label><br>
-  <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
-  <button type="submit">Subscribe</button>
+<form class="invite__form" action="your-server-endpoint" method="post">
+  <label class="invite__form__label" for="email">Your Email:</label><br>
+  <input class="invite__form__input" type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+  <button class="invite__form__submit" type="submit">&#8594;</button>
 </form>
 
 </section>
    </article>
+ <footer>
+<button>Visit Museum</button>
+<a href="">Go back</a>
+
+ </footer>
 
     <script type="module" src="/src/main.js"></script>
-  </body>
+ </body>
 
 </html>
    

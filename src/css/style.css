@@ -68,6 +68,74 @@ h3 {
   margin-bottom: var(--space-xs);
 }
 
+.hidden {
+  display: none;
+}
+.nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.nav__link{
+  text-decoration: none;
+  color: var(--color);
+  font-family: 'Times New Roman', Times, serif;
+}
+.nav__item{
+padding: var(--space-s);
+}
+.nav__item::before{
+  content: "\2726";
+  color: var(--color);
+  padding-right: 0.3rem;
+}
+
+.nav__list {
+  grid-column: 1;
+  display: none;
+  flex-direction: column;
+  background-color: var(--background-color);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+   width: 15rem;
+}
+
+.nav--open .nav__list {
+  
+    display: flex;
+    transform: translateY(-10px);
+    opacity: 1;
+    align-items: flex-start;
+    list-style: none;
+  padding-bottom: var(--space-m);
+    padding-top: var(--space-m);
+    border-bottom: solid 2px var(--color);
+     border-right: solid 2px var(--color);
+}
+
+.nav__button {
+  grid-column: 2;
+  cursor: pointer;
+  background-color: var(--background-color);
+  border: none;
+  size: 2rem;
+
+}
+.nav__button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.nav__museum {
+  font-family: "Times New Roman", Times, serif;
+  font-size: var(--step-0);
+  border: #5e3023 solid 2px;
+  background-color: var(--background-color);
+  padding: 0.5rem;
+  color: var(--color);
+}
+
 .line {
   width: 100%;
   height: 2px;
@@ -79,60 +147,6 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-.nav__button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.nav__button svg {
-  width: 2rem;
-  height: 2rem;
-  color: var(--detail-color);
-}
-
-.nav__button[aria-expanded="true"] + .nav__list {
-  display: block;
-}
-
-.nav__item {
-  padding: var(--space-m);
-}
-
-.nav__link {
-  color: var(--color);
-  text-decoration: none;
-  font-family: "Times New Roman", Times, serif;
-}
-
-.nav__museum {
-  font-family: "Times New Roman", Times, serif;
-  font-size: var(--step-0);
-  border: #5e3023 solid 2px;
-  /* background-color:#e5d8c7; */
-  background-color: var(--background-color);
-  padding: 0.5rem;
-  color: var(--color);
-  margin-left: var(--space-s);
-}
-
-.nav__list {
-  margin-top: 1rem;
-  list-style: none;
-  position: absolute;
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  left: 0;
-  padding-left: var(--space-xs);
-  padding-top: var(--space-m);
-  padding-right: var(--space-m);
-  padding-bottom: var(--space-l);
-  background-color: var(--background-color);
-  z-index: 1;
-  border-bottom: double 12px var(--color);
-  border-right: double 12px var(--color);
 }
 
 .intro {
@@ -169,11 +183,15 @@ h3 {
 #image3{
  width: 80%;
 }
-.arc {
+.arc__1 {
   margin-top: var(--space-s);
   grid-column: 1;
   grid-row: 1;
 }
+.arc__hidden{
+  display: none;
+}
+
 
 .intro__container__img {
   grid-column: 1;
@@ -622,4 +640,96 @@ margin-top: var(--space-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.invite__form{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 1fr 1fr;
+}
+.invite__form__input{
+  grid-row: 2;
+  grid-column: 1;
+  background-color: var(--background-color);
+  border: solid 2px var(--color);
+  color: var(--color);
+  font-size: var(--step-0);
+}
+.invite__form__label{
+  grid-row: 1;
+  grid-column: 1;
+  color: var(--color);
+  font-family: 'Times New Roman', Times, serif;
+}
+.invite__form__submit{
+    grid-row: 2;
+  grid-column: 2;
+  background-color: var(--detail-color);
+  color: var(--background-color);
+  border: none;
+  font-size: var(--step-1);
+  padding-left: var(--space-xs);
+   padding-right: var(--space-xs);
+}
+
+@media screen and (min-width: 45em){  
+  .nav {
+    display: flex;
+   flex-direction: row;
+  }
+  
+  
+  .nav__button {
+    display: none;
+  }
+   
+  .nav__list {
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-inline-start: auto;
+  }
+  .nav__link{
+    color: var(--color);
+  }
+ 
+  .arc{
+ display: block;
+  }
+ 
+ .intro__grid{
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+  .intro__arc{
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: row;
+  }
+
+.intro__container__img{
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    display: flex;
+flex-direction: row; 
+}
+.intro__img{
+  display: block;
+  opacity: 1;
+}
+.intro__dots{
+  display: none;
+}
+.canvas__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(94, 48, 35, 0.0); 
+  pointer-events: auto;
+}
+
 }
