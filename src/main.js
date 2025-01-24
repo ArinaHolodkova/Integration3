@@ -97,70 +97,130 @@ nextButton.addEventListener("click", () => {
 });
 }
 
+// const questionSection = () => {
+//   const questionContainer = document.querySelector(".question__section");
+//   const carouselSection = document.querySelector(".bible__languages__carousel");
+//   const bibleTitle = document.querySelector(".bible__languages__comment");
+//     const answer1 = document.querySelector("#answer__1");
+//   const answer2 = document.querySelector("#answer__2");
+//   const answer3 = document.querySelector("#answer__3");
+//     const answer4 = document.querySelector("#answer__4");
+//   const answer5 = document.querySelector("#answer__5");
+//   const questionText = document.querySelector(".question__text");
+
+// const revealCarousel = () => {
+//   questionText.style.transition = "transform 0.5s ease-in-out";
+
+//   setTimeout(() => {
+//     questionContainer.style.opacity = "0";
+//     setTimeout(() => {
+//       questionContainer.style.display = "none";
+
+//       carouselSection.style.display = "block"; 
+//       carouselSection.style.opacity = "1"; 
+//       carouselSection.style.transition = "opacity 0.5s ease-in-out";
+//     }, 500);
+//   }, 500);
+// };
+//   answer1.addEventListener("click", () => {
+//     revealCarousel();
+//     bibleTitle.textContent = " Not even close";
+//     questionText.style.transform = "translateX(-70%)";
+//   });
+//   answer2.addEventListener("click", () => {
+//     revealCarousel();
+//     bibleTitle.textContent =" Not even close" ;
+//     questionText.style.transform = "translateX(-70%)";
+//   });
+//   answer3.addEventListener("click", () => {
+//     revealCarousel();
+//      bibleTitle.textContent = " Not even close";
+//     questionText.style.transform = "translateX(-70%)";
+//   });
+//     answer4.addEventListener("click", () => {
+//       revealCarousel();
+//       bibleTitle.textContent = "Almost there!";
+//       questionText.style.transform = "translateX(70%)";
+//     });
+//   answer5.addEventListener("click", () => {
+//     revealCarousel();
+//     bibleTitle.textContent =
+//       "Were you involved in the creation process? Because this is the correct answer ";
+//     questionText.style.transform = "translateY(70%)";
+//   });
+// };
+
 const questionSection = () => {
   const questionContainer = document.querySelector(".question__section");
   const carouselSection = document.querySelector(".bible__languages__carousel");
   const bibleTitle = document.querySelector(".bible__languages__comment");
-    const answer1 = document.querySelector("#answer__1");
-  const answer2 = document.querySelector("#answer__2");
-  const answer3 = document.querySelector("#answer__3");
-    const answer4 = document.querySelector("#answer__4");
-  const answer5 = document.querySelector("#answer__5");
+  const answers = document.querySelectorAll(".answer__option");
   const questionText = document.querySelector(".question__text");
 
-const revealCarousel = () => {
-  questionText.style.transition = "transform 0.5s ease-in-out";
+  const revealCarousel = (answer, message, transformDirection) => {
+    // Animate question text
+    questionText.style.transition = "transform 0.5s ease-in-out";
+    questionText.style.transform = `translate(${transformDirection}, 0)`;
 
-  setTimeout(() => {
-    questionContainer.style.opacity = "0";
+    // Fade out the question container
     setTimeout(() => {
-      questionContainer.style.display = "none";
+      questionContainer.style.opacity = "0";
 
-      carouselSection.style.display = "block"; 
-      carouselSection.style.opacity = "1"; 
-      carouselSection.style.transition = "opacity 0.5s ease-in-out";
+      setTimeout(() => {
+        questionContainer.style.display = "none";
+
+        // Fade in the carousel section
+        carouselSection.style.display = "block";
+        carouselSection.style.opacity = "1";
+        carouselSection.style.transition = "opacity 0.5s ease-in-out";
+
+        // Update the title
+        bibleTitle.textContent = message;
+      }, 500);
     }, 500);
-  }, 500);
-};
-  answer1.addEventListener("click", () => {
-    revealCarousel();
-    bibleTitle.textContent = " Not even close";
-    questionText.style.transform = "translateX(-70%)";
-  });
-  answer2.addEventListener("click", () => {
-    revealCarousel();
-    bibleTitle.textContent =" Not even close" ;
-    questionText.style.transform = "translateX(-70%)";
-  });
-  answer3.addEventListener("click", () => {
-    revealCarousel();
-     bibleTitle.textContent = " Not even close";
-    questionText.style.transform = "translateX(-70%)";
-  });
-    answer4.addEventListener("click", () => {
-      revealCarousel();
-      bibleTitle.textContent = "Almost there!";
-      questionText.style.transform = "translateX(70%)";
+  };
+
+  // Add event listeners to each answer
+  answers.forEach((answer, index) => {
+    answer.addEventListener("click", () => {
+      let message;
+      let direction;
+
+      // Define messages and directions based on the answer
+      switch (index + 1) {
+        case 4:
+          message = "Almost there!";
+          direction = "70%";
+          break;
+        case 5:
+          message =
+            "Were you involved in the creation process? Because this is the correct answer!";
+          direction = "70%";
+          break;
+        default:
+          message = "Not even close";
+          direction = "-70%";
+      }
+
+      revealCarousel(answer, message, direction);
     });
-  answer5.addEventListener("click", () => {
-    revealCarousel();
-    bibleTitle.textContent =
-      "Were you involved in the creation process? Because this is the correct answer ";
-    questionText.style.transform = "translateY(70%)";
   });
 };
+
 
 const swipeEffect = (mm) => {
   mm.add(
     {
-      isDesktop: "(min-width: 1024px)",
+      isDesktop: "(min-width:  45em)",
       isMobile: "(max-width: 1023px)",
     },
     (context) => {
       const { isMobile, isDesktop } = context.conditions;
-      
+
       if (isMobile) {
-        let startX, endX, currentSwipe = 0;
+        let startX,
+          endX,
+          currentSwipe = 0;
         const images = document.querySelectorAll(".intro__img");
 
         document.addEventListener("touchstart", (event) => {
@@ -184,24 +244,23 @@ const swipeEffect = (mm) => {
       }
 
       if (isDesktop) {
-        console.log("Desktop draggable effect initialized");
+        console.log("Desktop scratch effect initialized");
         const images = document.querySelectorAll(".intro__img");
 
         images.forEach((image) => {
           const canvas = document.createElement("canvas");
           canvas.classList.add("canvas__overlay");
-
           image.appendChild(canvas);
 
           const ctx = canvas.getContext("2d");
 
-          const img = image.querySelector('img');
-          canvas.width = img.offsetWidth;
-          canvas.height = img.offsetHeight;
+          const img = image.querySelector("img");
+          canvas.width = img.offsetWidth-5;
+          canvas.height = img.offsetHeight-3;
 
-          ctx.fillStyle = "#5e3023";
+          ctx.fillStyle = "#b10a3a";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+          console.log(canvas);
           let isScratching = false;
 
           const scratch = (event) => {
@@ -216,32 +275,13 @@ const swipeEffect = (mm) => {
             ctx.fill();
           };
 
-          canvas.addEventListener("mousedown", () => isScratching = true);
+          canvas.addEventListener("mousedown", () => (isScratching = true));
           canvas.addEventListener("mousemove", (event) => {
             if (isScratching) scratch(event);
           });
-          canvas.addEventListener("mouseup", () => isScratching = false);
-          canvas.addEventListener("mouseleave", () => isScratching = false);
+          canvas.addEventListener("mouseup", () => (isScratching = false));
+          canvas.addEventListener("mouseleave", () => (isScratching = false));
         });
-
-        // Draggable.create(".intro__img", {
-        //   type: "x",
-        //   bounds: document.querySelector(".intro__container__img"),
-        //   onDrag: function () {
-        //     const draggedIndex = Math.round(-this.x / window.innerWidth);
-        //     if (draggedIndex !== currentSwipe) {
-        //       currentSwipe = (draggedIndex + images.length) % images.length;
-        //       updateContent();
-        //     }
-        //   },
-        //   onDragEnd: function () {
-        //     gsap.to(this.target, {
-        //       x: -currentSwipe * window.innerWidth,
-        //       duration: 0.5,
-        //       ease: "power2.out",
-        //     });
-        //   },
-        // });
       }
     } // End of context function
   ); // End of mm.add
@@ -329,6 +369,20 @@ const animatePath = (pathSelector, triggerSelector) => {
       alpha: 1,
     }
   );
+};
+
+const initAnimations = () => {
+  const desktopQuery = window.matchMedia("(min-width:45em)");
+
+  if (desktopQuery.matches) {
+document.querySelector("#bigline").classList.add("hidden");
+    document.querySelector("#bigline").style.display = "block";
+    animatePath("#bigline", ".bible__problems__one");
+  } else {
+   document.querySelector("#bigline").classList.add("hidden");
+    animatePath("#wavyLineOne", ".bible__problems__one__line");
+    animatePath("#wavyLineTwo", ".bible__problems__two__line");
+  }
 };
 
 
@@ -434,7 +488,8 @@ const mm = gsap.matchMedia();
   leafPop();
   carouselEffect();
   swipeEffect(mm);
-  animatePath("#wavyLineOne", ".bible__problems__one");
-  animatePath("#wavyLineTwo", ".bible__problems__two");
+  // animatePath("#wavyLineOne", ".bible__problems__one");
+  // animatePath("#wavyLineTwo", ".bible__problems__two");
+initAnimations(mm);
 };
 init();
