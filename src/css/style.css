@@ -573,8 +573,7 @@ h3 {
   width: 100%;
   height: auto;
   aspect-ratio: 660 / 477;
-  margin: auto;
-  border: 2px dashed #ccc;
+  border: 2px solid var(--color);
 }
 
 .puzzle__piece {
@@ -585,65 +584,8 @@ h3 {
   box-sizing: border-box;
 }
 
-#piece1 {
-  background-position: 0 0;
-  top: 0;
-  left: 0;
-}
-#piece2 {
-  background-position: -200px 0;
-  top: 0;
-  left: 200px;
-}
-#piece3 {
-  background-position: -400px 0;
-  top: 0;
-  left: 400px;
-}
-#piece4 {
-  background-position: 0 -200px;
-  top: 200px;
-  left: 0;
-}
-#piece5 {
-  background-position: -200px -200px;
-  top: 200px;
-  left: 200px;
-}
-#piece6 {
-  background-position: -400px -200px;
-  top: 200px;
-  left: 400px;
-}
 
-.end {
-  margin-top: var(--space-xl);
-}
-.end__text {
-  max-width: 95%;
-}
-/* 
-.end__combine {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  
-  overflow: hidden;
-  position: relative;
-}
 
-.end__combine__image {
-  width: 30%;
-  transition: transform 0.3s ease;
-}
-
-.big-image {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  clip-path: circle(0% at 50% 50%);
-  transition: opacity 0.5s ease, clip-path 1s ease;
-} */
 
 .invite {
   display: flex;
@@ -941,8 +883,61 @@ grid-column: 1;
   background: var(--detail-color);
 }
 
+.bible__problems{
+display: grid;
+grid-template-rows: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr;
 
+}
+.bible__problems__line{
+         grid-column: 1 / span 3;
+        grid-row: 1 / span 2;
+        align-self: end;
+        justify-self: end;
+}
+.bible__problems__one{
+  grid-column: 1/span 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: end;
+  max-width: 45%;
+}
+.bible__problems__two{
+  grid-column: 1;
+  grid-row: 2;
+}
+.bible__problems__three{
+   grid-column: 1/span 2;
+  grid-row: 3; 
+}
+.bible__problems__one__line{
+  align-self: flex-end;
+  justify-self: center;
+  display: grid;
+}
+.problems__words__years{
+  align-self: start;
+  justify-self: center;
+}
+.problems__words__workers{
+  align-self: end;
+  justify-self: end;
+}
 
+.botanic__illustrations{
+  display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr;
 
+}
+.botanic__illustrations__title,
+.botanic__illustration__text{
+  grid-column: 1;
+  grid-row: 1;
+}
+.illustration__container{
+  grid-column: 2;
+  grid-row: 1;
+}
 }
 

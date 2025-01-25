@@ -331,58 +331,99 @@ const createDots = () => {
   });
 };
 
-
 const animatePath = (pathSelector, triggerSelector) => {
-  const pathElement = document
-    .querySelector(pathSelector)
-    .querySelector("path");
-  const pathLength = pathElement.getTotalLength();
+  const mm = gsap.matchMedia(); 
 
-  gsap.set(pathElement, { strokeDasharray: pathLength });
-
-  gsap.fromTo(
-    pathElement,
-    { strokeDashoffset: pathLength - 5 },
+  mm.add(
     {
-      strokeDashoffset: 0,
-      scrollTrigger: {
-        trigger: triggerSelector,
-        start: "top top",
-        markers: true,
-        scrub: true,
-      },
-    }
-  );
-
-  gsap.fromTo(
-    ".bible__problems__three",
-    {
-      alpha: 0,
+      isDesktop: "(min-width: 45em)", 
+      isMobile: "(max-width: 45em)", 
     },
-    {
-      scrollTrigger: {
-        trigger: ".bible__problems__two__line",
-        start: "middle 5%",
-        ease: "power2.inOut",
-        scrub: true,
-      },
-      alpha: 1,
+    (context) => {
+      const { isDesktop, isMobile } = context.conditions;
+      const pathElement = document
+        .querySelector(pathSelector)
+        ?.querySelector("path");
+
+      if (!pathElement) return; 
+
+      const pathLength = pathElement.getTotalLength(); 
+
+      if (isMobile) {
+       
+        document.querySelector("#bigline").classList.add("hidden"); 
+        document.querySelector("#wavyLineOne").classList.remove("hidden"); 
+        document.querySelector("#wavyLineTwo").classList.remove("hidden");
+
+  
+        gsap.set(pathElement, { strokeDasharray: pathLength });
+
+       
+        gsap.fromTo(
+          pathElement,
+          { strokeDashoffset: pathLength },
+          {
+            strokeDashoffset: 0,
+            scrollTrigger: {
+              trigger: triggerSelector,
+              start: "top top",
+              scrub: true,
+            },
+          }
+        );
+        gsap.fromTo(
+          ".bible__problems__three",
+          { alpha: 0 },
+          {
+            alpha: 1,
+            scrollTrigger: {
+              trigger: triggerSelector,
+              start: "middle 5%",
+              ease: "power2.inOut",
+              scrub: true,
+            },
+          }
+        );
+      }
+
+      if (isDesktop) {
+   
+        document.querySelector("#wavyLineOne").classList.add("hidden"); // Hide small lines
+        document.querySelector("#wavyLineTwo").classList.add("hidden");
+        document.querySelector("#bigline").classList.remove("hidden"); // Show big line
+
+        gsap.set(pathElement, { strokeDasharray: pathLength });
+
+       
+        gsap.fromTo(
+          pathElement,
+          { strokeDashoffset: pathLength },
+          {
+            strokeDashoffset: 0,
+            scrollTrigger: {
+              trigger: triggerSelector,
+              start: "top top",
+              markers: true,
+              scrub: true,
+            },
+          }
+        );
+            gsap.fromTo(
+              ".bible__problems__three",
+              { alpha: 0 },
+              {
+                alpha: 1,
+                scrollTrigger: {
+                  trigger: triggerSelector,
+                  start: "middle 5%",
+                  ease: "power2.inOut",
+                  scrub: true,
+                },
+              }
+            );
+      }
     }
   );
-};
-
-const initAnimations = () => {
-  const desktopQuery = window.matchMedia("(min-width:45em)");
-
-  if (desktopQuery.matches) {
-document.querySelector("#bigline").classList.add("hidden");
-    document.querySelector("#bigline").style.display = "block";
-    animatePath("#bigline", ".bible__problems__one");
-  } else {
-   document.querySelector("#bigline").classList.add("hidden");
-    animatePath("#wavyLineOne", ".bible__problems__one__line");
-    animatePath("#wavyLineTwo", ".bible__problems__two__line");
-  }
 };
 
 
@@ -397,28 +438,22 @@ const leafPop = () => {
   });
 };
 
-
 const puzzleMake = () => {
   const container = document.querySelector(".puzzle__container");
-  const containerWidth = container.offsetWidth;
-  const containerHeight = container.offsetHeight;
+  const containerWidth = container.offsetWidth ; 
+  const containerHeight = container.offsetHeight ; 
+
+  const pieceWidth = containerWidth / 3;
+  const pieceHeight = containerHeight / 2;
+
+  console.log(
+    `Container Dimensions (scaled): width=${containerWidth}, height=${containerHeight}`
+  );
+  console.log(
+    `Piece Dimensions (scaled): width=${pieceWidth}, height=${pieceHeight}`
+  );
 
 
-  const pieceWidth = containerWidth / 3; 
-  const pieceHeight = containerHeight / 2; 
-
- 
-  document.querySelectorAll(".puzzle__piece").forEach((piece, index) => {
-    piece.style.width = `${pieceWidth}px`;
-    piece.style.height = `${pieceHeight}px`;
-
-    
-    const xPos = -(index % 3) * pieceWidth; 
-    const yPos = -Math.floor(index / 3) * pieceHeight;
-    piece.style.backgroundPosition = `${xPos}px ${yPos}px`;
-  });
-
-  
   const correctPositions = [
     { x: 0, y: 0 },
     { x: pieceWidth, y: 0 },
@@ -428,30 +463,56 @@ const puzzleMake = () => {
     { x: pieceWidth * 2, y: pieceHeight },
   ];
 
- 
+  console.log("Correct positions recalculated (scaled):", correctPositions);
+
+  document.querySelectorAll(".puzzle__piece").forEach((piece, index) => {
+    piece.style.width = `${pieceWidth}px`;
+    piece.style.height = `${pieceHeight}px`;
+
+    const xPos = -(index % 3) * pieceWidth; 
+    const yPos = -Math.floor(index / 3) * pieceHeight;
+    piece.style.backgroundPosition = `${xPos}px ${yPos}px`;
+
+    console.log(`Piece ${index + 1} background position: x=${xPos}, y=${yPos}`);
+  });
+
   gsap.utils.toArray(".puzzle__piece").forEach((piece, index) => {
-    gsap.set(piece, {
-      x: Math.random() * (containerWidth - pieceWidth),
-      y: Math.random() * (containerHeight - pieceHeight),
-    }); 
+    const randomX = Math.random() * (containerWidth - pieceWidth);
+    const randomY = Math.random() * (containerHeight - pieceHeight);
+    gsap.set(piece, { x: randomX, y: randomY });
 
     Draggable.create(piece, {
       bounds: ".puzzle__container",
       onDragEnd: function () {
         const target = correctPositions[index];
-        const tolerance = pieceWidth * 0.1;
+        const tolerance = 50; 
+
+        const pieceBox = this.target.getBoundingClientRect();
+        const containerBox = container.getBoundingClientRect();
+
+        const currentX = (pieceBox.left - containerBox.left) ; 
+        const currentY = (pieceBox.top - containerBox.top) ; 
+
 
         if (
-          Math.abs(this.x - target.x) < tolerance &&
-          Math.abs(this.y - target.y) < tolerance
+          Math.abs(currentX - target.x) <= tolerance &&
+          Math.abs(currentY - target.y) <= tolerance
         ) {
-          gsap.to(this.target, { x: target.x, y: target.y, duration: 0.5 });
-          this.disable(); 
+          gsap.to(this.target, {
+            x: target.x,
+            y: target.y,
+            duration: 0.2,
+          });
+          this.disable();
+     
         }
       },
     });
   });
 };
+
+
+
 
 const generation = () => {
   const pictures = document.querySelectorAll(
@@ -488,8 +549,9 @@ const mm = gsap.matchMedia();
   leafPop();
   carouselEffect();
   swipeEffect(mm);
-  // animatePath("#wavyLineOne", ".bible__problems__one");
-  // animatePath("#wavyLineTwo", ".bible__problems__two");
-initAnimations(mm);
+  animatePath("#wavyLineOne", ".bible__problems__one");
+  animatePath("#wavyLineTwo", ".bible__problems__two");
+  animatePath("#bigline", ".bible__problems__one");
+// initAnimations(mm);
 };
 init();

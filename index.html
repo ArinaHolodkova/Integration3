@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-<link rel="stylesheet" href="src/css/normalize.css">
-<link rel="stylesheet" href="src/css/style.css">
+<link rel="stylesheet" href="./src/css/normalize.css">
+<link rel="stylesheet" href="./src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Moo+Lah+Lah&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Quintessential&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -234,7 +234,7 @@ srcset="
 
 <picture class="carousel__wrapper__item active">
 <source
-sizes="(max-width: 1080px) 100vw, 1080px"
+sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
 srcset="
 ./src/assets/latin/latin,w_200.avif 200w,
 ./src/assets/latin/latin,w_257.avif 257w,
@@ -259,7 +259,7 @@ srcset="
  />
      <img
      class="latin"
-            sizes="70vw"
+            sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
             src="./src/assets/latin/latin.png"
             alt="Latin language"
           />
@@ -267,7 +267,7 @@ srcset="
 
  <picture class="carousel__wrapper__item">
 <source
-sizes="(max-width: 1080px) 100vw, 1080px"
+sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
 srcset="./src/assets/greece/greece,w_200.avif 200w,
 ./src/assets/greece/greece,w_266.avif 266w,
 ./src/assets/greece/greece,w_324.avif 324w,
@@ -286,7 +286,7 @@ srcset="./src/assets/greece/greece,w_200.avif 200w,
  />
      <img
      class="greece"
-            sizes="70vw"
+            sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
             src="./src/assets/greece/greece.png"
             alt="Greek language"
           />
@@ -294,7 +294,7 @@ srcset="./src/assets/greece/greece,w_200.avif 200w,
 
 <picture class="carousel__wrapper__item">
 <source
-sizes="(max-width: 1080px) 100vw, 1080px"
+sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
 srcset="
 ./src/assets/hebrew/hebrew,w_200.avif 200w,
 ./src/assets/hebrew/hebrew,w_270.avif 270w,
@@ -314,7 +314,7 @@ srcset="
  />
      <img
      class="hebrew"
-            sizes="70vw"
+            sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
             src="./src/assets/hebrew/hebrew.png"
             alt="Hebrew language"
           />
@@ -335,9 +335,6 @@ srcset="
             <svg id="wavyLineOne" width="236" height="890" viewBox="0 0 236 890" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M108.5 1.5C108.5 1.5 200.185 35.1988 225 85.5C243.5 123 238 177 194.5 202C147.267 229.146 86.466 185.025 55.0002 202C17 222.5 10.5002 277 43 311.5C93.2914 364.887 224.107 282.5 216.5 415C214.143 456.059 189.016 483.763 153.5 504.5C104.542 533.085 45.6722 523.962 10.5002 479.5C-16 446 21.5 389.68 55.0002 415C98 447.5 76.9671 529.334 121.5 585C145.509 615.011 185.027 613.753 194.5 651C210.639 714.454 57.0209 678.557 55.0002 744C53.2562 800.482 160.954 793.985 153.5 850C151.357 866.107 139 889 139 889" stroke="#5E3023" stroke-width="2"/>
 </svg>
-<svg id="bigline" width="929" height="921" viewBox="0 0 929 921" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.5 1.9997C0.5 1.9997 166 -7.5003 217.5 43.4997C334.5 159.364 67 215 41 135.5C0.47229 11.5776 245.458 42.0039 346.5 100.5C446.542 158.417 373.638 296.005 458.5 374.5C526.127 437.053 579.123 432.655 669.5 450.5C748 466 817.909 442.255 870.5 475.5C932.798 514.881 930.737 581.985 925.5 655.5C921.988 704.805 906.601 735.735 870.5 769.5C819.919 816.808 766.756 808.5 697.5 808.5C614 808.5 559.461 769.679 487 808.5C435.085 836.314 386 920.5 386 920.5" stroke="#5E3023" stroke-width="2"/>
-</svg>
 
 </div>
      </div>
@@ -355,6 +352,10 @@ srcset="
         <h3> As the Result</h3>
         <p >Despite these obstacles, Plantin’s meticulous leadership and dedication ensured the completion of this groundbreaking publication, solidifying his reputation as a master printer and intellectual innovator.</p>
 </div>
+<svg id="bigline" class="bible__problems__line" width="1008" height="920" viewBox="0 0 1008 902" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1.5C1 1.5 271.5 29.5 307.5 176.5C346.668 336.436 88 301 57 233.5C1.24901 112.107 239.458 76.5042 340.5 135C440.542 192.917 380.138 292.006 465 370.5C532.627 433.053 592.5 431.5 682.5 431.5C762.516 431.5 883.909 430.255 936.5 463.5C998.798 502.881 1010.24 578.985 1005 652.5C1000.41 717 942 756 897.5 773.5C833.049 798.846 779.309 797.353 710.5 789.5C618.5 779 514 704 423.5 773.5C376.788 809.373 399 901.5 399 901.5" stroke="#5E3023" stroke-width="2"/>
+</svg>
+
         </section>
      </article >
 
@@ -393,13 +394,13 @@ srcset="
     <div class="illustration__container__leaf">
     <picture class="leaf leaf__three">
 <source
-sizes="(max-width: 187px) 100vw, 187px"
+sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
 srcset="./src/assets/leaf1.avif 187w"
  type="image/avif"
  />
      <img
       class="leaf "
-            sizes="50px"
+            sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
             src="./src/assets/leaf1.png"
             alt="Leaf to pop"
           />
@@ -407,26 +408,26 @@ srcset="./src/assets/leaf1.avif 187w"
 
  <picture class="leaf leaf__two">
 <source
-sizes="(max-width: 187px) 100vw, 187px"
+sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
 srcset="./src/assets/leaf2.avif 187w"
  type="image/avif"
  />
      <img
      class="leaf"
-            sizes="50px"
+            sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
             src="./src/assets/leaf2.png"
             alt="Leaf to pop"
           />
 </picture> 
 <picture class="leaf leaf__one" >
 <source
-sizes="(max-width: 187px) 100vw, 187px"
+sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
 srcset="./src/assets/leaf3.avif 187w"
  type="image/avif"
  />
      <img
      class="leaf"
-            sizes="50px"
+            sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
             src="./src/assets/leaf3.png"
             alt="Leaf to pop"
           />
@@ -435,7 +436,7 @@ srcset="./src/assets/leaf3.avif 187w"
 
           <picture  class="flowerbook">
 <source
- sizes="(max-width: 1400px) 100vw, 1400px"
+sizes="(min-width:45em) 50vw, (min-width: 300px)  70vw"
 srcset="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_537.avif 537w,
           ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_766.avif 766w,
@@ -446,7 +447,7 @@ srcset="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
  type="image/avif"
  />
      <img
-            sizes="70vw"
+           sizes="(min-width:45em) 50vw, (min-width: 300px)  20vw"
             src="./src/assets/flowerbook/plant_book.png"
             alt="Leaf to pop"
           />
