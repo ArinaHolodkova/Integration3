@@ -15,8 +15,6 @@ const prevButton = document.querySelector(".carousel__prev");
 const nextButton = document.querySelector(".carousel__next");
 let currentIndex = 0;
 
-// let startX = 0;
-// let endX = 0;
 
 const navigation = () => {
   const $nav = document.querySelector(".nav");
@@ -84,71 +82,48 @@ const updateCarousel = () => {
   });
 };
 
-const carouselEffect =()=>{
-prevButton.addEventListener("click", () => {
-  currentIndex =
-    (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-  updateCarousel();
-});
+const carouselEffect = () => {
+    const mm = gsap.matchMedia();
+  mm.add(
+    {
+      isDesktop: "(min-width: 45em)",
+      isMobile: "(max-width: 1023px)",
+    },
+    (context) => {
+      const { isMobile, isDesktop } = context.conditions;
 
-nextButton.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % carouselItems.length;
-  updateCarousel();
-});
-}
+      if (isMobile) {
+        prevButton.addEventListener("click", () => {
+          currentIndex =
+            (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+          updateCarousel();
+        });
 
-// const questionSection = () => {
-//   const questionContainer = document.querySelector(".question__section");
-//   const carouselSection = document.querySelector(".bible__languages__carousel");
-//   const bibleTitle = document.querySelector(".bible__languages__comment");
-//     const answer1 = document.querySelector("#answer__1");
-//   const answer2 = document.querySelector("#answer__2");
-//   const answer3 = document.querySelector("#answer__3");
-//     const answer4 = document.querySelector("#answer__4");
-//   const answer5 = document.querySelector("#answer__5");
-//   const questionText = document.querySelector(".question__text");
+        nextButton.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % carouselItems.length;
+          updateCarousel();
+        });
+      }
 
-// const revealCarousel = () => {
-//   questionText.style.transition = "transform 0.5s ease-in-out";
+      if (isDesktop) {
+       
+        carouselItems.forEach((item) => {
+           item.classList.add("active");
+          item.addEventListener("mouseover", () => {
+            item.style.transform = "scale(1.2)";
+            item.style.transition = "transform 0.3s ease";
+          });
 
-//   setTimeout(() => {
-//     questionContainer.style.opacity = "0";
-//     setTimeout(() => {
-//       questionContainer.style.display = "none";
+          item.addEventListener("mouseout", () => {
+            item.style.transform = "scale(1)";
+            item.style.boxShadow = "none";
+          });
+        });
+      }
+    }
+  );
+};
 
-//       carouselSection.style.display = "block"; 
-//       carouselSection.style.opacity = "1"; 
-//       carouselSection.style.transition = "opacity 0.5s ease-in-out";
-//     }, 500);
-//   }, 500);
-// };
-//   answer1.addEventListener("click", () => {
-//     revealCarousel();
-//     bibleTitle.textContent = " Not even close";
-//     questionText.style.transform = "translateX(-70%)";
-//   });
-//   answer2.addEventListener("click", () => {
-//     revealCarousel();
-//     bibleTitle.textContent =" Not even close" ;
-//     questionText.style.transform = "translateX(-70%)";
-//   });
-//   answer3.addEventListener("click", () => {
-//     revealCarousel();
-//      bibleTitle.textContent = " Not even close";
-//     questionText.style.transform = "translateX(-70%)";
-//   });
-//     answer4.addEventListener("click", () => {
-//       revealCarousel();
-//       bibleTitle.textContent = "Almost there!";
-//       questionText.style.transform = "translateX(70%)";
-//     });
-//   answer5.addEventListener("click", () => {
-//     revealCarousel();
-//     bibleTitle.textContent =
-//       "Were you involved in the creation process? Because this is the correct answer ";
-//     questionText.style.transform = "translateY(70%)";
-//   });
-// };
 
 const questionSection = () => {
   const questionContainer = document.querySelector(".question__section");
@@ -209,6 +184,7 @@ const questionSection = () => {
 
 
 const swipeEffect = (mm) => {
+
   mm.add(
     {
       isDesktop: "(min-width:  45em)",
@@ -285,7 +261,7 @@ const swipeEffect = (mm) => {
       }
     } // End of context function
   ); // End of mm.add
-}; // End of swipeEffect
+}; 
 
 
 const updateContent = () => {
@@ -403,7 +379,7 @@ const animatePath = (pathSelector, triggerSelector) => {
             scrollTrigger: {
               trigger: triggerSelector,
               start: "top top",
-              markers: true,
+              // markers: true,
               scrub: true,
             },
           }
@@ -452,7 +428,6 @@ const puzzleMake = () => {
   console.log(
     `Piece Dimensions (scaled): width=${pieceWidth}, height=${pieceHeight}`
   );
-
 
   const correctPositions = [
     { x: 0, y: 0 },
@@ -504,6 +479,8 @@ const puzzleMake = () => {
             duration: 0.2,
           });
           this.disable();
+
+          console.log("HERHEHREHRHREHEREHR")
      
         }
       },
@@ -511,35 +488,109 @@ const puzzleMake = () => {
   });
 };
 
-
-
-
 const generation = () => {
   const pictures = document.querySelectorAll(
     ".botanic__illustrations__generations picture"
   );
+  const mm = gsap.matchMedia();
 
-  pictures.forEach((picture) => {
+  mm.add(
+    {
+      isDesktop: "(min-width: 45em)",
+      isMobile: "(max-width: 45em)",
+    },
+    (context) => {
+      const { isDesktop, isMobile } = context.conditions;
+
+      if (isMobile) {
+      
+        pictures.forEach((picture) => {
+          gsap.fromTo(
+            picture,
+            { scale: 0.7, opacity: 0.5 },
+            {
+              scale: 1.2,
+              opacity: 1,
+              scrollTrigger: {
+                trigger: picture,
+                start: "center 75%",
+                end: "center 25%",
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+if (isDesktop) {
+ 
+  gsap.to(".botanic__illustrations__generations", {
+    scrollTrigger: {
+      trigger: ".botanic__illustrations__generations",
+      start: "top 20%", 
+      scrub: true,
+      pin: true,
+
+    },
+  });
+
+  const pictureClasses = [
+    ".generations__first",
+    ".generations__second",
+    ".generations__third",
+    ".generations__fourth",
+  ];
+
+  pictureClasses.forEach((pictureClass, index) => {
     gsap.fromTo(
-      picture,
-      { scale: 0.7, opacity: 0.5 },
-
+      pictureClass,
+      { scale: 0.5, opacity: 0.5 },
       {
         scale: 1.2,
         opacity: 1,
         scrollTrigger: {
-          trigger: picture,
-          start: "center 75%",
-          end: "center 25%",
+          trigger: pictureClass,
+          start: `top+=${index * 50} center`, 
+          end: `top+=${(index + 1) * 50} center`,
           scrub: true,
         },
       }
     );
   });
+}
+
+
+
+    }
+  );
 };
+
+const heroDrag = () => {
+  const draggableImage = document.querySelector(".hero__draggable");
+  const printingImage = document.querySelector(".hero__printing");
+
+  Draggable.create(draggableImage, {
+    type: "y",
+    bounds: {
+      minY: 0,
+      maxY: 200,
+    },
+    onPress() {
+      printingImage.style.pointerEvents = "none";
+      draggableImage.style.cursor = "grabbing";
+    },
+    onRelease() {
+      printingImage.style.pointerEvents = "auto";
+      draggableImage.style.cursor = "grab";
+    },
+  });
+};
+
+
 
 const init = () => {
 const mm = gsap.matchMedia();
+heroDrag();
   questionSection();
   createDots();
   updateContent();
@@ -552,6 +603,5 @@ const mm = gsap.matchMedia();
   animatePath("#wavyLineOne", ".bible__problems__one");
   animatePath("#wavyLineTwo", ".bible__problems__two");
   animatePath("#bigline", ".bible__problems__one");
-// initAnimations(mm);
 };
 init();

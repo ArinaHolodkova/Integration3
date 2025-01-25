@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-<link rel="stylesheet" href="./src/css/normalize.css">
-<link rel="stylesheet" href="./src/css/style.css">
+<link rel="stylesheet" href="/src/css/normalize.css">
+<link rel="stylesheet" href="/src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Moo+Lah+Lah&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Quintessential&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -42,11 +42,11 @@
       </svg>
     </button>
     <ul class="nav__list" id="nav__list">
-      <li class="nav__item"><a class="nav__link" href="/#">Intro</a></li>
-      <li class="nav__item"><a class="nav__link" href="/#">Polyglot Bible</a></li>
-      <li class="nav__item"><a class="nav__link" href="/#">Botanical Book</a></li>
-      <li class="nav__item"><a class="nav__link" href="/#">Atlas</a></li>
-      <button class="nav__museum">Visit Museum</button>
+      <li class="nav__item"><a class="nav__link" href="#intro">Intro</a></li>
+      <li class="nav__item"><a class="nav__link" href="#polyglot">Polyglot Bible</a></li>
+      <li class="nav__item"><a class="nav__link" href="#botanic">Botanical Book</a></li>
+      <li class="nav__item"><a class="nav__link" href="#atlas">Atlas</a></li>
+      <button class="nav__museum"><a class="nav__museum__link"  target="_blank"  href="https://museumplantinmoretus.be/">Visit Museum</a></button>
     </ul>
   </nav>
 </div>
@@ -55,39 +55,41 @@
    
 
     <h1>Printing the Future</h1>
- 
+
+
+<div class="hero">
+    <picture  class="hero__draggable">
+      <source
+    sizes="(min-width:45em) 13vw, (min-width: 300px)  20vw"
+    srcset="
+/src/assets/draggable/draggable,w_200.avif 200w,
+/src/assets/draggable/draggable,w_1122.avif 1122w"
+    type="image/avif"
+    />
+    <img
+        src="/src/assets/draggable/draggable.png"
+        alt="Draggable component"
+    />
+</picture>
+
     <picture class="hero__printing">
     <source
     sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
     srcset="
-./src/assets/printing/printing,w_200.avif 200w,
-./src/assets/printing/printing,w_585.avif 585w,
-./src/assets/printing/printing,w_684.avif 684w"
+/src/assets/printing/machine,w_200.avif 200w,
+/src/assets/printing/machine,w_900.avif 900w,
+/src/assets/printing/machine,w_1400.avif 1400w"
     type="image/avif"
     />
         <img
-                 sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
-                src="./src/assets/printing/printing.png"
+                sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
+                src="/src/assets/printing/machine.png"
                 alt="Printing press"
               />
-    </picture>
-    
-        <picture class="hero__draggable">
-    <source
-  sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
-    srcset="
-/src/assets/draggable/draggable,w_200.avif 200w,
-./src/assets/draggable/draggable,w_684.avif 684w"
-    type="image/avif"
-    />
-        <img
-               sizes="(min-width:1024px) 50vw, (min-width: 300px)  30vw"
-                src="./src/assets/draggable/draggable.png"
-                alt="Printing press"
-              />
-    </picture>
-
-
+    </picture>  
+    </div>
+   
+<article id="intro">
     <div class="intro">
       <h2 >Plantin</h2>
       <p class="intro__info">Christophe Plantin was more than just a printer—he was a visionary whose work helped shape the Renaissance and laid the foundation for modern science, art, and global understanding.</p>
@@ -109,17 +111,17 @@
     <source
     sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
     srcset="
-    ./src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
-    ./src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
-    ./src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
-    ./src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
-    ./src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w"
+    /src/assets/global_understanding/golobal_c_scale,w_200.avif 200w,
+    /src/assets/global_understanding/golobal_c_scale,w_534.avif 534w,
+    /src/assets/global_understanding/golobal_c_scale,w_796.avif 796w,
+    /src/assets/global_understanding/golobal_c_scale,w_1047.avif 1047w,
+    /src/assets/global_understanding/golobal_c_scale,w_1080.avif 1080w"
     type="image/avif"
     />
         <img
        
                 sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
-                src="./src/assets/global_understanding/golobal.png"
+                src="/src/assets/global_understanding/golobal.png"
                 alt="Global understanding"
               />
     </picture>
@@ -128,16 +130,16 @@
     <source
     sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
     srcset="
-    ./src/assets/art/art,w_200.avif 200w,
-          ./src/assets/art/art,w_514.avif 514w,
-          ./src/assets/art/art,w_739.avif 739w,
-          ./src/assets/art/art,w_1018.avif 1018w,
-          ./src/assets/art/art,w_1080.avif 1080w"
+    /src/assets/art/art,w_200.avif 200w,
+          /src/assets/art/art,w_514.avif 514w,
+          /src/assets/art/art,w_739.avif 739w,
+          /src/assets/art/art,w_1018.avif 1018w,
+          /src/assets/art/art,w_1080.avif 1080w"
     type="image/avif"
     />
         <img
                 sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
-                src="./src/assets/art/art.png"
+                src="/src/assets/art/art.png"
                 alt="Science"
               />
     </picture>     
@@ -146,15 +148,15 @@
     <source
      sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
     srcset="
-        ./src/assets/science/science,w_200.avif 200w,
-          ./src/assets/science/science,w_515.avif 515w,
-          ./src/assets/science/science,w_824.avif 824w,
-          ./src/assets/science/science,w_1080.avif 1080w"
+        /src/assets/science/science,w_200.avif 200w,
+          /src/assets/science/science,w_515.avif 515w,
+          /src/assets/science/science,w_824.avif 824w,
+          /src/assets/science/science,w_1080.avif 1080w"
     type="image/avif"
     />
         <img
                 sizes="(min-width:45em) 15vw, (min-width: 300px)  50vw"
-                src="./src/assets/science/science.png"
+                src="/src/assets/science/science.png"
                 alt="Science"
               />
     </picture>     
@@ -172,9 +174,9 @@
  <p class="about__dedication">His unwavering dedication to precision and excellence established him as one of the most influential figures in the history of printing. </p>
  <hr class="line">
   </div> 
+</article>
 
-
-   <article class="bible">
+   <article id="polyglot" class="bible">
   <section class="bible__king">
     <h2 class="bible__king__title" >Polyglot Bible</h2> 
      <svg class="bible__king__lineup" width="259" height="252" viewBox="0 0 259 252" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,20 +191,20 @@
 <source
     sizes="(min-width:45em) 60vw, (min-width: 300px)  30vw"
 srcset="
-./src/assets/book/book,w_200.avif 200w,
-./src/assets/book/book,w_431.avif 431w,
-./src/assets/book/book,w_607.avif 607w,
-./src/assets/book/book,w_749.avif 749w,
-./src/assets/book/book,w_894.avif 894w,
-./src/assets/book/book,w_1047.avif 1047w,
-./src/assets/book/book,w_1305.avif 1305w,
-./src/assets/book/book,w_1387.avif 1387w,
-./src/assets/book/book,w_1400.avif 1400w"
+/src/assets/book/book,w_200.avif 200w,
+/src/assets/book/book,w_431.avif 431w,
+/src/assets/book/book,w_607.avif 607w,
+/src/assets/book/book,w_749.avif 749w,
+/src/assets/book/book,w_894.avif 894w,
+/src/assets/book/book,w_1047.avif 1047w,
+/src/assets/book/book,w_1305.avif 1305w,
+/src/assets/book/book,w_1387.avif 1387w,
+/src/assets/book/book,w_1400.avif 1400w"
  type="image/avif"
  />
      <img
               sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
-            src="./src/assets/book/book.png"
+            src="/src/assets/book/book.png"
             alt="Bible"
           />
 </picture>   
@@ -225,7 +227,7 @@ srcset="
 
   <div class="bible__languages__carousel" id="carousel__section">
      <p class="bible__languages__comment"></p>
-    <h2 class="bible__languages__title"></h2>
+    <h2 class="bible__languages__title">5 languages!</h2>
 
     <p class="bible__languages__text">This eight-volume masterpiece presented the Bible in five languages—Latin, Greek, Hebrew, Aramaic, and Syriac—and stands as a landmark in biblical scholarship. </p>
    <div class="carousel__grid">
@@ -234,88 +236,88 @@ srcset="
 
 <picture class="carousel__wrapper__item active">
 <source
-sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
+sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
 srcset="
-./src/assets/latin/latin,w_200.avif 200w,
-./src/assets/latin/latin,w_257.avif 257w,
-./src/assets/latin/latin,w_307.avif 307w,
-./src/assets/latin/latin,w_348.avif 348w,
-./src/assets/latin/latin,w_393.avif 393w,
-./src/assets/latin/latin,w_433.avif 433w,
-./src/assets/latin/latin,w_471.avif 471w,
-./src/assets/latin/latin,w_510.avif 510w,
-./src/assets/latin/latin,w_546.avif 546w,
-./src/assets/latin/latin,w_583.avif 583w,
-./src/assets/latin/latin,w_620.avif 620w,
-./src/assets/latin/latin,w_656.avif 656w,
-./src/assets/latin/latin,w_691.avif 691w,
-./src/assets/latin/latin,w_725.avif 725w,
-./src/assets/latin/latin,w_759.avif 759w,
-./src/assets/latin/latin,w_795.avif 795w,
-./src/assets/latin/latin,w_829.avif 829w,
-./src/assets/latin/latin,w_1080.avif 1080w
+/src/assets/latin/latin,w_200.avif 200w,
+/src/assets/latin/latin,w_257.avif 257w,
+/src/assets/latin/latin,w_307.avif 307w,
+/src/assets/latin/latin,w_348.avif 348w,
+/src/assets/latin/latin,w_393.avif 393w,
+/src/assets/latin/latin,w_433.avif 433w,
+/src/assets/latin/latin,w_471.avif 471w,
+/src/assets/latin/latin,w_510.avif 510w,
+/src/assets/latin/latin,w_546.avif 546w,
+/src/assets/latin/latin,w_583.avif 583w,
+/src/assets/latin/latin,w_620.avif 620w,
+/src/assets/latin/latin,w_656.avif 656w,
+/src/assets/latin/latin,w_691.avif 691w,
+/src/assets/latin/latin,w_725.avif 725w,
+/src/assets/latin/latin,w_759.avif 759w,
+/src/assets/latin/latin,w_795.avif 795w,
+/src/assets/latin/latin,w_829.avif 829w,
+/src/assets/latin/latin,w_1080.avif 1080w
 "
  type="image/avif"
  />
      <img
      class="latin"
-            sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
-            src="./src/assets/latin/latin.png"
+            sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
+            src="/src/assets/latin/latin.png"
             alt="Latin language"
           />
 </picture> 
 
  <picture class="carousel__wrapper__item">
 <source
-sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
-srcset="./src/assets/greece/greece,w_200.avif 200w,
-./src/assets/greece/greece,w_266.avif 266w,
-./src/assets/greece/greece,w_324.avif 324w,
-./src/assets/greece/greece,w_374.avif 374w,
-./src/assets/greece/greece,w_425.avif 425w,
-./src/assets/greece/greece,w_476.avif 476w,
-./src/assets/greece/greece,w_524.avif 524w,
-./src/assets/greece/greece,w_573.avif 573w,
-./src/assets/greece/greece,w_617.avif 617w,
-./src/assets/greece/greece,w_662.avif 662w,
-./src/assets/greece/greece,w_706.avif 706w,
-./src/assets/greece/greece,w_750.avif 750w,
-./src/assets/greece/greece,w_1080.avif 1080w
+sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
+srcset="/src/assets/greece/greece,w_200.avif 200w,
+/src/assets/greece/greece,w_266.avif 266w,
+/src/assets/greece/greece,w_324.avif 324w,
+/src/assets/greece/greece,w_374.avif 374w,
+/src/assets/greece/greece,w_425.avif 425w,
+/src/assets/greece/greece,w_476.avif 476w,
+/src/assets/greece/greece,w_524.avif 524w,
+/src/assets/greece/greece,w_573.avif 573w,
+/src/assets/greece/greece,w_617.avif 617w,
+/src/assets/greece/greece,w_662.avif 662w,
+/src/assets/greece/greece,w_706.avif 706w,
+/src/assets/greece/greece,w_750.avif 750w,
+/src/assets/greece/greece,w_1080.avif 1080w
 "
  type="image/avif"
  />
      <img
      class="greece"
-            sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
-            src="./src/assets/greece/greece.png"
+            sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
+            src="/src/assets/greece/greece.png"
             alt="Greek language"
           />
 </picture> 
 
 <picture class="carousel__wrapper__item">
 <source
-sizes="(min-width:45em) 30vw, (min-width: 300px)  30vw"
+sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
 srcset="
-./src/assets/hebrew/hebrew,w_200.avif 200w,
-./src/assets/hebrew/hebrew,w_270.avif 270w,
-./src/assets/hebrew/hebrew,w_332.avif 332w,
-./src/assets/hebrew/hebrew,w_384.avif 384w,
-./src/assets/hebrew/hebrew,w_440.avif 440w,
-./src/assets/hebrew/hebrew,w_493.avif 493w,
-./src/assets/hebrew/hebrew,w_541.avif 541w,
-./src/assets/hebrew/hebrew,w_588.avif 588w,
-./src/assets/hebrew/hebrew,w_632.avif 632w,
-./src/assets/hebrew/hebrew,w_674.avif 674w,
-./src/assets/hebrew/hebrew,w_717.avif 717w,
-./src/assets/hebrew/hebrew,w_754.avif 754w,
-./src/assets/hebrew/hebrew,w_1080.avif 1080w
+/src/assets/hebrew/hebrew,w_200.avif 200w,
+/src/assets/hebrew/hebrew,w_270.avif 270w,
+/src/assets/hebrew/hebrew,w_332.avif 332w,
+/src/assets/hebrew/hebrew,w_384.avif 384w,
+/src/assets/hebrew/hebrew,w_440.avif 440w,
+/src/assets/hebrew/hebrew,w_493.avif 493w,
+/src/assets/hebrew/hebrew,w_541.avif 541w,
+/src/assets/hebrew/hebrew,w_588.avif 588w,
+/src/assets/hebrew/hebrew,w_632.avif 632w,
+/src/assets/hebrew/hebrew,w_674.avif 674w,
+/src/assets/hebrew/hebrew,w_717.avif 717w,
+/src/assets/hebrew/hebrew,w_754.avif 754w,
+/src/assets/hebrew/hebrew,w_1080.avif 1080w
 "
  type="image/avif"
  />
      <img
      class="hebrew"
-            sizes="(min-width:45em) 50vw, (min-width: 300px)  30vw"
-            src="./src/assets/hebrew/hebrew.png"
+            sizes="(min-width:45em) 15vw, (min-width: 300px)  30vw"
+            src="/src/assets/hebrew/hebrew.png"
             alt="Hebrew language"
           />
 </picture> 
@@ -359,7 +361,7 @@ srcset="
         </section>
      </article >
 
-     <article class="botanic"> 
+     <article id="botanic" class="botanic"> 
      <section class="botanic__intro">
       <h2>The Botanical Book</h2>
       <p>Beyond theology, Plantin made remarkable contributions to science and medicine. He collaborated with renowned botanist Rembert Dodoens to publish pioneering botanical works, including Dodoens’ herbal, which detailed the medicinal properties of plants. </p>
@@ -379,11 +381,13 @@ srcset="
      <p class="botanic__intro__herbal"> The Herbal was a comprehensive guide to plants, describing their medicinal properties, growth habits, and uses.</p>
      </section>
 
-<section class="botanic__illustrations">
+<section>
+  <div class="botanic__illustrations">
+  <div class="botanic__illustrations__info">
   <h2 class="botanic__illustrations__title">Illustrations</h2>
   <p class="botanic__illustration__text">These publications featured highly accurate illustrations, which were the result of painstaking collaboration between botanists, engravers, and printers.</p>
   <p class="botanic__illustration__text">Plantin oversaw every stage of production, ensuring both scientific accuracy and visual clarity.</p>
-
+</div>
   <div class="illustration__container">
      <div class="illustration__container__pop">
   <p>pop it!</p>
@@ -395,40 +399,40 @@ srcset="
     <picture class="leaf leaf__three">
 <source
 sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-srcset="./src/assets/leaf1.avif 187w"
+srcset="/src/assets/leaf1.avif 187w"
  type="image/avif"
  />
      <img
       class="leaf "
             sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-            src="./src/assets/leaf1.png"
+            src="/src/assets/leaf1.png"
             alt="Leaf to pop"
           />
 </picture> 
 
  <picture class="leaf leaf__two">
 <source
-sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-srcset="./src/assets/leaf2.avif 187w"
+sizes="(min-width:45em) 1vw, (min-width: 300px)  20vw"
+srcset="/src/assets/leaf2.avif 187w"
  type="image/avif"
  />
      <img
      class="leaf"
             sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-            src="./src/assets/leaf2.png"
+            src="/src/assets/leaf2.png"
             alt="Leaf to pop"
           />
 </picture> 
 <picture class="leaf leaf__one" >
 <source
 sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-srcset="./src/assets/leaf3.avif 187w"
+srcset="/src/assets/leaf3.avif 187w"
  type="image/avif"
  />
      <img
      class="leaf"
             sizes="(min-width:45em) 5vw, (min-width: 300px)  20vw"
-            src="./src/assets/leaf3.png"
+            src="/src/assets/leaf3.png"
             alt="Leaf to pop"
           />
 </picture> 
@@ -437,92 +441,94 @@ srcset="./src/assets/leaf3.avif 187w"
           <picture  class="flowerbook">
 <source
 sizes="(min-width:45em) 50vw, (min-width: 300px)  70vw"
-srcset="./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_537.avif 537w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_766.avif 766w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1006.avif 1006w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1278.avif 1278w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1372.avif 1372w,
-          ./src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif 1400w"
+srcset="/src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_200.avif 200w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_537.avif 537w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_766.avif 766w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1006.avif 1006w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1278.avif 1278w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1372.avif 1372w,
+          /src/assets/flowerbook/plant_book_xf5dzi_c_scale,w_1400.avif 1400w"
  type="image/avif"
  />
      <img
            sizes="(min-width:45em) 50vw, (min-width: 300px)  20vw"
-            src="./src/assets/flowerbook/plant_book.png"
+            src="/src/assets/flowerbook/plant_book.png"
             alt="Leaf to pop"
           />
 </picture> 
 </div>
- 
+ </div>
 <div class="botanic__illustrations__generations">
 
           <picture  class="generations__first">
-<source
- sizes="(max-width: 1080px) 100vw, 1080px"
-srcset="./src/assets/first_generation/first_generation,w_200.avif 200w,
-./src/assets/first_generation/first_generation,w_500.avif 500w,
-./src/assets/first_generation/first_generation,w_923.avif 923w,
-./src/assets/first_generation/first_generation,w_1080.avif 1080w"
- type="image/avif"
- />
-     <img
-            sizes="70vw"
-            src="./src/assets/first_generation/firs_generation.png"
+            <source
+             sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
+            srcset="/src/assets/first_generation/first_generation,w_200.avif 200w,
+            /src/assets/first_generation/first_generation,w_500.avif 500w,
+            /src/assets/first_generation/first_generation,w_923.avif 923w,
+            /src/assets/first_generation/first_generation,w_1080.avif 1080w"
+            type="image/avif"
+            />
+            <img
+             sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
+            src="/src/assets/first_generation/firs_generation.png"
             alt="16 century"
-          />
-</picture> 
-<p class="generations__text">These books not only became valuable references for physicians</p>
+            />
+          </picture> 
+
 
           <picture  class="generations__second">
 <source
- sizes="(max-width: 1080px) 100vw, 1080px"
+ sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
 srcset="
-./src/assets/second_generation/second_generation,w_200.avif 200w,
-./src/assets/second_generation/second_generation,w_498.avif 498w,
-./src/assets/second_generation/second_generation,w_871.avif 871w,
-./src/assets/second_generation/second_generation,w_1080.avif 1080w"
+/src/assets/second_generation/second_generation,w_200.avif 200w,
+/src/assets/second_generation/second_generation,w_498.avif 498w,
+/src/assets/second_generation/second_generation,w_871.avif 871w,
+/src/assets/second_generation/second_generation,w_1080.avif 1080w"
  type="image/avif"
  />
      <img
-            sizes="70vw"
-            src="./src/assets/second_generation/second_generation.png"
+             sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
+            src="/src/assets/second_generation/second_generation.png"
             alt="19 century"
           />
 </picture> 
-<p class="generations__text"> but also sparked further interest in the natural world</p>
+
 
 <picture class="generations__third">
 <source
-sizes="(max-width: 1080px) 100vw, 1080px"
+ sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
 srcset="
-./src/assets/third_generation/third_generation,w_200.avif 200w,
-./src/assets/third_generation/third_generation,w_742.avif 742w,
-./src/assets/third_generation/third_generation,w_1080.avif 1080w"/>
-<img sizes="70vw"
- src="./src/assets/third_generation/third_generation.png" 
+/src/assets/third_generation/third_generation,w_200.avif 200w,
+/src/assets/third_generation/third_generation,w_742.avif 742w,
+/src/assets/third_generation/third_generation,w_1080.avif 1080w"/>
+<img  sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
+ src="/src/assets/third_generation/third_generation.png" 
 alt="20 century"/>
 </picture>
-<p class="generations__text"> advancing the study of botany and medicine </p>
+
 <picture class="generations__fourth">
 <source
-sizes="(max-width: 1080px) 100vw, 1080px"
+ sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
 srcset="
-./src/assets/fourth_generation/fourth_generation,w_200.avif 200w,
-./src/assets/fourth_generation/fourth_generation,w_600.avif 600w,
-./src/assets/fourth_generation/fourth_generation,w_1080.avif 1080w"/>
-<img sizes="70vw"
- src="./src/assets/fourth_generation/fourth_generation.png" 
+/src/assets/fourth_generation/fourth_generation,w_200.avif 200w,
+/src/assets/fourth_generation/fourth_generation,w_600.avif 600w,
+/src/assets/fourth_generation/fourth_generation,w_1080.avif 1080w"/>
+<img  sizes="(min-width:45em) 20vw, (min-width: 300px)  20vw"
+ src="/src/assets/fourth_generation/fourth_generation.png" 
 alt="21 century">
 </picture>
-<p class="generations__text"> advancing the study of botany and medicine in ways that would influence generations of scholars and scientists.</p>
-
 </div>
+<p class="generations__text">These books not only became valuable references for physicians but also sparked further interest in the natural world, advancing the study of botany and medicine in ways that would influence generations of scholars and scientists.</p>
+
+
+
 <hr class="line">
 <hr class="line">
 </section>
    </article>
 
-   <article class="atlas">
+   <article id="atlas" class="atlas">
     <section>
  <h2>Theatrum Orbis Terrarum </h2>
 
@@ -535,17 +541,17 @@ alt="21 century">
 
        <picture>
 <source
-sizes="(max-width: 624px) 100vw, 624px"
+ sizes="(min-width:45em) 40vw, (min-width: 300px)  20vw"
 srcset="
-./src/assets/atlas/atlas,w_200.avif 200w,
-./src/assets/atlas/atlas,w_429.avif 429w,
-./src/assets/atlas/atlas,w_591.avif 591w,
-./src/assets/atlas/atlas,w_624.avif 624w"
+/src/assets/atlas/atlas,w_200.avif 200w,
+/src/assets/atlas/atlas,w_429.avif 429w,
+/src/assets/atlas/atlas,w_591.avif 591w,
+/src/assets/atlas/atlas,w_624.avif 624w"
  type="image/avif"
  />
      <img
-            sizes="70vw"
-            src="./src/assets/atlas/atlas.png"
+             sizes="(min-width:45em) 40vw, (min-width: 300px)  20vw"
+            src="/src/assets/atlas/atlas.png"
             alt="globe"
           />
 </picture> 
@@ -564,99 +570,59 @@ srcset="
     <section>
       <h2>Legacy</h2>
       <p class="end__text">Throughout his career, Christophe Plantin demonstrated an extraordinary ability to combine artistic vision, technical expertise, and scholarly ambition. His work preserved and expanded the boundaries of human knowledge, making it accessible to a broader audience.</p>
-<!-- <div class="end__combine">
- <picture class="end__combine__image tool">
-<source
-sizes="(max-width: 1400px) 100vw, 1400px"
-srcset="
- ./src/assets/tool/tool,w_200.avif 200w,
- ./src/assets/tool/tool,w_1264.avif 1264w,
-./src/assets/tool/tool,w_1400.avif 1400w"
- type="image/avif"
- />
-     <img
-     
-            sizes="20vw"
-            src="./src/assets/tool/tool.png"
-            alt="tool"
-          />
-</picture> 
-  
-   <picture  class="end__combine__image art__tool" >
-<source
-sizes="(max-width: 1400px) 100vw, 1400px"
-srcset="    
-./src/assets/art_tool/art_tool,w_200.avif 200w,
-      ./src/assets/art_tool/art_tool,w_978.avif 978w,
-      ./src/assets/art_tool/art_tool,w_1372.avif 1372w,
-      ./src/assets/art_tool/art_tool,w_1400.avif 1400w"
 
- type="image/avif"
- />
-     <img
-    
-            sizes="20vw"
-            src="./src/assets/art_tool/art_tool.png"
-            alt="art tool"
-          />
-</picture> 
-
-   <picture  class="end__combine__image trophy" >
-<source
-sizes="(max-width: 1400px) 100vw, 1400px"
-srcset="
- ./src/assets/trophy/trophy,w_200.avif 200w,
-      ./src/assets/trophy/trophy,w_1033.avif 1033w,
-      ./src/assets/trophy/trophy,w_1400.avif 1400w"
- type="image/avif"
- />
-     <img
-     
-            sizes="70vw"
-            src="./src/assets/trophy/trophy.png"
-            alt="trophy"
-          />
-</picture> 
-
- <picture  class="big-image hidden">
-<source
-sizes="(max-width: 936px) 100vw, 936px"
-srcset="
-./src/assets/plantin/plantin,w_200.avif 200w,
-./src/assets/plantin/plantin,w_633.avif 633w,
-./src/assets/plantin/plantin,w_859.avif 859w,
-./src/assets/plantin/plantin,w_935.avif 935w,
-./src/assets/plantin/plantin,w_936.avif 936w"
- type="image/avif"
- />
-     <img
-            sizes="70vw"
-            src="./src/assets/plantin/plantin.jpg"
-            alt="Plantin"
-          />
-</picture> 
-</div> -->
       <p>By uniting precision, innovation, and dedication, Plantin left a lasting legacy as a pioneer in the history of printing and an enduring symbol of the Renaissance spirit.</p>
     </section>
 <section class="invite">
-    <h2>Create your own stories</h2> 
- <p>by visiting the Plantin-Moretus Museum, where the past is yours to explore.</p>
+  <h2 class="visually-hidden">Museum</h2>
+<div class="invite__create">
+  <h3 class="invite__create__title">Create your own stories</h3> 
+ <p class="invite__create__text">by visiting the Plantin-Moretus Museum, where the past is yours to explore.</p>
+</div>
+<div class="invite__story">
+  <h3 class="invite__story__title">Or wait for a new story</h3>
 
-  <h3>Or new story is coming soon</h3>
-
-<p>leave your email so you don’t miss it! </p>
-<form class="invite__form" action="your-server-endpoint" method="post">
-  <label class="invite__form__label" for="email">Your Email:</label><br>
-  <input class="invite__form__input" type="email" id="email" name="email" placeholder="Enter your email" required  autocomplete="email" >
-  <button class="invite__form__submit" type="submit">&#8594;</button>
+<p class="invite__story__text">New story is coming soon, leave your email so you don’t miss it! </p>
+<form class="invite__story__form" action="your-server-endpoint" method="post">
+  <label class="invite__story__form__label" for="email">Your Email:</label><br>
+  <input class="invite__story__form__input" type="email" id="email" name="email" placeholder="Enter your email" required  autocomplete="email" >
+  <button class="invite__story__form__submit" type="submit">&#8594;</button>
 </form>
-
+</div>
 </section>
    </article>
- <footer>
-<button>Visit Museum</button>
-<a href="">Go back</a>
+ <footer class="footer">
+  <div class="footer__logo">
+    <svg  width="74" height="69" viewBox="0 0 74 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.7 3V0.5C23.7 0.4 23.8 0.4 24.1 0.3H24.2V0H23.2V0.1C23.2 0.1 22.8 1 22.5 1.6C22.4 1.8 22.3 2.1 22.2 2.3C22.1 2.4 22.1 2.6 22 2.7C21.9 2.4 21.7 2 21.5 1.6C21.2 1 20.8 0.1 20.8 0.1V0H19.7V0.3H19.8C20 0.3 20.1 0.4 20.2 0.4C20.3 0.4 20.3 0.5 20.4 0.7V2.8C20.4 3 20.4 3.2 20 3.2H19.9V3.6H20.5C20.8 3.6 21.1 3.6 21.2 3.7H21.3V3.3H21.2C20.8 3.2 20.8 3.2 20.7 3V1.5C20.8 1.6 20.8 1.7 20.9 1.9L21 2.2C21 2.3 21.1 2.4 21.1 2.5C21.3 2.8 21.5 3.2 21.7 3.8V3.9H22V3.8C22.1 3.5 22.3 2.9 22.6 2.5L22.7 2.3C22.8 2.1 22.8 2 22.9 1.8C23 1.7 23 1.6 23.1 1.4V3.2C23.1 3.3 23 3.4 22.7 3.4H22.6V3.7H22.7C22.7 3.7 23.1 3.6 23.3 3.6C23.6 3.6 23.9 3.6 24.2 3.7H24.3V3.3H24.2C23.8 3.2 23.7 3.1 23.7 3ZM29.9 0H29V0.4H29.1C29.4 0.4 29.5 0.5 29.5 0.6C29.6 0.7 29.6 1 29.6 1.2V2.1C29.6 3.1 29 3.2 28.6 3.2C28.2 3.2 27.6 3.1 27.6 2.2V0.8C27.6 0.5 27.7 0.5 28.1 0.4H28.2V0.1H26.3V0.4H26.4C26.8 0.5 26.9 0.5 26.9 0.9V2.4C26.9 3.3 27.5 3.8 28.5 3.8C29.2 3.8 30 3.4 30 2.3V1.3C30 1.1 30 0.8 30.1 0.7C30.1 0.6 30.2 0.6 30.5 0.6H30.6V0.2H30.5C30.2 -1.93715e-07 30 0 29.9 0ZM34.2 1.5C33.7 1.3 33.6 1.1 33.6 0.9C33.6 0.6 33.8 0.4 34.2 0.4C34.5 0.4 34.7 0.6 34.7 0.9V1H35V0.2H34.9C34.6 0.0999998 34.4 0 34.1 0C33.4 0 32.9 0.4 32.9 1C32.9 1.5 33.2 1.8 33.9 2.1C34.4 2.3 34.5 2.4 34.5 2.7C34.5 3 34.2 3.3 33.9 3.3C33.5 3.3 33.3 3.1 33.2 2.7V2.6H32.9V3.5H33C33.3 3.6 33.7 3.7 34 3.7C34.8 3.7 35.3 3.2 35.3 2.6C35.2 1.9 34.7 1.7 34.2 1.5ZM40.2 2.6C40.1 2.9 40.1 3 40 3C39.9 3 39.6 3.1 39.3 3.1C39.1 3.1 39 3.1 38.9 3C38.9 3 38.8 2.8 38.8 2.4V1.9H39.1C39.3 1.9 39.5 1.9 39.5 2C39.6 2 39.6 2.2 39.7 2.3V2.5L40 2.4V2.3C39.9 2.1 39.9 1.9 39.9 1.7V1.2H39.7V1.3C39.6 1.5 39.6 1.6 39.5 1.6C39.4 1.6 39.3 1.7 39.1 1.7H38.8V0.6H39.2C39.5 0.6 39.6 0.6 39.7 0.7C39.8 0.8 39.9 0.9 39.9 1.1V1.2H40.2V0.2H37.5V0.5H37.7C37.9 0.5 38.1 0.6 38.1 0.7V3.3C38.1 3.4 37.9 3.4 37.7 3.4H37.6V3.7H40.4V3.6C40.4 3.4 40.4 3.4 40.5 3.2V2.7L40.2 2.6ZM46.4 0H45.6V0.4H45.7C46 0.4 46.1 0.5 46.1 0.6C46.2 0.7 46.2 1 46.2 1.2V2.1C46.2 3.1 45.6 3.2 45.2 3.2C44.8 3.2 44.2 3.1 44.2 2.2V0.8C44.2 0.5 44.3 0.5 44.7 0.4H44.8V0.1H42.9V0.4H43C43.4 0.5 43.5 0.5 43.5 0.9V2.4C43.5 3.3 44.1 3.8 45.1 3.8C45.8 3.8 46.6 3.4 46.6 2.3V1.3C46.6 1.1 46.6 0.8 46.7 0.7C46.7 0.6 46.8 0.6 47.1 0.6H47.2V0.2H47.1C46.7 -1.93715e-07 46.6 0 46.4 0ZM53.7 3.2C53.4 3.1 53.3 3.1 53.3 3V0.5C53.3 0.4 53.4 0.4 53.7 0.3H53.8V0H52.7V0.1C52.7 0.1 52.3 1 52 1.6C51.9 1.8 51.8 2.1 51.7 2.3C51.6 2.4 51.6 2.5 51.5 2.6C51.4 2.3 51.2 1.9 51 1.5L50.3 0.1V0H49.2V0.3H49.3C49.5 0.3 49.6 0.4 49.7 0.4C49.8 0.4 49.8 0.5 49.9 0.7V2.9C49.9 3.1 49.9 3.3 49.5 3.3H49.4V3.7H50C50.3 3.7 50.6 3.7 50.7 3.8H50.8V3.4H50.7C50.3 3.3 50.3 3.3 50.2 3.1V1.6C50.3 1.7 50.3 1.8 50.4 2L50.5 2.3C50.5 2.4 50.6 2.5 50.6 2.6C50.8 2.9 51 3.3 51.2 3.9V4H51.5V3.9C51.6 3.6 51.9 3 52.1 2.6L52.2 2.4C52.3 2.2 52.3 2.1 52.4 1.9C52.5 1.8 52.5 1.7 52.6 1.5V3.3C52.6 3.4 52.5 3.5 52.2 3.5H52.1V3.8H52.2C52.2 3.8 52.6 3.7 52.8 3.7C53.1 3.7 53.4 3.7 53.7 3.8H53.8V3.4L53.7 3.2ZM1.5 12C1.6 12.3 1.6 12.8 1.6 14.1C1.6 15.6 1.6 16.2 1.5 16.5C1.4 16.8 1.3 17 0.5 17.1C0.5 17.1 0.399994 17.1 0.399994 17.2V17.6C0.899994 17.5 1.4 17.5 2.1 17.5C2.7 17.5 3.39999 17.5 3.89999 17.6V17.2C3.89999 17.2 3.9 17.1 3.8 17.1C3.1 17 2.9 16.9 2.8 16.7C2.7 16.5 2.6 15.7 2.6 13.5V11.5H2.89999C3.79999 11.5 4.3 12.1 4.3 12.9C4.3 13.7 3.8 14.3 3 14.4C3 14.4 2.89999 14.4 2.89999 14.5V14.8C2.89999 14.8 2.9 14.9 3 14.9C4 14.9 4.6 14.8 5 14.4C5.4 14.1 5.7 13.6 5.7 13C5.7 11.8 4.7 11.1 3.2 11.1H0.0999985C0.0999985 11.1 0 11.1 0 11.2V11.5C0 11.5 -1.52737e-06 11.6 0.0999985 11.6C1.2 11.5 1.4 11.6 1.5 12ZM14.8 17.7H15.9C16 17.5 16 17.4 16.1 17.1C16.3 16.6 16.5 16.2 16.6 16V15.9H16C15.7 16.4 15.4 16.7 15.1 16.9C14.8 17.1 14.5 17.1 14.2 17.1C13.6 17.1 13.4 17 13.2 16.9C12.9 16.7 12.8 16.5 12.8 15.5V13.7C12.8 12.3 12.8 12 13 11.8C13.1 11.7 13.4 11.5 13.8 11.5C13.8 11.5 13.9 11.5 13.9 11.4V11H12.2C11.4 11 11 11 10.7 10.9H10.5V11.3C10.5 11.3 10.5 11.4 10.6 11.4C11.1 11.5 11.3 11.6 11.5 11.7C11.6 11.9 11.7 12.1 11.7 12.5V15.2C11.7 16.1 11.7 16.6 11.6 16.8C11.5 16.9 11.4 17 10.8 17.1C10.8 17.1 10.7 17.1 10.7 17.2V17.5C10.7 17.5 10.7 17.6 10.8 17.6H10.9C11.1 17.6 11.6 17.5 12.1 17.5H13.5C13.8 17.6 14.3 17.7 14.8 17.7ZM24.5 17.2L24.4 17.6H27.7V17.2C27.7 17.2 27.7 17.1 27.6 17.1C27.2 17.1 27 17 26.9 16.8C26.7 16.6 26.7 16.4 26.1 15.1C25.9 14.7 25.7 14.2 25.5 13.5C24.9 12 24.4 10.5 24.4 10.5H24.2C24 10.9 23.7 11.4 23.3 11.4V11.5L23.4 11.7C23.3 12 22.3 14.6 21.8 16.1C21.5 16.9 21.3 17.1 20.6 17.2C20.6 17.2 20.5 17.2 20.5 17.3V17.7H23.2V17.3C23.2 17.3 23.2 17.2 23.1 17.2C22.4 17.2 22.1 17 22.1 16.7C22.1 16.5 22.5 15.3 22.6 15.1H24.6C24.7 15.3 24.8 15.5 24.8 15.7C25 16.2 25.1 16.5 25.1 16.7C25.5 16.9 25.3 17.1 24.5 17.2ZM24.7 14.4H23.3L24 12.5L24.7 14.4ZM34.2 16.8C34.1 16.6 34.1 16.5 34.1 15V12.7C34.4 13.1 35.5 14.3 36.3 15.1L36.5 15.4C37.7 16.7 38.5 17.6 38.7 18L39 17.8V17.7C39 17.7 39.1 14 39.1 13.8C39.1 12.6 39.1 12.2 39.2 12C39.3 11.8 39.6 11.6 40.2 11.6C40.2 11.6 40.3 11.6 40.3 11.5V11H37.4V11.5C38 11.6 38.2 11.7 38.3 11.9C38.4 12.1 38.4 12.3 38.4 13.7V15.5C38.2 15.2 37.8 14.8 37.4 14.4L37.1 14C35.1 11.9 34.6 11.2 34.5 11H31.9C31.9 11 31.8 11 31.8 11.1V11.5C31.8 11.5 31.8 11.6 31.9 11.6C32.5 11.6 32.8 11.8 33.2 12.1V15.4C33.2 16.6 33.2 16.8 33.1 17C33 17.2 32.8 17.3 32.1 17.4C32.1 17.4 32 17.4 32 17.5V17.9C32.5 17.9 33 17.8 33.6 17.8C34.3 17.8 34.7 17.8 35.1 17.9V17.5C35.1 17.5 35.1 17.4 35 17.4C34.7 17.1 34.3 17 34.2 16.8ZM45.7 11.9H47.5V15.4C47.5 15.9 47.5 16.6 47.3 16.8C47.2 17 47 17 46.7 17.1H46.5V17.6C46.9 17.6 47.6 17.5 48.1 17.5C48.6 17.5 49.2 17.5 49.8 17.6V17.2C49.8 17.2 49.8 17.1 49.7 17.1C49.1 17 48.9 16.9 48.8 16.5C48.7 16.2 48.7 15.9 48.7 14.9V11.8H49.8C50.4 11.8 50.5 11.8 50.6 11.9C50.7 12 50.7 12.1 50.7 12.6C50.7 12.6 50.7 12.7 50.8 12.7H51.2C51.2 12.7 51.3 12.7 51.3 12.6C51.4 12 51.5 11.5 51.6 11V10.9H51.1C51 11.1 50.9 11.1 50.6 11.1C50.1 11.1 48.6 11.2 47.5 11.2H45.4C45.2 11.2 45.1 11.2 45.1 10.9C45.1 10.9 45.1 10.8 45 10.8H44.6C44.6 10.8 44.5 10.8 44.5 10.9C44.5 11.3 44.4 11.9 44.3 12.5V12.6H44.8V12.5C45.2 12 45.3 11.9 45.7 11.9ZM57.3 11.8C57.4 12 57.5 12.2 57.5 12.6C57.5 13.1 57.6 14.3 57.6 15.3C57.6 16.3 57.6 16.8 57.4 17C57.3 17.1 57.1 17.2 56.6 17.2V17.7C56.6 17.7 57.3 17.6 58 17.6C58.7 17.6 59.4 17.6 59.9 17.7V17.3C59.9 17.3 59.9 17.2 59.8 17.2C59.3 17.1 59.1 17 59 16.8C58.9 16.6 58.8 16.4 58.8 15V13.3C58.8 12.1 58.9 11.9 59 11.8C59.2 11.6 59.2 11.6 59.9 11.5V11.1C59.9 11.1 59.9 11 59.8 11H58.2C57.5 11 56.9 11 56.4 10.9V11.3C56.4 11.3 56.4 11.4 56.5 11.4C56.9 11.5 57.2 11.6 57.3 11.8ZM73 11H70.1V11.4C70.1 11.4 70.1 11.5 70.2 11.5C70.8 11.6 71 11.7 71.1 11.9C71.2 12.1 71.2 12.3 71.2 13.7V15.5C71 15.2 70.6 14.8 70.2 14.4L69.8 14C68.2 12.3 67.4 11.3 67.2 11H64.6C64.6 11 64.5 11 64.5 11.1V11.5C64.5 11.5 64.5 11.6 64.6 11.6C65.2 11.6 65.5 11.8 65.9 12.1V15.4C65.9 16.6 65.9 16.8 65.8 17C65.7 17.2 65.5 17.3 64.8 17.4C64.8 17.4 64.7 17.4 64.7 17.5V17.9C65.2 17.9 65.7 17.8 66.3 17.8C67 17.8 67.4 17.8 67.8 17.9V17.5C67.8 17.5 67.8 17.4 67.7 17.4C67 17.3 66.7 17.2 66.6 17C66.5 16.8 66.5 16.7 66.5 15.2V12.9C66.8 13.3 67.9 14.5 68.7 15.3L68.9 15.5C70.1 16.8 70.9 17.7 71.2 18.1L71.5 17.9V17.8C71.5 17.8 71.6 14.1 71.6 13.9C71.6 12.7 71.6 12.3 71.7 12.1C71.8 11.9 72.1 11.7 72.7 11.7C72.7 11.7 72.8 11.7 72.8 11.6L73 11C73.1 11 73.1 11 73 11ZM9.39999 23.1C8.69999 23.2 8 23.2 7.7 23.2H7.3C7.3 23.2 6.7 24.4 6.1 25.7C5.8 26.3 5.5 26.9 5.3 27.4C5.2 27.7 5 28 5 28.1C4.9 27.8 4.69999 27.4 4.39999 26.9C4.19999 26.6 4.09999 26.3 3.89999 25.9C3.59999 25.3 3.4 24.9 3.2 24.6C2.8 23.9 2.7 23.6 2.6 23.3H2C1.5 23.3 0.399994 23.2 0.399994 23.2V23.6C0.399994 23.6 0.4 23.7 0.5 23.7C0.9 23.8 1.2 23.8 1.3 23.9C1.4 24 1.5 24.1 1.7 24.5V27.3C1.7 28.7 1.7 28.9 1.6 29.1C1.5 29.3 1.4 29.4 0.699997 29.5V30H0.799995C1.2 29.9 1.39999 29.9 1.89999 29.9C2.49999 29.9 3.3 30 3.5 30V29.6C3.5 29.6 3.49999 29.5 3.39999 29.5C2.69999 29.4 2.6 29.3 2.5 29.1C2.4 28.9 2.39999 28.7 2.39999 28.6V25.9C2.59999 26.2 2.89999 26.9 3.39999 27.8C3.99999 29 4.4 29.8 4.6 30.1H5.2C5.4 29.5 5.6 29.1 6.3 27.6L6.8 26.6C7 26.1 7.2 25.8 7.3 25.6V27.4C7.3 28.5 7.3 28.9 7.2 29.1C7.1 29.3 6.99999 29.5 6.39999 29.5C6.39999 29.5 6.3 29.5 6.3 29.6V30C6.8 29.9 7.3 29.9 7.8 29.9C8.2 29.9 9.5 30 9.5 30V29.6C9.5 29.6 9.49999 29.5 9.39999 29.5C8.79999 29.4 8.6 29.3 8.5 29C8.4 28.7 8.39999 28.4 8.39999 27.3V25.6C8.39999 24.6 8.4 24.3 8.5 24.2C8.6 24 8.79999 23.9 9.39999 23.8C9.39999 23.8 9.5 23.8 9.5 23.7L9.39999 23.1C9.49999 23.2 9.49999 23.2 9.39999 23.1ZM16.9 23.2C14.9 23.2 13.3 24.7 13.3 26.6C13.3 28.5 14.8 29.9 16.9 29.9C18.9 29.9 20.5 28.4 20.5 26.4C20.5 24.6 19 23.2 16.9 23.2ZM17 29.5C15.8 29.5 14.8 28.2 14.8 26.4C14.8 24.8 15.6 23.7 16.9 23.7C18.1 23.7 19 25 19 26.7C19 28.3 18.1 29.5 17 29.5ZM30.5 29C30 28.5 29.7 28 29.1 27L28.8 26.5C29.6 26.3 30.1 25.8 30.1 25.1C30.1 23.9 29.1 23.2 27.4 23.2H26.4C25.3 23.2 24.6 23.1 24.5 23.1V23.5C24.5 23.5 24.5 23.6 24.6 23.6C25 23.7 25.2 23.7 25.4 23.8C25.7 24.1 25.7 24.5 25.7 27.2C25.7 28.4 25.7 28.8 25.6 29C25.5 29.2 25.3 29.2 24.7 29.3C24.7 29.3 24.6 29.3 24.6 29.4V29.8C25.1 29.7 25.7 29.7 26.3 29.7C26.9 29.7 27.6 29.7 27.9 29.8H28.1C28.1 29.8 28.2 29.8 28.2 29.7V29.3C28.2 29.3 28.2 29.2 28.1 29.2C27.2 29.1 27.1 28.9 27 28.5C27 28.2 26.9 27.7 26.9 26.9V26.7H27.1C27.5 26.7 27.6 26.9 27.8 27.3C27.8 27.4 27.9 27.4 27.9 27.5C27.9 27.6 28 27.6 28 27.7C28.3 28.2 28.9 29.2 29.4 29.5C29.7 29.7 30.2 29.8 30.9 29.8H31.6C31.6 29.8 31.7 29.8 31.7 29.7V29.5C31.7 29.5 31.7 29.4 31.6 29.4C31.2 29.5 30.9 29.3 30.5 29ZM28.7 25.1C28.7 25.9 28.2 26.4 27.3 26.4H26.9V23.7H27.2C28.1 23.7 28.7 24.3 28.7 25.1ZM41.2 28.2H40.8C40.8 28.3 40.8 28.3 40.7 28.4C40.6 28.7 40.5 28.9 40.2 29.1C39.9 29.2 39.6 29.3 39.1 29.3C38.5 29.3 38.2 29.2 38 29C37.8 28.8 37.8 28.7 37.8 27.7V26.7H38.4C39.2 26.7 39.4 26.8 39.5 27C39.6 27.2 39.7 27.2 39.7 27.6L40 27.4V27.3C39.9 26.9 39.9 26.7 39.9 26.2V25.4H39.4C39.3 25.7 39.2 25.9 39.1 25.9C39 26 38.6 26 38 26H37.6V23.7H38.7C39.8 23.7 40 23.9 40.2 24.7H40.6V23.2H38.1C36.4 23.2 36 23.2 35.6 23.1H35.4V23.5C35.4 23.5 35.4 23.6 35.5 23.6C35.9 23.7 36.1 23.7 36.3 23.9C36.5 24.1 36.5 24.3 36.5 24.7V28.3C36.5 28.8 36.4 29 36.4 29.1C36.3 29.3 36.1 29.3 35.7 29.4V29.9H35.8C36 29.9 36.5 29.8 37.1 29.8H41C41 29.8 41.1 29.8 41.1 29.7C41.1 29.5 41.1 29.4 41.2 29V28.2C41.3 28.3 41.3 28.3 41.2 28.2ZM52.4 23.2H51.9C51.8 23.4 51.7 23.4 51.4 23.4C50.8 23.4 49.3 23.5 48.3 23.5H46.2C46 23.5 45.9 23.5 45.9 23.2C45.9 23.2 45.9 23.1 45.8 23.1H45.4C45.4 23.1 45.3 23.1 45.3 23.2C45.3 23.6 45.2 24.2 45.1 24.8V24.9H45.6V24.8C45.8 24.3 45.9 24.2 46.3 24.1H48.1V27.6C48.1 28.1 48.1 28.8 47.9 29C47.8 29.2 47.6 29.2 47.3 29.3H47.1V29.8C47.5 29.8 48.2 29.7 48.7 29.7C49.2 29.7 49.8 29.7 50.4 29.8V29.4C50.4 29.4 50.4 29.3 50.3 29.3C49.7 29.2 49.5 29.1 49.4 28.7C49.3 28.4 49.3 28.1 49.3 27.1V24H50.4C51 24 51.1 24 51.2 24.1C51.3 24.2 51.3 24.3 51.3 24.8C51.3 24.8 51.3 24.9 51.4 24.9H51.8C51.8 24.9 51.9 24.9 51.9 24.8C52.2 24.3 52.3 23.8 52.4 23.2ZM63.9 23.2C63.5 23.2 63.1 23.3 62.4 23.3H61.1V23.7C61.1 23.7 61.1 23.8 61.2 23.8C62 23.9 62.1 24 62.2 24.4C62.3 24.7 62.3 25.9 62.3 26.8C62.3 27.9 62.2 28.3 61.9 28.7C61.6 29.1 61 29.4 60.3 29.4C59.7 29.4 59.3 29.2 58.9 28.9C58.5 28.5 58.4 28.2 58.4 26.4V24.9C58.4 24 58.6 23.9 59.6 23.8C59.6 23.8 59.7 23.8 59.7 23.7V23.3C59.1 23.4 58.7 23.4 58.1 23.4C57.3 23.4 56.5 23.4 56.1 23.3H56V23.8C56.6 23.9 56.8 24 56.9 24.3C57 24.6 57 24.9 57 27.2V27.4C57 28.2 57 28.7 57.6 29.3C58.1 29.9 58.9 30.1 60 30.1C61 30.1 61.7 29.8 62.2 29.2C62.6 28.8 62.8 28.3 62.8 27.6C62.8 27.2 62.9 24.9 62.9 24.8C62.9 24 63 23.9 64 23.7V23.6L63.9 23.2ZM71 26.3C70.8 26.2 70.6 26.1 70.3 26L70.1 25.9C69.6 25.7 69.1 25.5 69.1 24.8C69.1 24.2 69.6 23.7 70.3 23.7C71 23.7 71.4 24.1 71.6 24.9H72.1V23.4C71.5 23.1 70.9 23 70.4 23C69 23 68 23.8 68 24.9C68 25.6 68.4 26.1 69.1 26.5C69.3 26.6 69.6 26.7 69.8 26.8C70.3 27 70.7 27.2 71 27.4C71.2 27.6 71.2 27.8 71.2 28C71.2 28.6 70.6 29.1 69.9 29.1C69.5 29.1 69.1 28.9 68.8 28.7C68.5 28.4 68.4 28.2 68.3 27.6C68.3 27.6 68.3 27.5 68.2 27.5H67.7C67.7 27.5 67.6 27.5 67.6 27.6V29.2C68.3 29.6 69 29.7 69.7 29.7C71.2 29.7 72.3 28.8 72.3 27.7C72.3 27.1 71.8 26.7 71 26.3Z" fill="#5E3023"/>
+<path d="M20.3906 54.3L19.8906 53.9L19.7906 54L19.8906 54.1V54.2L19.3906 54.8C19.3906 54.9 19.2906 54.9 19.2906 54.9H19.1906L19.0906 55L19.9906 55.7L20.2906 55.4L20.1906 55.3C20.0906 55.4 20.0906 55.4 19.9906 55.4C19.8906 55.4 19.8906 55.4 19.7906 55.3C19.6906 55.3 19.6906 55.2 19.6906 55.2L19.7906 55.1L20.1906 54.5L20.2906 54.4H20.3906V54.3C20.4906 54.3 20.4906 54.3 20.3906 54.3ZM21.5906 56.2V56L21.6906 54.9H21.5906L20.7906 55.6C20.6906 55.7 20.5906 55.7 20.5906 55.7V55.8L20.9906 56V55.9H20.8906L20.9906 55.8L21.2906 56V56.2H21.1906V56.3L21.7906 56.6L21.5906 56.2C21.6906 56.3 21.6906 56.3 21.5906 56.2ZM21.1906 55.7L20.9906 55.6L21.1906 55.4V55.7ZM22.9906 55.5L22.4906 55.3V55.4C22.5906 55.4 22.5906 55.4 22.5906 55.5V55.6L22.3906 56.3C22.3906 56.4 22.3906 56.4 22.2906 56.4H22.1906V56.5L22.7906 56.7C22.8906 56.7 22.9906 56.8 23.0906 56.8H23.1906C23.2906 56.8 23.3906 56.7 23.3906 56.6V56.3C23.3906 56.2 23.2906 56.2 23.1906 56.1H23.3906C23.4906 56.1 23.4906 56 23.4906 55.9V55.6C23.2906 55.6 23.1906 55.6 22.9906 55.5ZM22.8906 56.5C22.8906 56.6 22.7906 56.6 22.7906 56.7H22.5906V56.6L22.6906 56.3C22.7906 56.3 22.7906 56.3 22.7906 56.4V56.5C22.8906 56.3 22.8906 56.4 22.8906 56.5ZM22.9906 55.9C22.9906 56 22.8906 56 22.8906 56H22.7906L22.8906 55.6H22.9906V55.7C23.0906 55.8 22.9906 55.8 22.9906 55.9ZM24.6906 55.9H24.2906C24.1906 55.9 24.0906 56 23.9906 56.1C23.8906 56.2 23.8906 56.3 23.7906 56.4V56.7C23.7906 56.8 23.8906 56.9 23.9906 57C24.0906 57.1 24.1906 57.1 24.3906 57.2H24.5906C24.6906 57.2 24.8906 57.2 24.9906 57.1C25.0906 57 25.1906 56.8 25.2906 56.7C25.2906 56.5 25.2906 56.3 25.1906 56.2C25.0906 56.1 24.8906 56 24.6906 55.9ZM24.8906 56.6C24.8906 56.8 24.7906 56.9 24.7906 57C24.6906 57.1 24.6906 57.1 24.5906 57.1C24.4906 57.1 24.3906 57 24.3906 56.9V56.5C24.3906 56.3 24.4906 56.2 24.4906 56.1C24.4906 56 24.5906 56 24.6906 56H24.7906C24.8906 56 24.9906 56.1 24.9906 56.2C24.8906 56.3 24.8906 56.5 24.8906 56.6ZM26.9906 57.3C26.9906 57.3 26.8906 57.2 26.8906 57.1C26.7906 57 26.7906 56.9 26.6906 56.8C26.8906 56.7 26.8906 56.6 26.8906 56.5V56.3C26.8906 56.2 26.7906 56.2 26.7906 56.2C26.6906 56.2 26.6906 56.1 26.5906 56.1H25.6906V56.2H25.7906V57.1H25.6906V57.2H26.3906V57.1H26.2906V56.7H26.3906C26.3906 56.7 26.4906 56.8 26.4906 56.9C26.5906 57.1 26.6906 57.2 26.6906 57.2H27.0906V57.1C27.0906 57.3 27.0906 57.3 26.9906 57.3C27.0906 57.3 27.0906 57.3 26.9906 57.3ZM26.4906 56.6C26.4906 56.7 26.4906 56.7 26.4906 56.6C26.3906 56.7 26.2906 56.7 26.1906 56.7V56.3C26.2906 56.3 26.3906 56.3 26.3906 56.4V56.6H26.4906ZM28.6906 56.9H28.5906C28.5906 57 28.5906 57 28.4906 57.1L28.3906 57.2H28.0906V56.8H28.2906V56.9H28.3906V56.5H28.2906V56.6H28.0906V56.2H28.3906L28.4906 56.3C28.4906 56.3 28.4906 56.4 28.5906 56.4H28.6906V56.1L27.5906 56.2V56.3H27.6906V57.2H27.5906V57.3L28.6906 57.4V56.9ZM35.9906 55.7H35.8906V55.9C35.8906 55.9 35.8906 56 35.7906 56C35.7906 56 35.6906 56 35.5906 56.1H35.4906V55.7H35.6906V55.8H35.7906L35.6906 55.4H35.5906V55.5H35.3906L35.2906 55.1H35.6906L35.7906 55.2H35.8906L35.7906 54.9L34.6906 55V55.1H34.7906V55.2L34.8906 55.9V56H34.7906V56.1L35.8906 55.9L35.9906 55.7ZM36.4906 54.8C36.3906 54.8 36.3906 54.8 36.4906 54.8V55.2H36.5906V55.1C36.5906 55.1 36.5906 55 36.6906 55H36.8906V56H36.7906V56.1H37.4906V56H37.3906V55H37.6906C37.6906 55 37.7906 55.1 37.7906 55.2H37.8906V54.8H36.4906ZM40.2906 55.2C40.0906 55.2 39.9906 55.1 39.8906 55.1C39.6906 55.1 39.4906 55.1 39.3906 55.2C39.2906 55.3 39.1906 55.5 39.0906 55.6C39.0906 55.8 39.0906 55.9 39.1906 56.1C39.2906 56.3 39.3906 56.4 39.5906 56.4C39.7906 56.4 39.8906 56.4 39.9906 56.3V56.4H40.0906L40.1906 55.9H40.0906C40.0906 56 39.9906 56.1 39.8906 56.2C39.7906 56.2 39.6906 56.3 39.6906 56.2C39.5906 56.2 39.5906 56.2 39.4906 56.1C39.4906 56.1 39.3906 56 39.3906 55.9V55.6C39.3906 55.4 39.4906 55.3 39.4906 55.2C39.5906 55.1 39.5906 55.1 39.6906 55.1C39.7906 55.1 39.8906 55.2 39.8906 55.2C39.9906 55.3 39.9906 55.4 39.9906 55.5H40.0906L40.1906 55C40.3906 55.2 40.3906 55.2 40.2906 55.2ZM41.5906 55.4H41.1906C41.0906 55.4 40.9906 55.5 40.8906 55.6C40.7906 55.7 40.7906 55.8 40.6906 55.9V56.2C40.6906 56.3 40.7906 56.4 40.8906 56.5C40.9906 56.6 41.0906 56.6 41.2906 56.7H41.4906C41.5906 56.7 41.7906 56.7 41.8906 56.6C42.0906 56.5 42.1906 56.4 42.1906 56.2C42.1906 56 42.1906 55.8 42.0906 55.7C41.9906 55.6 41.8906 55.5 41.5906 55.4ZM41.7906 56.2C41.7906 56.4 41.6906 56.5 41.5906 56.6C41.4906 56.7 41.4906 56.7 41.3906 56.7C41.2906 56.7 41.1906 56.6 41.1906 56.5V56.1C41.1906 55.9 41.2906 55.8 41.2906 55.7C41.2906 55.7 41.3906 55.6 41.4906 55.6H41.5906C41.6906 55.6 41.7906 55.7 41.7906 55.8V56.2ZM43.6906 55.9V56C43.6906 56 43.7906 56 43.7906 56.1V56.2L43.6906 56.6L43.1906 55.8L42.7906 55.7V55.8C42.8906 55.8 42.8906 55.9 42.8906 56L42.7906 56.6V56.7H42.5906V56.8L43.0906 56.9V56.8C43.0906 56.8 42.9906 56.8 42.9906 56.7V56.5L43.0906 56L43.6906 57H43.7906L43.9906 56V55.9H44.1906V55.8L43.6906 55.9ZM45.2906 56.7C45.2906 56.7 45.1906 56.6 45.0906 56.6C44.9906 56.5 44.8906 56.5 44.8906 56.5L44.7906 56.4V56.2H44.8906C44.9906 56.2 44.9906 56.2 44.9906 56.3C44.9906 56.4 45.0906 56.4 45.0906 56.5H45.1906V56.1H45.0906C45.0906 56.1 44.9906 56.1 44.9906 56L44.8906 55.9C44.7906 55.9 44.6906 55.9 44.5906 56C44.4906 56.1 44.4906 56.2 44.3906 56.3V56.5C44.3906 56.6 44.4906 56.6 44.4906 56.7C44.4906 56.7 44.5906 56.8 44.7906 56.9L44.8906 57V57.2H44.7906C44.6906 57.2 44.6906 57.2 44.5906 57.1C44.4906 57 44.4906 57 44.4906 56.8H44.3906V57.2H44.4906V57.1L44.5906 57.2C44.6906 57.2 44.6906 57.3 44.7906 57.3H44.8906C44.9906 57.3 45.0906 57.3 45.1906 57.2C45.2906 57.1 45.2906 57 45.3906 56.9V56.7C45.3906 56.8 45.3906 56.7 45.2906 56.7ZM45.8906 56.1V56.5H45.9906V56.4C45.9906 56.4 45.9906 56.3 46.0906 56.3H46.2906V57.3H46.1906V57.4H46.8906V57.3H46.7906V56.3H47.0906C47.0906 56.3 47.1906 56.4 47.1906 56.5H47.2906V56.1H45.8906ZM48.7906 57.2C48.6906 57.2 48.6906 57.2 48.7906 57.2C48.6906 57.2 48.6906 57.1 48.5906 57L48.0906 56.1H47.9906L47.6906 57.1C47.6906 57.2 47.5906 57.3 47.4906 57.3V57.4H47.8906V57.3H47.7906V57.2H48.1906V57.3H48.0906V57.4H48.6906L48.7906 57.2ZM47.8906 56.9L47.9906 56.6L48.0906 56.9H47.8906ZM50.1906 56L50.2906 55.9V55.8L49.8906 55.9V56C49.9906 56 50.0906 56 50.0906 56.1L50.1906 56.5L49.3906 55.9L48.9906 56V56.1C48.9906 56.1 49.0906 56.1 49.0906 56.2L49.1906 56.8V57H49.0906V57.1L49.5906 57V56.9H49.4906C49.4906 56.9 49.3906 56.9 49.3906 56.8L49.2906 56.3L50.1906 57H50.2906L50.0906 56H50.1906ZM51.9906 56.4H51.8906L51.7906 56.3L51.4906 55.5H51.7906L51.8906 55.6H51.9906L51.8906 55.3L50.6906 55.7L50.7906 56H50.8906V55.8C50.8906 55.8 50.9906 55.8 50.9906 55.7H51.0906L51.3906 56.5V56.6L51.2906 56.7V56.8L51.9906 56.6V56.4ZM53.3906 55.8H53.1906L53.0906 55.7L52.7906 55V54.9L52.8906 54.8V54.7L52.2906 55V55.1H52.3906L52.4906 55.2L52.7906 55.9V56L52.6906 56.1V56.2L53.2906 55.9C53.3906 55.9 53.3906 55.9 53.3906 55.8ZM54.7906 54.8H54.6906C54.6906 54.8 54.5906 54.8 54.4906 54.7L53.5906 54.2L53.4906 54.3L53.7906 55.3V55.6L53.8906 55.7L54.1906 55.5L54.0906 55.4H53.9906V55.3L54.2906 55.1L54.3906 55.2L54.2906 55.3L54.3906 55.4L54.8906 55C54.8906 54.9 54.8906 54.9 54.7906 54.8ZM53.8906 55.1L53.7906 54.8L54.0906 55L53.8906 55.1Z" fill="#5E3023"/>
+<path d="M56.8905 52.8C56.4905 50.8 54.8905 48.3 54.7905 48.2C54.7905 48.2 53.3905 46.5 50.7905 47.7C50.6905 47.7 48.7905 48.6 48.4905 50.1V50.3L49.5905 52.9C49.5905 53 49.6905 53 49.7905 53.1C49.8905 53.1 49.9905 53.1 49.9905 53C49.9905 53 50.8905 52 52.2905 51.8C52.6905 51.7 53.0905 51.7 53.4905 51.8C51.5905 53.7 47.1905 55 42.1905 53.9L40.9905 51.3L41.1905 51.2C41.2905 51.2 41.2905 51.1 41.2905 51.1V50.9L39.1905 46.2C39.3905 45.8 39.5905 45.3 39.5905 44.8C39.5905 43.3 38.3905 42 36.7905 42C35.2905 42 33.9905 43.2 33.9905 44.8C33.9905 45.3 34.0905 45.8 34.3905 46.2L32.2905 50.9V51.1C32.2905 51.2 32.3905 51.2 32.3905 51.2L32.5905 51.3L31.3905 54C26.4905 55 22.2905 53.7 20.4905 51.8H21.6905C23.0905 52.1 23.9905 53 23.9905 53C24.0905 53.1 24.0905 53.1 24.1905 53.1C24.2905 53.1 24.3905 53 24.3905 52.9L25.4905 50.3V50.1C25.1905 48.6 23.2905 47.7 23.1905 47.7C20.5905 46.5 19.1905 48.2 19.1905 48.2C19.0905 48.3 17.4905 50.8 17.0905 52.8C16.5905 55.1 18.1905 57.1 21.1905 58.3C22.9905 59 24.6905 59.2 26.2905 59.2C27.1905 59.2 28.0905 59.1 28.9905 59L26.8905 63.8C26.8905 63.9 25.8905 65.8 25.8905 68.5C25.8905 68.6 25.9905 68.7 26.0905 68.7H26.1905C26.2905 68.7 26.2905 68.7 26.3905 68.6C28.1905 66.8 28.9905 64.7 28.9905 64.7L31.7905 58.4L32.9905 58.1C33.2905 58 33.5905 58 33.7905 57.9C34.8905 57.7 35.8905 57.5 36.7905 57.4C37.6905 57.4 38.6905 57.6 39.7905 57.9C40.0905 58 40.3905 58 40.5905 58.1C40.8905 58.2 41.0905 58.2 41.3905 58.3L44.1905 64.7C44.1905 64.8 44.9905 66.9 46.7905 68.6C46.7905 68.6 46.8905 68.7 46.9905 68.7H47.0905C47.1905 68.7 47.2905 68.6 47.2905 68.5C47.3905 65.8 46.2905 63.9 46.2905 63.8L44.0905 58.9C45.0905 59.1 46.0905 59.2 47.1905 59.2C48.8905 59.2 50.5905 58.9 52.2905 58.3C55.8905 57.1 57.3905 55.1 56.8905 52.8ZM52.3905 51.2C51.2905 51.4 50.4905 52 50.0905 52.3L49.1905 50.1C49.4905 48.9 51.1905 48.1 51.1905 48.1C53.2905 47.2 54.2905 48.2 54.4905 48.4C54.9905 49.5 54.5905 50.4 54.1905 51.1C53.4905 51.1 52.8905 51.1 52.3905 51.2ZM41.6905 53.6C41.4905 53.5 41.2905 53.5 41.0905 53.4C40.7905 53.3 40.4905 53.2 40.1905 53.2L39.5905 51.8L40.6905 51.4L41.6905 53.6ZM40.7905 50.7L38.8905 51.6V51.5L37.2905 47.8L37.3905 47.5C37.9905 47.4 38.5905 47.1 38.9905 46.7L40.7905 50.7ZM39.4905 53.1C39.0905 53 38.5905 53 38.1905 52.9H37.0905C36.1905 52.9 35.3905 53 34.4905 53.2L34.9905 52.1H35.1905C35.2905 52.1 35.3905 52 35.3905 51.9L36.9905 48.3L38.5905 51.9C38.5905 52 38.6905 52.1 38.7905 52.1H38.9905L39.4905 53.1ZM36.9905 42.4C38.1905 42.4 39.1905 43.4 39.1905 44.6C39.1905 44.9 39.1905 45.1 39.0905 45.3C39.0905 45.4 38.9905 45.5 38.9905 45.6C38.8905 45.7 38.8905 45.8 38.7905 45.9C38.4905 46.3 38.1905 46.5 37.6905 46.7C37.5905 46.7 37.4905 46.8 37.3905 46.8H36.5905C36.4905 46.8 36.3905 46.8 36.2905 46.7C35.8905 46.6 35.4905 46.3 35.1905 45.9C35.0905 45.8 35.0905 45.7 34.9905 45.6C34.8905 45.5 34.8905 45.4 34.8905 45.3C34.7905 45.1 34.7905 44.8 34.7905 44.6C34.7905 43.4 35.7905 42.4 36.9905 42.4ZM33.1905 50.7L34.9905 46.6C35.3905 47 35.9905 47.3 36.5905 47.4H36.8905L36.7905 47.7L35.1905 51.4V51.5L33.1905 50.7ZM19.9905 48.5C20.1905 48.3 21.1905 47.3 23.2905 48.2C23.2905 48.2 24.9905 49 25.2905 50.2L24.3905 52.4C23.9905 52 23.1905 51.5 22.0905 51.3C21.4905 51.2 20.9905 51.2 20.3905 51.3C19.8905 50.5 19.4905 49.6 19.9905 48.5ZM21.6905 57.8C18.8905 56.7 17.5905 54.9 17.9905 52.9C18.1905 51.9 18.7905 50.7 19.1905 49.8C19.1905 50 19.1905 50.2 19.2905 50.4C19.3905 50.7 19.4905 51.1 19.7905 51.4C19.7905 51.5 19.8905 51.5 19.9905 51.6C20.0905 51.7 20.0905 51.8 20.1905 51.8L20.2905 51.9C22.0905 54 26.4905 55.4 31.4905 54.5L29.6905 58.5C27.1905 58.9 24.4905 58.9 21.6905 57.8ZM31.7905 58L31.6905 58.3V58.4L31.5905 58.6V58.7L28.9905 64.7C28.9905 64.7 28.3905 66.4 26.9905 68C27.0905 65.8 27.8905 64.3 27.8905 64.2L30.1905 59L30.2905 58.7L30.3905 58.4L32.1905 54.4L32.2905 54.1L32.3905 53.8L33.3905 51.4L34.4905 51.9L33.8905 53.4L33.7905 53.7V53.8L33.6905 54.1L31.7905 58ZM46.2905 64.2C46.2905 64.2 47.0905 65.7 47.1905 67.9C45.7905 66.3 45.1905 64.7 45.1905 64.6L42.4905 58.6L43.9905 58.9L46.2905 64.2ZM52.6905 57.8C49.7905 58.9 46.9905 58.8 44.3905 58.4C44.2905 58.4 44.1905 58.4 44.0905 58.3C43.9905 58.3 43.8905 58.3 43.7905 58.2H43.5905C43.4905 58.2 43.3905 58.2 43.2905 58.1C42.9905 58 42.6905 58 42.3905 57.9C42.2905 57.9 42.1905 57.9 42.0905 57.8C41.9905 57.8 41.8905 57.7 41.7905 57.7C41.6905 57.7 41.4905 57.6 41.3905 57.6C41.0905 57.5 40.7905 57.5 40.4905 57.4C39.3905 57.1 38.3905 56.9 37.4905 56.9H37.3905C36.4905 56.9 35.4905 57.1 34.2905 57.4C34.0905 57.4 33.9905 57.5 33.7905 57.5C33.3905 57.6 32.9905 57.7 32.6905 57.7L34.4905 53.6C35.4905 53.3 36.3905 53.2 37.4905 53.2H37.5905C38.3905 53.2 39.1905 53.3 40.0905 53.5C40.1905 53.5 40.2905 53.5 40.3905 53.6C40.4905 53.6 40.5905 53.7 40.6905 53.7C40.7905 53.7 40.9905 53.8 41.0905 53.8C41.3905 53.9 41.7905 54 42.0905 54.1C42.1905 54.1 42.2905 54.1 42.3905 54.2C42.4905 54.2 42.5905 54.2 42.6905 54.3C47.8905 55.3 52.4905 53.9 54.2905 51.8L54.3905 51.7C54.4905 51.6 54.4905 51.5 54.5905 51.5L54.7905 51.3C54.9905 51 55.1905 50.6 55.2905 50.3C55.2905 50.1 55.3905 49.9 55.3905 49.7C55.8905 50.6 56.3905 51.8 56.5905 52.8C56.7905 54.9 55.3905 56.7 52.6905 57.8Z" fill="#5E3023"/>
+</svg>
+</div>
+<div class="footer__socials">
+<a class="footer__socials__icon"  target="_blank"  href="https://www.facebook.com/museumplantinmoretus/"><svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 61C27.0603 61 23.1593 60.224 19.5195 58.7164C15.8797 57.2087 12.5726 54.999 9.7868 52.2132C7.00104 49.4274 4.79126 46.1203 3.28361 42.4805C1.77597 38.8407 1 34.9397 1 31C1 27.0603 1.77597 23.1593 3.28361 19.5195C4.79126 15.8797 7.00104 12.5726 9.7868 9.7868C12.5726 7.00104 15.8797 4.79126 19.5195 3.28361C23.1593 1.77597 27.0603 1 31 1C38.9565 1 46.5871 4.16071 52.2132 9.7868C57.8393 15.4129 61 23.0435 61 31C61 38.9565 57.8393 46.5871 52.2132 52.2132C46.5871 57.8393 38.9565 61 31 61ZM31 61V26.7143C31 24.441 31.9031 22.2608 33.5105 20.6534C35.118 19.0459 37.2981 18.1429 39.5714 18.1429H41.7143M20.2857 35.2857H41.7143" stroke="#5E3023" stroke-width="2"/>
+</svg></a>
+<a class="footer__socials__icon"  target="_blank"  href="https://www.youtube.com/user/PlantinMoretusmuseum"><svg width="57" height="48" viewBox="0 0 57 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M54.85 8.05833C54.5377 6.69415 53.9244 5.44928 53.0713 4.44778C52.2181 3.44629 51.1548 2.72314 49.9875 2.35042C45.7 1 28.5 1 28.5 1C28.5 1 11.3 1 7.0125 2.35042C5.84515 2.72314 4.7819 3.44629 3.92874 4.44778C3.07558 5.44928 2.46229 6.69415 2.15 8.05833C1 13.0983 1 23.6042 1 23.6042C1 23.6042 1 34.11 2.15 39.15C2.46191 40.5147 3.07503 41.7602 3.92822 42.7622C4.7814 43.7643 5.84485 44.4879 7.0125 44.8608C11.3025 46.2083 28.5 46.2083 28.5 46.2083C28.5 46.2083 45.7 46.2083 49.9875 44.8608C51.1551 44.4879 52.2186 43.7643 53.0718 42.7622C53.925 41.7602 54.5381 40.5147 54.85 39.15C56 34.1158 56 23.6042 56 23.6042C56 23.6042 56 13.0983 54.85 8.05833ZM22.875 33.1446V14.0667L37.25 23.6071L22.875 33.1446Z" stroke="#5E3023" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+</svg></a>
 
+<a  class="footer__socials__icon"  target="_blank"  href="https://www.instagram.com/plantinmoretus/"><svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.2499 38.9168C30.3441 38.9168 33.3116 37.6877 35.4995 35.4997C37.6874 33.3118 38.9166 30.3444 38.9166 27.2502C38.9166 24.156 37.6874 21.1885 35.4995 19.0006C33.3116 16.8127 30.3441 15.5835 27.2499 15.5835C24.1557 15.5835 21.1883 16.8127 19.0003 19.0006C16.8124 21.1885 15.5833 24.156 15.5833 27.2502C15.5833 30.3444 16.8124 33.3118 19.0003 35.4997C21.1883 37.6877 24.1557 38.9168 27.2499 38.9168Z" stroke="#5E3023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 38.9167V15.5833C1 11.7156 2.53645 8.00627 5.27136 5.27136C8.00627 2.53645 11.7156 1 15.5833 1H38.9167C42.7844 1 46.4937 2.53645 49.2286 5.27136C51.9635 8.00627 53.5 11.7156 53.5 15.5833V38.9167C53.5 42.7844 51.9635 46.4937 49.2286 49.2286C46.4937 51.9635 42.7844 53.5 38.9167 53.5H15.5833C11.7156 53.5 8.00627 51.9635 5.27136 49.2286C2.53645 46.4937 1 42.7844 1 38.9167Z" stroke="#5E3023" stroke-width="2"/>
+<path d="M43.2917 11.2377L43.3213 11.2056" stroke="#5E3023" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+</div>
+  <div class="footer__button">
+  <a class="footer__back" href="#intro">Back to Top</a>
+<button class=" nav__museum"><a target="_blank" class="nav__museum__link" href="https://museumplantinmoretus.be/">Visit Museum</a></button>
+</div>
+<div class="footer__museum" >
+<p class="footer__museum__name">Museum Plantin-Moretus</p>
+<p class="footer__museum__adress">Vrijdagmarkt 22, 2000 Antwerpen Belgium</p>
+<a class="footer__museum__email" href="mailto:museum.plantin.moretus@antwerpen.be">museum.plantin.moretus@antwerpen.be</a>
+</div>
  </footer>
 
     <script type="module" src="/src/main.js"></script>
