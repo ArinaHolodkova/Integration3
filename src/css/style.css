@@ -174,11 +174,13 @@ h3 {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
-.hero__draggable {
-  grid-column: 1;
+.hero__draggable{
+    grid-column: 1;
   grid-row: 1;
   justify-self: center;
+ 
 }
+
 .hero__printing {
   grid-column: 1;
   grid-row: 1;
@@ -668,6 +670,9 @@ margin-bottom: var(--space-3xl);
   align-items: center;
 }
 
+.end__conclusion__legacy{
+  display: none;
+}
 .invite__story__form {
   display: grid;
   grid-template-columns: 80% 20%;
@@ -1503,7 +1508,14 @@ align-items: center;
     max-width: 47%;
     margin-top: 0;
   }
-  .end__conclusion__text {
-    max-width: 45%;
-  }
+.end__conclusion{
+        display:flex;
+      align-items: center;
+      flex-direction: column;
 }
+  .end__conclusion__text {
+    max-width:45%;
+  }
+
+}
+

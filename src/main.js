@@ -229,7 +229,7 @@ if (isDesktop) {
     wrapper.style.width = `${imgRect.width}px`;
     wrapper.style.height = `${imgRect.height}px`;
 
-    ctx.fillStyle = "#b10a3a";
+    ctx.fillStyle = "#5e3023";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     let isScratching = false;
@@ -292,7 +292,7 @@ const createDots = () => {
   images.forEach((_, index) => {
     const dot = document.createElement("div");
     dot.classList.add("intro__dot");
-    if (index === 0) dot.classList.add("active"); // First dot is active by default
+    if (index === 0) dot.classList.add("active"); 
     dot.addEventListener("click", () => {
       currentSwipe = index;
       updateContent();
@@ -536,12 +536,30 @@ const heroDrag = () => {
   const draggableImage = document.querySelector(".hero__draggable");
   const printingImage = document.querySelector(".hero__printing");
 
+  const calculateBounds = () => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    let maxY;
+    if (screenWidth >= 1200) {
+      maxY = screenHeight * 0.3; 
+    } else if (screenWidth >= 720) {
+      maxY = screenHeight * 0.15; 
+    } else {
+      maxY = screenHeight * 0.1; 
+    }
+
+    return {
+      minY: 0,
+      maxY: maxY,
+    };
+  };
+
+  const bounds = calculateBounds();
+
   Draggable.create(draggableImage, {
     type: "y",
-    bounds: {
-      minY: 0,
-      maxY: 200,
-    },
+    bounds: bounds,
     zIndexBoost: false,
     onPress() {
       printingImage.style.pointerEvents = "none";
@@ -550,7 +568,14 @@ const heroDrag = () => {
       printingImage.style.pointerEvents = "auto";
     },
   });
+
+  window.addEventListener("resize", () => {
+    const newBounds = calculateBounds();
+    Draggable.get(draggableImage).applyBounds(newBounds);
+  });
 };
+
+
 
 const init = () => {
   const mm = gsap.matchMedia();
