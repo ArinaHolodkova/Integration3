@@ -101,7 +101,7 @@ const carouselEffect = () => {
         carouselItems.forEach((item) => {
           item.classList.add("active");
           item.addEventListener("mouseover", () => {
-            item.style.transform = "scale(1.2)";
+            item.style.transform = "scale(1.5)";
             item.style.transition = "transform 0.3s ease";
           });
 
@@ -132,7 +132,7 @@ const questionSection = () => {
       setTimeout(() => {
         questionContainer.style.display = "none";
 
-        carouselSection.style.display = "block";
+        carouselSection.style.display = "flex";
         carouselSection.style.opacity = "1";
         carouselSection.style.transition = "opacity 0.5s ease-in-out";
 
@@ -166,24 +166,27 @@ const questionSection = () => {
   });
 };
 
+
 const swipeEffect = (mm) => {
   mm.add(
     {
-      isDesktop: "(min-width:  45em)",
+      isDesktop: "(min-width: 45em)",
       isMobile: "(max-width: 1023px)",
     },
     (context) => {
       const { isMobile, isDesktop } = context.conditions;
 
-      if (isMobile) {
-        let startX,
-          endX,
-          currentSwipe = 0;
-        const images = document.querySelectorAll(".intro__img");
+      const wrappers = document.querySelectorAll(".canvas-wrapper");
 
+      if (isMobile) {
+        let startX, endX;
+ wrappers.forEach((wrapper) => {
+   wrapper.style.display = "none";
+ });
         document.addEventListener("touchstart", (event) => {
           startX = event.touches[0].clientX;
         });
+
         document.addEventListener("touchmove", (event) => {
           endX = event.touches[0].clientX;
         });
@@ -191,59 +194,72 @@ const swipeEffect = (mm) => {
         document.addEventListener("touchend", () => {
           if (startX > endX + 90) {
             currentSwipe = (currentSwipe + 1) % images.length;
-            console.log("swipe1", currentSwipe);
-          } else if (startX < endX - 50) {
+          } else if (startX < endX - 90) {
             currentSwipe = (currentSwipe - 1 + images.length) % images.length;
-            console.log("swipe2");
           }
-          updateContent();
+          updateContent(currentSwipe, images);
         });
-        updateContent();
+
+        updateContent(currentSwipe, images);
       }
 
-      if (isDesktop) {
-        console.log("Desktop scratch effect initialized");
-        const images = document.querySelectorAll(".intro__img");
+      
+if (isDesktop) {
+  const wrappers = document.querySelectorAll(".canvas-wrapper");
+  const images = document.querySelectorAll(".intro__img");
 
-        images.forEach((image) => {
-          const canvas = document.createElement("canvas");
-          canvas.classList.add("canvas__overlay");
-          image.appendChild(canvas);
+  wrappers.forEach((wrapper, index) => {
+    const canvas = document.createElement("canvas");
+    canvas.classList.add("canvas__overlay");
+    wrapper.appendChild(canvas);
 
-          const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
-          const img = image.querySelector("img");
-          canvas.width = img.offsetWidth - 5;
-          canvas.height = img.offsetHeight - 3;
+    const img = images[index].querySelector("img");
+    const imgRect = img.getBoundingClientRect();
+    const containerRect = wrapper.parentElement.getBoundingClientRect(); 
 
-          ctx.fillStyle = "#b10a3a";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          console.log(canvas);
-          let isScratching = false;
+ 
+    canvas.width = imgRect.width;
+    canvas.height = imgRect.height;
 
-          const scratch = (event) => {
-            const rect = canvas.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            const radius = 50;
+    wrapper.style.position = "absolute";
+    wrapper.style.top = `${imgRect.top - containerRect.top}px`;
+    wrapper.style.left = `${imgRect.left - containerRect.left}px`;
+    wrapper.style.width = `${imgRect.width}px`;
+    wrapper.style.height = `${imgRect.height}px`;
 
-            ctx.globalCompositeOperation = "destination-out";
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fill();
-          };
+    ctx.fillStyle = "#b10a3a";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-          canvas.addEventListener("mousedown", () => (isScratching = true));
-          canvas.addEventListener("mousemove", (event) => {
-            if (isScratching) scratch(event);
-          });
-          canvas.addEventListener("mouseup", () => (isScratching = false));
-          canvas.addEventListener("mouseleave", () => (isScratching = false));
-        });
-      }
-    } // End of context function
-  ); // End of mm.add
-};
+    let isScratching = false;
+
+    const scratch = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const radius = 50;
+
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+ 
+    canvas.addEventListener("mousedown", () => (isScratching = true));
+    canvas.addEventListener("mousemove", (event) => {
+      if (isScratching) scratch(event);
+    });
+    canvas.addEventListener("mouseup", () => (isScratching = false));
+    canvas.addEventListener("mouseleave", () => (isScratching = false));
+  });
+}
+
+
+    }
+  );
+    }
 
 const updateContent = () => {
   images.forEach((image, index) => {
@@ -317,24 +333,20 @@ const animatePath = (pathSelector, triggerSelector) => {
             strokeDashoffset: 0,
             scrollTrigger: {
               trigger: triggerSelector,
-              start: "top top",
+              start: "top 5%",
               scrub: true,
             },
           }
         );
-        gsap.fromTo(
-          ".bible__problems__three",
-          { alpha: 0 },
-          {
-            alpha: 1,
-            scrollTrigger: {
-              trigger: triggerSelector,
-              start: "middle 5%",
-              ease: "power2.inOut",
-              scrub: true,
-            },
-          }
-        );
+     gsap.to(".bible__problems__three", {
+       opacity: 1,
+       scrollTrigger: {
+         trigger: triggerSelector,
+         start: "middle 50%",
+         ease: "power2.inOut",
+         scrub: true,
+       },
+     });
       }
 
       if (isDesktop) {
@@ -359,10 +371,11 @@ const animatePath = (pathSelector, triggerSelector) => {
         gsap.to(".bible__problems__three", {
           opacity: 1,
           scrollTrigger: {
-            trigger: triggerSelector,
-            start: "top top",
+            trigger: ".bible__problems__two",
+            start: "bottom top",
             ease: "power2.inOut",
             scrub: true,
+            markers: true,
           },
         });
       }
