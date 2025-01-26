@@ -113,7 +113,7 @@ h3 {
   background-color: var(--background-color);
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0;
-  z-index: 1;
+  z-index: 6;
   width: 15rem;
 }
 
@@ -160,7 +160,7 @@ h3 {
 
 .header {
      position: fixed;
-    z-index: 3;
+    z-index: 6;
     background-color: var(--background-color);
     width: 100%;
     top: 0;
@@ -998,32 +998,43 @@ margin: var(--space-l) 0;
   grid-row: 1;
   align-self: end;
   justify-self: end;
-  max-width: 45%;
+  display: grid;
+grid-template-columns: 1fr 1fr;
 }
 .bible__problems__two{
          grid-column: 1;
         grid-row: 2;
-        max-width: 46%;
+        max-width: 50%;
         align-self: center;
         justify-self: baseline;
         margin-left: var(--space-2xl);
 }
-.bible__problems__three{
-   grid-column: 1;
-  grid-row: 3; 
-}
-.bible__problems__one__line{
-  align-self: flex-end;
-  justify-self: center;
-  display: grid;
+.bible__problems__one__text{
+    justify-self: center;
+    max-width: 90%;
 }
 .problems__words__years{
-  align-self: start;
-  justify-self: center;
+   margin: 0 0 var(--space-l) var(--space-3xl);
+  align-self: baseline;
+  justify-self: start;
 }
 .problems__words__workers{
   align-self: end;
   justify-self: end;
+}
+
+.bible__problems__two__line{
+  align-self: end;
+}
+
+.bible__problems__three{
+  opacity: 0;
+        grid-column: 1;
+        grid-row: 3;
+        align-self: center;
+        justify-self: center;
+        text-align: start;
+        max-width: 50%;
 }
 
 .botanic__illustrations{
@@ -1189,7 +1200,6 @@ color: var(--color);
 .hero__draggable{
   grid-column: 1;
   grid-row: 1;
-
   justify-self: center;
 }
 .hero__printing{
@@ -1233,6 +1243,85 @@ font-style: italic;
 .bible__languages__title{
   margin: 0;
   padding: 0;
+}
+
+
+.botanic__intro{
+  display: grid;
+}
+.botanic__intro__puzzle{
+          justify-self: center;
+        width: 55%;
+        height: auto;
+        margin-left: var(--space-3xl);
+}
+
+
+.botanic__intro__text{
+         justify-self: baseline;
+        max-width: 45%;
+        margin: var(--space-m);
+}
+
+.botanic__intro__text h2{
+ text-align: justify;
+ margin-bottom: 0;
+}
+
+.botanic__intro__container{
+background-color: var(--color);
+margin-top:var(--space-l) ;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.star__one{
+  font-size: var(--step-2);
+  color: var(--background-color);
+  display: flex;
+  align-items: center;
+
+}
+.star__one::after{
+  content: "";
+  height:2px;
+  width: 20%;
+  color: var(--background-color);
+  background-color: var(--background-color);
+}
+.star__one::before{
+  content: "";
+  height:2px;
+  width: 80%;
+  color: var(--background-color);
+  background-color: var(--background-color);
+}
+.star__two{
+    font-size: var(--step-2);
+  color: var(--background-color);
+  display: flex;
+  align-items: center;
+
+}
+.star__two::after{
+  content: "";
+  height:2px;
+  width: 80%;
+  color: var(--background-color);
+  background-color: var(--background-color);
+}
+.star__two::before{
+  content: "";
+  height:2px;
+  width: 20%;
+  color: var(--background-color);
+  background-color: var(--background-color);
+}
+.botanic__intro__herbal{
+  max-width: 50%;
+        justify-items: center;
+        align-self: center;
 }
 }
 

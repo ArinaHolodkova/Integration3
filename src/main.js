@@ -15,14 +15,12 @@ const prevButton = document.querySelector(".carousel__prev");
 const nextButton = document.querySelector(".carousel__next");
 let currentIndex = 0;
 
-
 const navigation = () => {
   const $nav = document.querySelector(".nav");
   const $navButton = document.querySelector(".nav__button");
   const $navList = document.querySelector(".nav__list");
   const $iconLink = document.getElementById("iconlink");
   const listItems = $navList.querySelectorAll("li a");
-
 
   $navButton.classList.remove("hidden");
   $navList.classList.add("hidden");
@@ -31,8 +29,8 @@ const navigation = () => {
     $navButton.setAttribute("aria-expanded", "true");
     $iconLink.setAttribute("xlink:href", "#close");
     $navList.classList.remove("hidden");
-    $nav.classList.add("nav--open"); 
-    document.body.classList.add("nav-open"); 
+    $nav.classList.add("nav--open");
+    document.body.classList.add("nav-open");
   };
 
   const closeNavigation = () => {
@@ -43,7 +41,6 @@ const navigation = () => {
     document.body.classList.remove("nav-open");
   };
 
-
   const toggleNavigation = () => {
     const isOpen = $navButton.getAttribute("aria-expanded") === "true";
     if (isOpen) {
@@ -53,11 +50,9 @@ const navigation = () => {
     }
   };
 
-
   listItems[listItems.length - 1].addEventListener("blur", () => {
     closeNavigation();
   });
-
 
   window.addEventListener("keyup", (e) => {
     if (e.key === "Escape") {
@@ -66,11 +61,8 @@ const navigation = () => {
     }
   });
 
- 
   $navButton.addEventListener("click", toggleNavigation);
 };
-
-
 
 const updateCarousel = () => {
   carouselItems.forEach((item, index) => {
@@ -83,7 +75,7 @@ const updateCarousel = () => {
 };
 
 const carouselEffect = () => {
-    const mm = gsap.matchMedia();
+  const mm = gsap.matchMedia();
   mm.add(
     {
       isDesktop: "(min-width: 45em)",
@@ -106,9 +98,8 @@ const carouselEffect = () => {
       }
 
       if (isDesktop) {
-       
         carouselItems.forEach((item) => {
-           item.classList.add("active");
+          item.classList.add("active");
           item.addEventListener("mouseover", () => {
             item.style.transform = "scale(1.2)";
             item.style.transition = "transform 0.3s ease";
@@ -124,7 +115,6 @@ const carouselEffect = () => {
   );
 };
 
-
 const questionSection = () => {
   const questionContainer = document.querySelector(".question__section");
   const carouselSection = document.querySelector(".bible__languages__carousel");
@@ -133,35 +123,29 @@ const questionSection = () => {
   const questionText = document.querySelector(".question__text");
 
   const revealCarousel = (answer, message, transformDirection) => {
-    // Animate question text
     questionText.style.transition = "transform 0.5s ease-in-out";
     questionText.style.transform = `translate(${transformDirection}, 0)`;
 
-    // Fade out the question container
     setTimeout(() => {
       questionContainer.style.opacity = "0";
 
       setTimeout(() => {
         questionContainer.style.display = "none";
 
-        // Fade in the carousel section
         carouselSection.style.display = "block";
         carouselSection.style.opacity = "1";
         carouselSection.style.transition = "opacity 0.5s ease-in-out";
 
-        // Update the title
         bibleTitle.textContent = message;
       }, 500);
     }, 500);
   };
 
-  // Add event listeners to each answer
   answers.forEach((answer, index) => {
     answer.addEventListener("click", () => {
       let message;
       let direction;
 
-      // Define messages and directions based on the answer
       switch (index + 1) {
         case 4:
           message = "Almost there!";
@@ -182,9 +166,7 @@ const questionSection = () => {
   });
 };
 
-
 const swipeEffect = (mm) => {
-
   mm.add(
     {
       isDesktop: "(min-width:  45em)",
@@ -231,8 +213,8 @@ const swipeEffect = (mm) => {
           const ctx = canvas.getContext("2d");
 
           const img = image.querySelector("img");
-          canvas.width = img.offsetWidth-5;
-          canvas.height = img.offsetHeight-3;
+          canvas.width = img.offsetWidth - 5;
+          canvas.height = img.offsetHeight - 3;
 
           ctx.fillStyle = "#b10a3a";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -261,8 +243,7 @@ const swipeEffect = (mm) => {
       }
     } // End of context function
   ); // End of mm.add
-}; 
-
+};
 
 const updateContent = () => {
   images.forEach((image, index) => {
@@ -272,13 +253,12 @@ const updateContent = () => {
       image.classList.remove("active");
     }
   });
-console.log("update");
+  console.log("update");
   const texts = ["Global understanding", "Art", "Science"];
   textElement.textContent = texts[currentSwipe];
 
   updateDots();
 };
-
 
 const updateDots = () => {
   const dots = document.querySelectorAll(".intro__dot");
@@ -290,8 +270,6 @@ const updateDots = () => {
     }
   });
 };
-
-
 
 const createDots = () => {
   const dotsContainer = document.querySelector(".intro__dots");
@@ -308,12 +286,12 @@ const createDots = () => {
 };
 
 const animatePath = (pathSelector, triggerSelector) => {
-  const mm = gsap.matchMedia(); 
+  const mm = gsap.matchMedia();
 
   mm.add(
     {
-      isDesktop: "(min-width: 45em)", 
-      isMobile: "(max-width: 45em)", 
+      isDesktop: "(min-width: 45em)",
+      isMobile: "(max-width: 45em)",
     },
     (context) => {
       const { isDesktop, isMobile } = context.conditions;
@@ -321,20 +299,17 @@ const animatePath = (pathSelector, triggerSelector) => {
         .querySelector(pathSelector)
         ?.querySelector("path");
 
-      if (!pathElement) return; 
+      if (!pathElement) return;
 
-      const pathLength = pathElement.getTotalLength(); 
+      const pathLength = pathElement.getTotalLength();
 
       if (isMobile) {
-       
-        document.querySelector("#bigline").classList.add("hidden"); 
-        document.querySelector("#wavyLineOne").classList.remove("hidden"); 
+        document.querySelector("#bigline").classList.add("hidden");
+        document.querySelector("#wavyLineOne").classList.remove("hidden");
         document.querySelector("#wavyLineTwo").classList.remove("hidden");
 
-  
         gsap.set(pathElement, { strokeDasharray: pathLength });
 
-       
         gsap.fromTo(
           pathElement,
           { strokeDashoffset: pathLength },
@@ -363,14 +338,12 @@ const animatePath = (pathSelector, triggerSelector) => {
       }
 
       if (isDesktop) {
-   
-        document.querySelector("#wavyLineOne").classList.add("hidden"); // Hide small lines
+        document.querySelector("#wavyLineOne").classList.add("hidden"); 
         document.querySelector("#wavyLineTwo").classList.add("hidden");
-        document.querySelector("#bigline").classList.remove("hidden"); // Show big line
+        document.querySelector("#bigline").classList.remove("hidden"); 
 
         gsap.set(pathElement, { strokeDasharray: pathLength });
 
-       
         gsap.fromTo(
           pathElement,
           { strokeDashoffset: pathLength },
@@ -379,29 +352,23 @@ const animatePath = (pathSelector, triggerSelector) => {
             scrollTrigger: {
               trigger: triggerSelector,
               start: "top top",
-              // markers: true,
               scrub: true,
             },
           }
         );
-            gsap.fromTo(
-              ".bible__problems__three",
-              { alpha: 0 },
-              {
-                alpha: 1,
-                scrollTrigger: {
-                  trigger: triggerSelector,
-                  start: "middle 5%",
-                  ease: "power2.inOut",
-                  scrub: true,
-                },
-              }
-            );
+        gsap.to(".bible__problems__three", {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: triggerSelector,
+            start: "top top",
+            ease: "power2.inOut",
+            scrub: true,
+          },
+        });
       }
     }
   );
 };
-
 
 const leafPop = () => {
   document.querySelectorAll(".leaf").forEach((leaf) => {
@@ -416,18 +383,11 @@ const leafPop = () => {
 
 const puzzleMake = () => {
   const container = document.querySelector(".puzzle__container");
-  const containerWidth = container.offsetWidth ; 
-  const containerHeight = container.offsetHeight ; 
+  const containerWidth = container.offsetWidth;
+  const containerHeight = container.offsetHeight;
 
   const pieceWidth = containerWidth / 3;
   const pieceHeight = containerHeight / 2;
-
-  console.log(
-    `Container Dimensions (scaled): width=${containerWidth}, height=${containerHeight}`
-  );
-  console.log(
-    `Piece Dimensions (scaled): width=${pieceWidth}, height=${pieceHeight}`
-  );
 
   const correctPositions = [
     { x: 0, y: 0 },
@@ -438,13 +398,11 @@ const puzzleMake = () => {
     { x: pieceWidth * 2, y: pieceHeight },
   ];
 
-  console.log("Correct positions recalculated (scaled):", correctPositions);
-
   document.querySelectorAll(".puzzle__piece").forEach((piece, index) => {
     piece.style.width = `${pieceWidth}px`;
     piece.style.height = `${pieceHeight}px`;
 
-    const xPos = -(index % 3) * pieceWidth; 
+    const xPos = -(index % 3) * pieceWidth;
     const yPos = -Math.floor(index / 3) * pieceHeight;
     piece.style.backgroundPosition = `${xPos}px ${yPos}px`;
 
@@ -458,16 +416,21 @@ const puzzleMake = () => {
 
     Draggable.create(piece, {
       bounds: ".puzzle__container",
+      onPress: function () {
+        this.target.style.zIndex = "3";
+      },
+      onRelease: function () {
+        this.target.style.zIndex = "";
+      },
       onDragEnd: function () {
         const target = correctPositions[index];
-        const tolerance = 50; 
+        const tolerance = 50;
 
         const pieceBox = this.target.getBoundingClientRect();
         const containerBox = container.getBoundingClientRect();
 
-        const currentX = (pieceBox.left - containerBox.left) ; 
-        const currentY = (pieceBox.top - containerBox.top) ; 
-
+        const currentX = pieceBox.left - containerBox.left;
+        const currentY = pieceBox.top - containerBox.top;
 
         if (
           Math.abs(currentX - target.x) <= tolerance &&
@@ -479,9 +442,6 @@ const puzzleMake = () => {
             duration: 0.2,
           });
           this.disable();
-
-          console.log("HERHEHREHRHREHEREHR")
-     
         }
       },
     });
@@ -503,7 +463,6 @@ const generation = () => {
       const { isDesktop, isMobile } = context.conditions;
 
       if (isMobile) {
-      
         pictures.forEach((picture) => {
           gsap.fromTo(
             picture,
@@ -522,45 +481,40 @@ const generation = () => {
         });
       }
 
-if (isDesktop) {
- 
-  gsap.to(".botanic__illustrations__generations", {
-    scrollTrigger: {
-      trigger: ".botanic__illustrations__generations",
-      start: "top 20%", 
-      scrub: true,
-      pin: true,
+      if (isDesktop) {
+        gsap.to(".botanic__illustrations__generations", {
+          scrollTrigger: {
+            trigger: ".botanic__illustrations__generations",
+            start: "top 20%",
+            scrub: true,
+            pin: true,
+          },
+        });
 
-    },
-  });
+        const pictureClasses = [
+          ".generations__first",
+          ".generations__second",
+          ".generations__third",
+          ".generations__fourth",
+        ];
 
-  const pictureClasses = [
-    ".generations__first",
-    ".generations__second",
-    ".generations__third",
-    ".generations__fourth",
-  ];
-
-  pictureClasses.forEach((pictureClass, index) => {
-    gsap.fromTo(
-      pictureClass,
-      { scale: 0.5, opacity: 0.5 },
-      {
-        scale: 1.2,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: pictureClass,
-          start: `top+=${index * 50} center`, 
-          end: `top+=${(index + 1) * 50} center`,
-          scrub: true,
-        },
+        pictureClasses.forEach((pictureClass, index) => {
+          gsap.fromTo(
+            pictureClass,
+            { scale: 0.5, opacity: 0.5 },
+            {
+              scale: 1.2,
+              opacity: 1,
+              scrollTrigger: {
+                trigger: pictureClass,
+                start: `top+=${index * 50} center`,
+                end: `top+=${(index + 1) * 50} center`,
+                scrub: true,
+              },
+            }
+          );
+        });
       }
-    );
-  });
-}
-
-
-
     }
   );
 };
@@ -575,22 +529,19 @@ const heroDrag = () => {
       minY: 0,
       maxY: 200,
     },
+    zIndexBoost: false,
     onPress() {
       printingImage.style.pointerEvents = "none";
-      draggableImage.style.cursor = "grabbing";
     },
     onRelease() {
       printingImage.style.pointerEvents = "auto";
-      draggableImage.style.cursor = "grab";
     },
   });
 };
 
-
-
 const init = () => {
-const mm = gsap.matchMedia();
-heroDrag();
+  const mm = gsap.matchMedia();
+  heroDrag();
   questionSection();
   createDots();
   updateContent();
